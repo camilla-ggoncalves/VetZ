@@ -1,0 +1,203 @@
+/* Reset e base */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f2f9ec;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Cabeçalho */
+.topo {
+    background-color: #ffffff;
+    border-bottom: 2px solid #d8e8cc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    flex-wrap: wrap;
+}
+
+.logo-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-box img {
+    width: 40px;
+    height: 40px;
+}
+
+.titulo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #4b7942;
+}
+
+/* Botão voltar */
+.voltar {
+    background-color: #d4f1c5;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #2d5c24;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.voltar:hover {
+    background-color: #bde9ad;
+}
+
+/* Conteúdo principal */
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Caixa de login */
+.login-box {
+    background-color: white;
+    width: 100%;
+    max-width: 450px;
+    margin: 20px;
+    padding: 25px 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.login-title {
+    color: #3ac00a;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0 20px;
+}
+
+input[type="email"],
+input[type="password"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.entrar {
+    background-color: #b6e9a4;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.entrar:hover {
+    background-color: #a5db93;
+}
+
+.links {
+    margin-top: 15px;
+}
+
+.links a {
+    color: #005f3c;
+    text-decoration: none;
+    font-size: 14px;
+    gap: 10px;
+}
+
+/* Gif de cachorro e gato */
+.bichinho {
+    width: 100%;
+    max-width: 150px;
+    margin: 15px auto 0;
+    display: block;
+    border-radius: 10px;
+}
+
+/* Rodapé */
+.rodape {
+    text-align: center;
+    padding: 15px;
+    background-color: #eaf7dc;
+    color: #4a6542;
+    font-size: 14px;
+    border-top: 1px solid #cfe8b6;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .topo {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .voltar {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .login-box {
+        padding: 20px;
+    }
+
+    .login-title {
+        font-size: 1.25rem;
+    }
+
+    input[type="email"],
+    input[type="password"],
+    .entrar {
+        font-size: 0.9rem;
+    }
+
+    .bichinho {
+        max-width: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .topo {
+        padding: 10px;
+    }
+
+    .titulo {
+        font-size: 18px;
+    }
+
+    .login-box {
+        padding: 15px;
+    }
+
+    .login-title {
+        font-size: 1rem;
+    }
+
+    input[type="email"],
+    input[type="password"],
+    .entrar {
+        font-size: 0.8rem;
+    }
+
+    .bichinho {
+        max-width: 100px;
+    }
+}
+
