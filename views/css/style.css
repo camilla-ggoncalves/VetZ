@@ -238,6 +238,37 @@ a{
 /* 		            03. BEGIN PAGE HOMEPAGE                     */
 /* ========================================================== */
 
+/*Begin Section 01*/
+.section01 {
+  position: relative;
+  padding-top: 108px;
+  padding-bottom: 26px;
+  background: #FEFFEF;
+  background-size: cover;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.sec01titleh1{
+  font-family: 'Poppins-Bold';
+  font-size: 40px;
+  line-height: 52px;
+  margin: 0;
+  padding: 68px 0 10px 0;
+  text-align: center;
+  color: #038654;
+}
+
+.sec01ph1{
+  font-family: 'poppins-Regular';
+  font-size: 17px;
+  line-height: 26px;
+  text-align: justify;
+  padding: 0 72px 20px 0;
+  margin: 0;
+}
+
+ /*End Section 01*/
 
 /* ========================================================== */
 /*                  03. END PAGE HOME                         */
