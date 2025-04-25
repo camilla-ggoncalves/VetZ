@@ -251,52 +251,53 @@ a{
 .section02 {
   position: relative;
   padding-top: 108px;
-  padding-bottom: 26px;
+  padding-bottom: 400px;
   background: #FEFFEF;
   background-size: cover;
   z-index: 10;
   overflow: hidden;
  }
  
- .sec02titleh1{
+ .sec02titleh1 {
   font-family: 'Poppins-Bold';
   font-size: 40px;
   line-height: 52px;
-  margin: 0;
+  margin: 0 auto; /* Centraliza horizontalmente */
   padding: 68px 0 10px 0;
-  text-align: left;
+  text-align: center; /* Centraliza o texto dentro do elemento */
   color: #038654;
- }
+}
  
- .sec02ph1{
+ .sec02ph1 {
   font-family: 'poppins-Regular';
   font-size: 17px;
   line-height: 26px;
   text-align: justify;
-  padding: 0 72px 20px 0;
-  margin: 0;
- }
+  padding: 0 0 20px 0; /* Remova o padding lateral */
+  margin: 0 auto; /* Centraliza horizontalmente */
+  max-width: 800px; /* Opcional: Define uma largura máxima para o texto */
+}
  
- .sec02ph2{
+ /* .sec02ph2{
   font-family: 'poppins-Regular';
   font-size: 17px;
   line-height: 26px;
   text-align: left;
   padding: 0 52px 20px 0;
   margin: 0;
- }
+ } */
 /*End Section 02*/
 
 /*Begin Section 03*/
- .sec03titleh2{
+.sec03titleh2 {
   font-family: 'Poppins-Bold';
   font-size: 26px;
   line-height: 52px;
-  padding: 0 0 12px 0;
+  padding: 30px 0 15px 0;
   text-align: center;
   color: #038654;
-  margin: 0 0 0 63px;
- }
+  margin: 0 auto; /* Centraliza horizontalmente */
+}
  
  .sec03phinte{
   font-family: 'Poppins-Bold';
@@ -317,10 +318,21 @@ a{
   margin-bottom: 23px;
  }
  
- .card, .card2, .card3, .card4{
+ .card, .card2, .card3, .card4, .card5{
   width: 18rem;
  }
- .card {
+
+ /* Fotos dos integrantes */
+.card-img-top {
+  width: 150px; /* Ajuste o tamanho conforme necessário */
+  height: 150px; /* Certifique-se de que largura e altura sejam iguais */
+  border-radius: 50%; /* Torna a imagem redonda */
+  object-fit: cover; /* Garante que a imagem se ajuste ao círculo */
+  margin: 0 auto; /* Centraliza a imagem dentro do card */
+  display: block; /* Garante que a imagem seja tratada como bloco */
+}
+/* camila */
+.card { 
   position: absolute;
   display: -ms-flexbox;
   display: flex;
@@ -331,10 +343,13 @@ a{
   background-color: #e9f8da;
   background-clip: border-box;
   border: none;
-  border-radius: .25rem;
+  border-radius: .255rem;
+  right: 1164px; /* Defina um valor válido para posicionar o card */
+
  }
- 
- .card2 {
+
+ /* marcela */
+.card2 {
   position: relative;
   display: -ms-flexbox;
   display: flex;
@@ -347,9 +362,9 @@ a{
   border: none;
   border-radius: .25rem;
   align-content: flex-end;
-  right: -308px;
- }
- 
+  margin: 0 auto; /* Centraliza horizontalmente */
+}
+ /*isadora */
  .card3 {
   position: absolute;
   display: -ms-flexbox;
@@ -362,8 +377,11 @@ a{
   background-clip: border-box;
   border: none;
   border-radius: .25rem;
+  left: 343px; /* Ajuste o valor para mover mais ou menos para a direita */
+  top: 416px;
+
  }
- 
+ /* victor h. */
  .card4 {
   position: relative;
   display: -ms-flexbox;
@@ -377,8 +395,26 @@ a{
   border: none;
   border-radius: .25rem;
   align-content: flex-end;
-  right: -308px;
+  right: -1150px;
+  top: -235px; /* Ajuste o valor para subir (-) ou descer (+) */
  }
+/* guilherme a. */
+.card5 {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #e9f8da;
+  background-clip: border-box;
+  border: none;
+  border-radius: .25rem;
+  align-content: flex-end;
+  left: 880px;
+  top: -150px; /* Ajuste o valor para subir (-) ou descer (+) */
+}
  /*End Section 03*/
 
  /* ========================================================== */
