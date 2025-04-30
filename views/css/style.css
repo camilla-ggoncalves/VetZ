@@ -242,7 +242,7 @@ a{
 .section01 {
   position: relative;
   padding-top: 108px;
-  padding-bottom: 26px;
+  padding-bottom: 580px;
   background: #FEFFEF;
   background-size: cover;
   z-index: 10;
@@ -267,6 +267,94 @@ a{
   padding: 0 72px 20px 0;
   margin: 0;
 }
+
+.sec01phinte{
+  font-family: 'Poppins-Bold';
+  font-size: 17px;
+  line-height: 26px;
+  margin: 0;
+  padding: 0px 0 20px 0;
+  text-align: center;
+}
+
+.card1-1, .card1-2, .card1-3, .card1-4{
+  width: 18rem;
+ }
+ .card1-1 {
+  position: absolute;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: none;
+  border-radius: .25rem;
+ }
+ 
+ .card1-2 {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: none;
+  border-radius: .25rem;
+  align-content: flex-end;
+  right: -308px;
+ }
+ 
+ .card1-3 {
+  position: absolute;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: none;
+  border-radius: .25rem;
+  margin: -374px 0 0 615px;
+ }
+ 
+ .card1-4 {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: none;
+  border-radius: .25rem;
+  align-content: flex-end;
+  margin: -374px 0 0 920px;
+ }
+
+.card1-1:hover{
+  transform: scale(1.05);
+}
+.card1-2:hover{
+  transform: scale(1.05);
+}
+.card1-3:hover{
+  transform: scale(1.05);
+}
+.card1-4:hover{
+  transform: scale(1.05);
+}
+
+
 
  /*End Section 01*/
 
