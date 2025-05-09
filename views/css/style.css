@@ -322,7 +322,7 @@ a{
   background-clip: border-box;
   border: none;
   border-radius: .25rem;
-  margin: -374px 0 0 615px;
+  margin: -236px 0 0 615px;
  }
  
  .card1-4 {
@@ -338,8 +338,16 @@ a{
   border: none;
   border-radius: .25rem;
   align-content: flex-end;
-  margin: -374px 0 0 920px;
+  margin: -236px 0 0 920px;
  }
+
+.card-img-top1 {
+  width: 150px;
+  height: 150px; 
+  object-fit: cover;
+  margin: 0 auto;
+  display: block;
+}
 
 .card1-1:hover{
   transform: scale(1.05);
@@ -367,7 +375,7 @@ a{
 .section02 {
   position: relative;
   padding-top: 108px;
-  padding-bottom: 400px;
+  padding-bottom: 500px;
   background: #FEFFEF;
   background-size: cover;
   z-index: 10;
@@ -405,14 +413,24 @@ a{
 /*End Section 02*/
 
 /*Begin Section 03*/
+.section03{
+  position: relative;
+  padding-top: 55px;
+  padding-bottom: 700px;
+  background: #e9f8da;
+  background-size: cover;
+  z-index: 10;
+  overflow: hidden;
+}
+
 .sec03titleh2 {
   font-family: 'Poppins-Bold';
   font-size: 26px;
   line-height: 52px;
-  padding: 30px 0 15px 0;
+  padding: 0px 0 35px 0;
   text-align: center;
   color: #038654;
-  margin: 0 auto; /* Centraliza horizontalmente */
+  margin: 0 auto;
 }
  
  .sec03phinte{
@@ -440,12 +458,12 @@ a{
 
  /* Fotos dos integrantes */
 .card-img-top {
-  width: 150px; /* Ajuste o tamanho conforme necessário */
-  height: 150px; /* Certifique-se de que largura e altura sejam iguais */
-  border-radius: 50%; /* Torna a imagem redonda */
-  object-fit: cover; /* Garante que a imagem se ajuste ao círculo */
-  margin: 0 auto; /* Centraliza a imagem dentro do card */
-  display: block; /* Garante que a imagem seja tratada como bloco */
+  width: 150px; 
+  height: 150px; 
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto; 
+  display: block;
 }
 /* camila */
 .card { 
@@ -856,9 +874,11 @@ input[type="password"] {
  @media screen and (max-width: 600px) {
   /*Begin Nav-Bar*/
   .navbar-fixed-top {
-    background-color: #038654!important;
-    border-bottom: 0px solid #038654;
-    display: none;
+    position: absolute !important;
+    background-color: #FEFFEF !important;
+    box-shadow: 0px 0px 25px 0px #2125295c !important;
+    border-bottom: none;
+    transition: background-color 0.25s ease 0s;
   }
  
   .left-menu{
@@ -866,6 +886,51 @@ input[type="password"] {
     margin-top: 32px;
   }
   /*End Nav-Bar*/
+
+  /*Begin HOME PAGE*/
+  .section01 {
+    padding-top: 108px;
+    padding-bottom: 580px;
+    background: #FEFFEF;
+    background-size: cover;
+    z-index: 10;
+    overflow: hidden;
+  }
+
+
+
+  /*End HOME PAGE*/
+
+  /*Begin PAGE SOBRE NÓS*/
+  /*End PAGE SOBRE NÓS*/
+
+  /*Begin PAGE PERFIL*/
+  /*End PAGE PERFIL*/
+
+  /*Begin PAGE CURIOSIDADES*/
+  /*End PAGE CURIOSIDADES*/
+
+  /*Begin PAGE VACINAÇÃO CÃO*/
+  /*End PAGE VACINAÇÃO CÃO*/
+
+  /*Begin PAGE VACINAÇÃO GATO*/
+  /*End PAGE VACINAÇÃO GATO*/
+
+  /*Begin PAGE RECOMENDAÇÕES*/
+  /*End PAGE RECOMENDAÇÕES*/
+
+  /*Begin PAGE TERMOS DE USO*/
+  /*End PAGE TERMOS DE USO*/
+
+  /*Begin PAGE REGISTRAR*/
+  /*End PAGE REGISTRAR*/
+
+  /*Begin PAGE CADASTRO*/
+  /*End PAGE CADASTRO*/
+
+  /*Begin PAGE LOGIN*/
+  /*End PAGE LOGIN*/
+
 
   /*Begin footer*/
   .footerp1 {
