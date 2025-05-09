@@ -76,7 +76,7 @@ function loadYouTubeAPI() {
 	gapi.client.init({
 		'apiKey': apiKey,
 	}).then(() => {
-		getVideosByKeyword('animais'); //buscar vídeos por palavras-chave
+		getVideosByKeyword('animais, veterinaria, cuidado animal'); //buscar vídeos por palavras-chave
 	});
 }
 
