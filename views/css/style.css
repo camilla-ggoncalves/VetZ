@@ -29,7 +29,9 @@ Sequência do CSS Da Página: (use esses nomes a pesquisa rápida no código.)
 12. BEGIN PAGE CADASTRO
     01. Section 11
 13. BEGIN PAGE LOGIN
-    01. Section 13
+    01. Section 12
+ADICIONAR 07-VACINAÇÃO
+->alteração de páginas
     
 14. Footer
 15. Media Queries
@@ -586,8 +588,61 @@ a{
  /* ========================================================== */
 
  /* ========================================================== */
+ /* 		             06. BEGIN PAGE VACINAÇÃO                  */
+ /* ========================================================== */
+/*Begin Section 13*/
+.section13{
+  position: relative;
+  padding-top: 108px;
+  padding-bottom: 500px;
+  background: #FEFFEF;
+  background-size: cover;
+  z-index: 10;
+  overflow: hidden;
+}
+
+/*End Section 13*/
+ /* ========================================================== */
+ /* 		             06. END PAGE VACINAÇÃO                    */
+ /* ========================================================== */
+
+ /* ========================================================== */
  /* 		           07. BEGIN PAGE VACINAÇÃO CÃO                */
  /* ========================================================== */
+/*Begin Section 06*/
+.section06{
+  position: relative;
+  padding-top: 108px;
+  padding-bottom: 500px;
+  background: #FEFFEF;
+  background-size: cover;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.sec06titleh2{
+  font-family: 'Poppins-Bold';
+  font-size: 26px;
+  line-height: 52px;
+  padding: 0px 0 35px 0;
+  text-align: center;
+  color: #038654;
+  margin: 0 auto;
+}
+
+.sec06th1{
+  font-family: 'Poppins-Regular';
+  font-size: 16px;
+  text-align: center;
+}
+
+.sec06vacina{
+  font-family: 'Poppins-Regular';
+  font-size: 16px;
+  text-align: center;
+}
+/*End Section 06*/
+
  /* ========================================================== */
  /* 		             07. END PAGE VACINAÇÃO CÃO                */
  /* ========================================================== */
@@ -595,6 +650,52 @@ a{
  /* ========================================================== */
  /* 		           08. BEGIN PAGE VACINAÇÃO GATO               */
  /* ========================================================== */
+/*Begin Section 07*/
+.section07{
+  position: relative;
+  padding-top: 108px;
+  padding-bottom: 500px;
+  background: #FEFFEF;
+  background-size: cover;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.sec07titleh2{
+  font-family: 'Poppins-Bold';
+  font-size: 26px;
+  line-height: 52px;
+  padding: 0px 0 35px 0;
+  text-align: center;
+  color: #038654;
+  margin: 0 auto;
+}
+
+.sec07th1{
+  font-family: 'Poppins-Regular';
+  font-size: 16px;
+  text-align: center;
+}
+
+.textminsec07{
+  font-family: 'Poppins-Regular';
+  font-size: 12px;
+  text-align: center;
+}
+
+.sec07vacina{
+  font-family: 'Poppins-Regular';
+  font-size: 16px;
+  text-align: center;
+}
+
+.sec07descvacina{
+  font-family: 'Poppins-Regular';
+  font-size: 16px;
+  text-align: center;
+}
+
+/*End Section 07*/
  /* ========================================================== */
  /* 		             08. END PAGE VACINAÇÃO GATO               */
  /* ========================================================== */
