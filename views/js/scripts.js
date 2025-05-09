@@ -127,4 +127,44 @@ function start() {
 }
 
 // Iniciar a API quando a página carregar
+
 window.onload = start;
+
+window.onload = start;
+
+
+	/* ========================================================== */
+	/*   Pagina de vacinação de Cão - Check das doses ADM         */
+	/* ========================================================== */
+function toggleCheck(button) {
+  button.classList.toggle('checked');
+  if (button.classList.contains('checked')) {
+    button.innerHTML = '✔';
+  } else {
+    button.innerHTML = button.dataset.originalText || button.textContent;
+  }
+}
+document.querySelectorAll("button").forEach(btn => {
+  btn.dataset.originalText = btn.textContent;
+});
+
+function toggleCheck(button) {
+  if (!button.classList.contains('checked')) {
+    button.classList.add('checked');
+    button.innerHTML = '✔';
+  } else {
+    button.classList.remove('checked');
+    button.innerHTML = button.dataset.originalText;
+  }
+}
+
+
+	/* ========================================================== */
+	/*   Pagina de vacinação de Gato - Visualização das vacinas   */
+	/* ========================================================== */
+function abrirPopup(vacina, dose) {
+	document.getElementById('vacinaNome').innerText = vacina;
+	document.getElementById('vacinaDose').innerText = dose;
+	let modal = new bootstrap.Modal(document.getElementById('vacinaModal'));
+	modal.show();
+}
