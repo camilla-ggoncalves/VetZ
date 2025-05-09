@@ -547,6 +547,22 @@ a{
  /* ========================================================== */
  /* 		           06. BEGIN PAGE CURIOSIDADES                 */
  /* ========================================================== */
+
+ #video-list li {
+  margin-bottom: 20px;
+}
+
+#video-list img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+#video-list p {
+  margin-top: 5px;
+  font-weight: bold;
+}
+
  /* ========================================================== */
  /* 		             06. END PAGE CURIOSIDADES                 */
  /* ========================================================== */
