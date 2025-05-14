@@ -722,6 +722,22 @@ a{
   padding: 0 20px 0 20px;
 }
 
+.modalContent{
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: .3rem;
+    outline: 0;
+    margin: 93px 0 0 0;
+}
+
 .vacinaNome{
   font-family: 'Poppins-Bold';
   font-size: 16px;
@@ -739,6 +755,21 @@ a{
   font-size: 16px;
   text-align: left;
 }
+
+.sec07Tabela{
+  background-color: #cde8c5;
+  text-align: center;
+  padding: 15px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #2d2d2d;
+}
+
+.modal-backdrop.show {
+  opacity: 0 !important; /* Remove o escurecimento */
+  background-color: transparent !important;
+}
+
 
 /*End Section 07*/
  /* ========================================================== */
