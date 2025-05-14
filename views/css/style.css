@@ -568,8 +568,14 @@ a{
  /* 		           06. BEGIN PAGE CURIOSIDADES                 */
  /* ========================================================== */
 
- #video-list li {
-  margin-bottom: 20px;
+
+#video-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  list-style: none;
+  padding: 25px;
+  margin: 0;
 }
 
 #video-list img {
@@ -581,7 +587,8 @@ a{
 #video-list p {
   margin-top: 5px;
   font-weight: bold;
-}
+} 
+
 
  /* ========================================================== */
  /* 		             06. END PAGE CURIOSIDADES                 */
