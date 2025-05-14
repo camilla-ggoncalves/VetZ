@@ -671,6 +671,16 @@ a{
   margin: 0 auto;
 }
 
+.sec07titleh2{
+  font-family: 'Poppins-Bold';
+  font-size: 26px;
+  line-height: 52px;
+  padding: 0px 0 35px 0;
+  text-align: center;
+  color: #038654;
+  margin: 0 auto;
+}
+
 .sec07th1{
   font-family: 'Poppins-Regular';
   font-size: 16px;
@@ -693,6 +703,41 @@ a{
   font-family: 'Poppins-Regular';
   font-size: 16px;
   text-align: center;
+}
+
+.doses{
+  font-family: 'Poppins-Regular';
+  font-size: 16px;
+  text-align: center;
+}
+
+/* Caixa de especificações da vacina */
+.modalTitle{
+  font-family: 'Poppins-Bold';
+  font-size: 16px;
+  text-align: center;
+}
+
+.modalBody{
+  padding: 0 20px 0 20px;
+}
+
+.vacinaNome{
+  font-family: 'Poppins-Bold';
+  font-size: 16px;
+  text-align: left;
+}
+
+.vacinaDose{
+  font-family: 'Poppins-Regular';
+  font-size: 16px;
+  text-align: left;
+}
+
+.especificacoes{
+  font-family: 'Poppins-Bold';
+  font-size: 16px;
+  text-align: left;
 }
 
 /*End Section 07*/
