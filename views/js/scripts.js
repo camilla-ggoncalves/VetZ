@@ -71,65 +71,79 @@ $(window).on('load', function(){
 // Defina sua chave de API do YouTube aqui
 const apiKey = 'AIzaSyCK_SS_gw9xG9m5xAo3aO6dZ-6sWqWaK0w';
 
+// Lista dos canais confiáveis (IDs dos canais no YouTube)
+const canaisVeterinarios = [
+    'UCsKneoQQHq93LsJpfspj_6A',  // Tudo sobre Cachorros
+    'UCTU-01IN0p5JXB7VxEzDdJg',   // Perito Animal
+	'UCpfYQpjkTmxMPN1vUoTaAMw' // Dica do Veterinário
+];
+
 // Função para carregar a API do YouTube
 function loadYouTubeAPI() {
-	gapi.client.init({
-		'apiKey': apiKey,
-	}).then(() => {
-		getVideosByKeyword('animais, veterinaria, cuidado animal'); //buscar vídeos por palavras-chave
-	});
-}
-
-// Função para buscar vídeos com base em palavras-chave - Isso é a DECLARAÇÃO da função (define o que ela faz)
-function getVideosByKeyword(query) {
-    gapi.client.request({
-        'path': '/youtube/v3/search', //API
-        'params': {
-            'part': 'snippet',
-            'q': query,  // Palavra-chave para busca
-            'maxResults': 10,
-            'order': 'date',  // Ordenar por data (mais recente)
-            'type': 'video',  // Filtrar apenas vídeos
-        }
-    }).then(response => {
-        console.log(response);  // Verifique o que está sendo retornado pela API
-        // Exibir vídeos na página
-        displayVideos(response.result.items);
+    gapi.client.init({
+        'apiKey': apiKey,
+    }).then(() => {
+        getVideosDeCanaisVeterinarios();  // Busca vídeos dos canais confiáveis
     });
 }
 
+// retorna uma Promise com os vídeos (promise = promete que após carregado terá um resultado que funcionou ou não funcionou)
+function buscarVideosDoCanal(channelId) {
+    return gapi.client.request({
+        'path': '/youtube/v3/search', //API
+        'params': {
+            'part': 'snippet',
+            'channelId': channelId,
+            'maxResults': 5, //5 vídeos de cada canal
+            'order': 'date',  // Ordenar por data (mais recente)
+            'type': 'video',  // Filtrar apenas vídeos
+        }
+    }).then(response => response.result.items);
+}
+
+// Função que busca vídeos de todos os canais veterinários selecionados e exibe na página
+function getVideosDeCanaisVeterinarios() {
+    // Array de Promises, uma para cada canal
+    const promessas = canaisVeterinarios.map(canal => buscarVideosDoCanal(canal));
+
+    // Quando todas as promessas resolverem (funcionou ou deu erro), junta todos os vídeos num array só
+    Promise.all(promessas).then(resultados => {
+        const todosVideos = resultados.flat(); // diminui o array
+
+        // Exibir vídeos na página
+        displayVideos(todosVideos);
+    });
+}
 
 // Função para exibir vídeos no HTML
 function displayVideos(videos) {
-	const videoList = document.getElementById('video-list');
-	videoList.innerHTML = '';  // Limpar a lista antes de adicionar os novos vídeos
-	
-	videos.forEach(video => {
-		const title = video.snippet.title;
-		const videoUrl = `https://www.youtube.com/watch?v=${video.id.videoId}`; //cada vídeo tem seu próprio ID
+    const videoList = document.getElementById('video-list');
+    videoList.innerHTML = '';  // Limpar a lista antes de adicionar os novos vídeos
 
-		// Criando um item de lista para o vídeo
-		const listItem = document.createElement('li');
-		listItem.innerHTML = `
-			<a href="${videoUrl}" target="_blank"> 
-				<img src="${video.snippet.thumbnails.default.url}" alt="${title}"> 
-				<p>${title}</p>
-			</a>
-		`; //miniatura (imagem) do vídeo; o default é o tamanho menor; o vídeo abre em nova aba; aparece a thumbnail; aparece título
+    videos.forEach(video => {
+        const title = video.snippet.title;
+        const cleanTitle = title.replace(/#[^\s#]+/g, '').trim(); //não exibirá as # dos vídeos nos títulos
+        const videoUrl = `https://www.youtube.com/watch?v=${video.id.videoId}`; //cada vídeo tem seu próprio ID
 
-		videoList.appendChild(listItem);
-	});
+        // Criando um item de lista para o vídeo
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `
+            <a href="${videoUrl}" target="_blank"> 
+                <img src="${video.snippet.thumbnails.high.url}" alt="${cleanTitle}">
+                <p>${cleanTitle}</p>
+            </a>
+        `; //abre em outra página
+
+        videoList.appendChild(listItem);
+    });
 }
 
 // Função chamada quando a API é carregada
 function start() {
-	gapi.load('client', loadYouTubeAPI);
+    gapi.load('client', loadYouTubeAPI);
 }
 
 // Iniciar a API quando a página carregar
-
-window.onload = start;
-
 window.onload = start;
 
 
