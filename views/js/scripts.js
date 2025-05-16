@@ -122,17 +122,24 @@ function displayVideos(videos) {
 
     videos.forEach(video => {
         const title = video.snippet.title;
+		const videoId = video.id.videoId;
         const cleanTitle = title.replace(/#[^\s#]+/g, '').trim(); //não exibirá as # dos vídeos nos títulos
         const videoUrl = `https://www.youtube.com/watch?v=${video.id.videoId}`; //cada vídeo tem seu próprio ID
+		const thumbnail = video.snippet.thumbnails.medium.url;
+        const publishedAt = new Date(video.snippet.publishedAt);
+        const dataFormatada = publishedAt.toLocaleDateString('pt-BR');
 
         // Criando um item de lista para o vídeo
-        const listItem = document.createElement('li');
+                const listItem = document.createElement('li');
+        listItem.classList.add('video-item'); // para estilizar via CSS
+
         listItem.innerHTML = `
-            <a href="${videoUrl}" target="_blank"> 
-                <img src="${video.snippet.thumbnails.high.url}" alt="${cleanTitle}">
-                <p>${cleanTitle}</p>
+            <p class="video-title">${title}</p>
+            <a href="${videoUrl}" target="_blank">
+                <img src="${thumbnail}" alt="${title}">
             </a>
-        `; //abre em outra página
+            <p class="video-date">${dataFormatada}</p>
+        `;
 
         videoList.appendChild(listItem);
     });

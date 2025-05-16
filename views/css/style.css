@@ -571,8 +571,8 @@ a{
 
 #video-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Repetir as colunas automaticamente, mínimo 250px e no máximo 1fr (fração do espaço disponível) */
+  gap: 40px;
   list-style: none;
   padding: 25px;
   margin: 0;
@@ -581,20 +581,24 @@ a{
 #video-list img {
   max-width: 100%;
   height: auto;
-  display: block;
+  border-radius: 8px;
 }
+
+.video-title {
+  align-items: center;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 8px;
+
+  /* Limitar a uma linha com reticências */
+  white-space: nowrap; /* impede que o texto quebre em várias linhas */
+  overflow: hidden; /* esconde qualquer conteúdo que ultrapasse os limites da caixa */
+  text-overflow: ellipsis; /* quando o texto é cortado, ele mostra (...) no final */
+}
+
 
 .youtube-section {
   margin-top: 100px; 
-}
-
-  .youtube-section p {
-  font-family: 'Poppins-Bold', Arial, sans-serif;
-  font-size: 16px;
-  color: #000000;
-  margin-top: 8px;
-  line-height: 1.4;
-  text-align: justify;
 }
 
  /* ========================================================== */
