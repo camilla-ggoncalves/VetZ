@@ -221,6 +221,8 @@ a{
 
 }
 
+R
+
 .left-menu{
    margin-right: 32px;
 }
@@ -547,6 +549,7 @@ a{
   align-content: flex-end;
   left: 880px;
   top: -150px; /* Ajuste o valor para subir (-) ou descer (+) */
+  
 }
 
 /* Grid para os integrantes */
