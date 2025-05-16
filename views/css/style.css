@@ -223,6 +223,8 @@ a{
 
 }
 
+R
+
 .left-menu{
    margin-right: 32px;
 }
@@ -396,7 +398,7 @@ a{
  
  .sec02ph1 {
   font-family: 'poppins-Regular';
-  font-size: 17px;
+  font-size: 1rem;
   line-height: 26px;
   text-align: justify;
   padding: 0 0 20px 0; /* Remova o padding lateral */
@@ -440,7 +442,6 @@ a{
   font-size: 17px;
   line-height: 26px;
   margin: 0;
-  padding: 0px 0 20px 0;
   text-align: center;
  }
  
@@ -550,6 +551,87 @@ a{
   align-content: flex-end;
   left: 880px;
   top: -150px; /* Ajuste o valor para subir (-) ou descer (+) */
+  
+}
+
+/* Grid para os integrantes */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas na primeira linha */
+    gap: 20px; /* Espaçamento entre os itens */
+    justify-items: center; /* Centraliza os itens horizontalmente */
+    margin-top: 20px;
+}
+
+/* Grid para a primeira linha */
+.grid-container-line1 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+    gap: 20px; /* Espaçamento entre os itens */
+    justify-items: center; /* Centraliza os itens horizontalmente */
+    margin-top: 20px;
+}
+
+/* Grid para a segunda linha */
+.grid-container-line2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas */
+    gap: 20px; /* Espaçamento entre os itens */
+    justify-items: center; /* Centraliza os itens horizontalmente */
+    margin-top: 20px;
+}
+
+.grid-item {
+    text-align: center;
+}
+
+.grid-item img {
+    width: 150px; /* Tamanho das imagens */
+    height: 150px;
+    border-radius: 50%; /* Torna as imagens redondas */
+    object-fit: cover; /* Ajusta a imagem ao círculo */
+    margin-bottom: 10px;
+}
+
+.grid-item-img1 {
+    text-align: center;
+    margin-left: 185px;
+}
+
+.grid-item-img2 {
+    text-align: center;
+    margin-right: 185px;
+}
+
+.sec03phinte {
+    font-family: 'Poppins-Bold';
+    font-size: 17px;
+    line-height: 26px;
+    margin: 0;
+    text-align: center;
+}
+
+/* Responsividade para telas menores */
+@media screen and (max-width: 768px) {
+    .grid-container,
+    .grid-container-line1,
+    .grid-container-line2
+     {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas em telas menores */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .grid-container,
+    .grid-container-line1,
+    .grid-container-line2 {
+        grid-template-columns: 1fr; /* 1 coluna em telas muito pequenas */
+    }
+
+    .grid-item img {
+        width: 120px; /* Reduz o tamanho das imagens */
+        height: 120px;
+    }
 }
  /*End Section 03*/
 
