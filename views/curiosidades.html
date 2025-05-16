@@ -1,25 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="keywords" content="">
-        <meta name="description" content="">
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
 
-        <title>VetZ</title>
-        
-        <!-- Loading Bootstrap -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+    <title>VetZ</title>
+    
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
-        <!-- Loading código CSS -->
-        <link href="css/style.css" rel="stylesheet" media="screen and (color)">
+    <!-- Estilos personalizados -->
+    <link href="css/style.css" rel="stylesheet">
 
-        <!-- Awsome Fonts -->
-        <link href="css/all.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="css/all.min.css" rel="stylesheet">
 
-        <!-- Favicon -->
-        <link href="images/logoPNG.png" rel="shortcut icon">
-    </head>
+    <!-- Favicon -->
+    <link href="images/logoPNG.png" rel="shortcut icon">
+</head>
 
     <body>
         <!--Begin Header-->
@@ -39,12 +39,12 @@
         
                         <div class="navbar-collapse collapse" id="navbarCollapse">
                             <ul class="navbar-nav ml-auto 1  left-menu">
-                                <li><a href="./#">HOME PAGE</a></li>
-                                <li><a href="./#">SOBRE NÓS</a></li>
-                                <li><a href="./#">CURIOSIDADES</a></li>
-                                <li><a href="./#">RECOMENDAÇÕES</a></li>
-                                <li><a href="./#">VACINAÇÃO</a></li>
-                                <li><a href="./#">SEU PERFIL</a></li>
+                                <li><a href="./index.html">HOME PAGE</a></li>
+                                <li><a href="./sobreNOS.html">SOBRE NÓS</a></li>
+                                <li><a href="./Login.html">CURIOSIDADES</a></li>
+                                <li><a href="./Login.html">RECOMENDAÇÕES</a></li>
+                                <li><a href="./Login.html">VACINAÇÃO</a></li>
+                                <li><a class="btn btn-menu" href="./Login.html" role="button"><img class="imgperfil" src="images/perfil.svg"> SEU PERFIL</a></li>
                             </ul> 
                             
                         </div>
@@ -55,36 +55,40 @@
         <!--End Header-->
 
         <!-- --------------- CONTEÚDO DA PÁGINA ----------------->
+            
+    <!-- Conteúdo principal -->
+    <main>
+        <section class="youtube-section">
+            <div class="container-videos">
+                <ul id="video-list" style="list-style: none; padding: 0;"></ul>
+            </div>
+        </section>            
+    </main>
 
-
-        
-        <!-- Begin footer-->
-        <div class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <p class="footerp1">
-                            Todos os direitos reservados <span id="footer-year"></span> © - VetZ </p>
-                    </div>
-
-                    <!-- <div class="col-md-1">
-                        <p class="instagram">
-                            <a><img href="#!" src="images/instagram.svg"></a>
-                    </div>
-                    <div class="col-md-1">
-                        <p class="email">
-                            <a><img href="#!" src="images/email.svg"></a>
-                    </div> -->
+    <!-- Rodapé -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="footerp1">Todos os direitos reservados <span id="footer-year"></span> © - VetZ </p>
+                </div>
+                <div class="col-md-1">
+                    <p class="instagram">
+                        <a><img href="#!" src="images/instagram.svg"></a>
+                </div>
+                <div class="col-md-1">
+                    <p class="email">
+                        <a><img href="#!" src="images/email.svg"></a>
                 </div>
             </div>
         </div>
-        <!--End footer-->
+    </div>
 
-
-        <!-- Load JS =============================-->
-        <script src="js/jquery-3.3.1.min.js"></script>
-        <script src="js/jquery.scrollTo-min.js"></script>
-        <script src="js/jquery.nav.js"></script>
-        <script src="js/scripts.js"></script>
-    </body>
+    <!-- Scripts -->
+<script src="https://apis.google.com/js/api.js"></script> <!-- carrega a API do YouTube -->
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/jquery.scrollTo-min.js"></script>
+<script src="js/jquery.nav.js"></script>
+<script src="js/scripts.js"></script> <!-- por último, onde está a função start() -->
+</body>
 </html>
