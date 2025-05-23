@@ -401,9 +401,9 @@ R
   font-size: 1rem;
   line-height: 26px;
   text-align: justify;
-  padding: 0 0 20px 0; /* Remova o padding lateral */
-  margin: 0 auto; /* Centraliza horizontalmente */
-  max-width: 800px; /* Opcional: Define uma largura máxima para o texto */
+  padding: 0 0 20px 0;
+  margin: 0 190px 0 190px;
+  max-width: 800px;
 }
  
  /* .sec02ph2{
@@ -420,7 +420,7 @@ R
 .section03{
   position: relative;
   padding-top: 55px;
-  padding-bottom: 700px;
+  padding-bottom: 540px;
   background: #e9f8da;
   background-size: cover;
   z-index: 10;
@@ -781,8 +781,8 @@ R
 }
 
 .modal-backdrop.show {
-  opacity: 0 !important; /* Remove o escurecimento */
   background-color: transparent !important;
+  opacity: 0.01 !important; /* quase invisível, mas ainda clicável */
 }
 
 
