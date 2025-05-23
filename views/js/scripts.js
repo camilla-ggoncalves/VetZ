@@ -183,9 +183,14 @@ function toggleCheck(button) {
 	/* ========================================================== */
 	/*   Pagina de vacinação de Gato - Visualização das vacinas   */
 	/* ========================================================== */
+let vacinaModal;
+
+document.addEventListener('DOMContentLoaded', function () {
+  vacinaModal = new bootstrap.Modal(document.getElementById('vacinaModal'));
+});
+
 function abrirPopup(vacina, dose) {
-	document.getElementById('vacinaNome').innerText = vacina;
-	document.getElementById('vacinaDose').innerText = dose;
-	let modal = new bootstrap.Modal(document.getElementById('vacinaModal'));
-	modal.show();
+  document.getElementById('vacinaNome').innerText = vacina;
+  document.getElementById('vacinaDose').innerText = dose;
+  vacinaModal.show();
 }
