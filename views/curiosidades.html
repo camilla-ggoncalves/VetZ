@@ -59,12 +59,16 @@
     <!-- Conteúdo principal -->
     <main>
         <section class="youtube-section">
-            <p> Vídeos </p>
-            <p> Mais Antigos</p> <p> Mais Recentes </p>
-            <div class="container-videos">
-                <ul id="video-list" style="list-style: none; padding: 0;"></ul>
-            </div>
-        </section>            
+            <h2>Vídeos</h2>
+
+        <div class="video-buttons">
+            <button onclick="mostrarRecentes()">Mais Recentes</button> <!-- evento para mostrar os mais recentes quando clicar nesse botão -->
+            <button onclick="mostrarAntigos()">Mais Antigos</button> <!-- evento para mostrar os mais antigos quando clicar nesse botão -->
+        </div>
+
+        <div id="recentes" class="video-grid ativo"></div>
+        <div id="antigos" class="video-grid"></div>
+        </section>
     </main>
 
     <!-- Rodapé -->

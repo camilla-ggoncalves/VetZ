@@ -115,24 +115,31 @@ function getVideosDeCanaisVeterinarios() {
     });
 }
 
-// Função para exibir vídeos no HTML
 function displayVideos(videos) {
-    const videoList = document.getElementById('video-list');
-    videoList.innerHTML = '';  // Limpar a lista antes de adicionar os novos vídeos
+    const recentList = document.getElementById('recentes'); // ID do bloco de vídeos publicados recentemente
+    const oldList = document.getElementById('antigos'); // ID do bloco de vídeos publicados antes
+    // Limpar listas
+    recentList.innerHTML = ''; 
+    oldList.innerHTML = '';
 
-    videos.forEach(video => {
-        const title = video.snippet.title;
-		const videoId = video.id.videoId;
-        const cleanTitle = title.replace(/#[^\s#]+/g, '').trim(); //não exibirá as # dos vídeos nos títulos
-        const videoUrl = `https://www.youtube.com/watch?v=${video.id.videoId}`; //cada vídeo tem seu próprio ID
-		const thumbnail = video.snippet.thumbnails.medium.url;
+    const hoje = new Date();
+    const trintaDiasAtras = new Date();
+    trintaDiasAtras.setDate(hoje.getDate() - 30); // Analisa os vídeos de 30 dias atrás comparados com a data de hoje
+
+    // Ordenar de mais antigo para mais recente
+    const videosOrdenados = videos.sort((a, b) => new Date(b.snippet.publishedAt) - new Date(a.snippet.publishedAt));
+    // O computador vai comparar dois por dois, várias vezes, até organizar toda a lista (a, b -> variáveis)
+
+    videosOrdenados.forEach(video => {  // Analisa um por um
+        const title = video.snippet.title.replace(/#[^\s#]+/g, '').trim(); // Remove as #hashtag
+        const videoId = video.id.videoId;
+        const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
+        const thumbnail = video.snippet.thumbnails.medium.url;
         const publishedAt = new Date(video.snippet.publishedAt);
         const dataFormatada = publishedAt.toLocaleDateString('pt-BR');
 
-        // Criando um item de lista para o vídeo
-                const listItem = document.createElement('li');
-        listItem.classList.add('video-item'); // para estilizar via CSS
-
+        const listItem = document.createElement('div'); // Cria um container contendo o título, thumbnail e data do vídeo
+        listItem.classList.add('video-item');
         listItem.innerHTML = `
             <p class="video-title">${title}</p>
             <a href="${videoUrl}" target="_blank">
@@ -141,7 +148,12 @@ function displayVideos(videos) {
             <p class="video-date">${dataFormatada}</p>
         `;
 
-        videoList.appendChild(listItem);
+        // Decisão: recentes = últimos 30 dias
+        if (publishedAt >= trintaDiasAtras) {
+            recentList.appendChild(listItem);
+        } else {
+            oldList.appendChild(listItem);
+        }
     });
 }
 
