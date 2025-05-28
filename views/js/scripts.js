@@ -154,8 +154,19 @@ function displayVideos(videos) {
         } else {
             oldList.appendChild(listItem);
         }
-    });
-}
+
+        function mostrarRecentes() {
+          document.getElementById('recentes').style.display = 'grid';
+          document.getElementById('antigos').style.display = 'none';
+        }
+
+        function mostrarAntigos() {
+          document.getElementById('recentes').style.display = 'none';
+          document.getElementById('antigos').style.display = 'grid';
+        }
+
+      });
+  }
 
 // Função chamada quando a API é carregada
 function start() {
