@@ -23,7 +23,7 @@ class Pet {
 
     // Método para salvar um pet
     public function save() {
-        $query = "INSERT INTO " . $this->table_name . " (nome, raca, idade, porte, peso, sexo, imagem,) 
+        $query = "INSERT INTO " . $this->table_name . " (nome, raca, idade, porte, peso, sexo, imagem) 
                   VALUES (:nome, :raca, :idade, :porte, :peso, :sexo, :imagem)";
         $stmt = $this->conn->prepare($query);
     

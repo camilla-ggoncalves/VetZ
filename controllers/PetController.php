@@ -22,7 +22,7 @@ class PetController {
             $pet->imagem = $_POST['imagem'];
 
             if ($pet->save()) { //salvando objeto
-                header('Location: /VetZ/list-pet');
+                header('Location: Projeto/VetZ/list-pet');
             } else {
                 echo "Erro ao cadastrar o pet.";
             }
@@ -47,18 +47,17 @@ class PetController {
     public function updatePet() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $pet = new Pet();
-            $pet->id_pet = $_POST['id_pet'];
+            $pet->id = $_POST['id'];
             $pet->nome = $_POST['nome'];
             $pet->raca = $_POST['raca'];
             $pet->idade = $_POST['idade'];
             $pet->porte = $_POST['porte'];
-            $pet->telefone = $_POST['telefone'];
             $pet->peso = $_POST['peso'];
             $pet->sexo = $_POST['sexo'];
             $pet->imagem = $_POST['imagem'];
 
             if ($pet->update()) {
-                header('Location: /VetZ/list-pet');
+                header('Location: Projeto/VetZ/list-pet');
             } else {
                 echo "Erro ao atualizar o pet.";
             }
@@ -69,11 +68,11 @@ class PetController {
 public function deletePetById() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $pet = new Pet();
-        $pet->id_pet = $_POST['id_pet'];
+        $pet->id = $_POST['id'];
 
         // Chama o método 'delete()' da model
         if ($pet->delete()) { // Chama o método delete correto
-            header('Location: /VetZ/list-pet'); // Redireciona após a exclusão
+            header('Location: Projeto/VetZ/list-pet'); // Redireciona após a exclusão
         } else {
             echo "Erro ao excluir o pet."; // Caso ocorra um erro
         }
