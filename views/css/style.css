@@ -840,7 +840,7 @@ R
   position: relative;
   max-width: 700px;      /* Aumenta a largura máxima */
   width: 100%;           /* Ocupa toda a largura disponível */
-  margin: 110px auto 0;   /* Centraliza horizontalmente e afasta do topo */
+  margin: 20px auto 0;   /* Centraliza horizontalmente e afasta do topo */
 }
 
 .input {
