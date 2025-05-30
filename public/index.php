@@ -14,11 +14,22 @@ $request = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); // Requisição cli
 $basePath = 'Projeto/VetZ/public'; 
 $route = str_replace($basePath, '', $request);
 
+
 $controller = new PetController();
 
 switch ($route) {
    
     case '/projeto/vetz/public/':
+
+switch ($request) { //mostra as requisições que o cliente está fazendo ao servidor, dependendo dela, muda as páginas
+
+    case '/VetZ/public':
+
+    case '/Projeto/VetZ/public/':
+
+    case '/VetZ/public/index':
+        $controller = new PetController(); //A classe que contém a lógica do que fazer com as requisições (por exemplo, exibir um formulário, salvar dados, excluir registros, etc.).
+
         $controller->showForm();
         break;
     case '/projeto/vetz/save-pet':
@@ -43,4 +54,5 @@ switch ($route) {
             echo "Rota: $request";
         }
         break;
+}
 }
