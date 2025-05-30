@@ -13,7 +13,11 @@ $request = $_SERVER['REQUEST_URI']; //requisição do HTTP cliente - servidor
 
 
 switch ($request) { //mostra as requisições que o cliente está fazendo ao servidor, dependendo dela, muda as páginas
+
     case '/VetZ/public':
+
+    case '/Projeto/VetZ/public/':
+
     case '/VetZ/public/index':
         $controller = new PetController(); //A classe que contém a lógica do que fazer com as requisições (por exemplo, exibir um formulário, salvar dados, excluir registros, etc.).
         $controller->showForm();
