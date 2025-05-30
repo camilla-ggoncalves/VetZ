@@ -566,13 +566,15 @@ R
  /* ========================================================== */
 
 
-#video-list {
-  display: grid;
+.video-grid {
+  display: none;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
-  list-style: none;
   padding: 25px;
-  margin: 0;
+}
+
+.video-grid.ativo {
+  display: grid;
 }
 
 #video-list img {
@@ -594,12 +596,41 @@ R
   text-align: justify;
 }
 
+.video-buttons button {
+  background: none;        
+  border: none;            
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;         
+  transition: color 0.3s;
+}
+
+.video-buttons button:focus {
+  outline: none;
+}
+
+.video-buttons button:hover {
+  color: #c00;
+  background: none;        
+  border: none;            
+}
+
+.video-buttons button.ativo {
+  color: #c00;
+}
+
+
+
+
+
+
  /* ========================================================== */
  /* 		             06. END PAGE CURIOSIDADES                 */
  /* ========================================================== */
 
  /* ========================================================== */
- /* 		             06. BEGIN PAGE VACINAÇÃO                  */
+ /* 		             07. BEGIN PAGE VACINAÇÃO                  */
  /* ========================================================== */
 /*Begin Section 13*/
 .section13{
@@ -614,11 +645,11 @@ R
 
 /*End Section 13*/
  /* ========================================================== */
- /* 		             06. END PAGE VACINAÇÃO                    */
+ /* 		             07. END PAGE VACINAÇÃO                    */
  /* ========================================================== */
 
  /* ========================================================== */
- /* 		           07. BEGIN PAGE VACINAÇÃO CÃO                */
+ /* 		           07.1 BEGIN PAGE VACINAÇÃO CÃO                */
  /* ========================================================== */
 /*Begin Section 06*/
 .section06{
@@ -655,7 +686,7 @@ R
 /*End Section 06*/
 
  /* ========================================================== */
- /* 		             07. END PAGE VACINAÇÃO CÃO                */
+ /* 		             07.1 END PAGE VACINAÇÃO CÃO                */
  /* ========================================================== */
 
  /* ========================================================== */
