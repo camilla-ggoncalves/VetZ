@@ -9,10 +9,7 @@ error_reporting(E_ALL); //E_ALL = exibe todos os tipos de erros
 require_once '../controllers/PetController.php';
 
 // Lógica de roteamento
-$request = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); // Requisição cliente-servidor
-
-$basePath = '/projeto/vetz/public';
-$route = str_replace($basePath, '', $request);
+$request = $_SERVER['REQUEST_URI']; // Requisição cliente-servidor
 
 
 switch ($request) { //mostra as requisições que o cliente está fazendo ao servidor, dependendo dela, muda as páginas
