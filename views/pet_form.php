@@ -36,8 +36,8 @@
                 <option value="F">Fêmea</option>
             </select>
             
-            <label for="imagem">Imagem do Pet:</label><br />
-            <input type="file" name="imagem" id="imagem" accept="image/*" required><br /><br />
+            <label>Imagem do Pet:</label>
+            <input type="file" name="imagem" accept="image/*" required>
 
             <input type="submit" value="Cadastrar Pet">
     </form>

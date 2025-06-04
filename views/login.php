@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login - VetZ-</title>
-  <link rel="icon" href="images/logoPNG.png" type="image/png">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
 
   <!-- Cabeçalho -->
   <header class="topo">
     <div class="logo-box">
-      <img src="images/Logo VETZ.svg" alt="Logo ">
+      <img src="logo.png" alt="Logo ">
       <span class="titulo">Vetz</span>
     </div>
     <button class="voltar" onclick="history.back()">VOLTAR</button>
@@ -22,16 +22,16 @@
   <main>
     <div class="login-box">
       <h2 class="login-title">LOGIN</h2>
-      <form>
-        <input type="email" placeholder="E-mail" required>
-        <input type="password" placeholder="Senha" required>
-        <button class="entrar" type="submit">ENTRAR</button>
-      </form>
+      <form action="/User/login" method="POST">
+    <input name="email" type="email" placeholder="Email" required>
+    <input name="senha" type="password" placeholder="Senha" required>
+    <button type="submit">Entrar</button>
+</form>  
 
       <div class="links">
-        <a href="cadastro.html">Criar conta</a> 
+        <a href="cadastro.php">Criar conta</a> 
         <br>
-        <a href="#">Esqueceu a senha?</a>
+        <a href="recuperar.php">Esqueceu a senha?</a>
       </div>
 
       <!-- Gif fofo abaixo do link -->

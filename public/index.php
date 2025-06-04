@@ -7,16 +7,39 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL); //E_ALL = exibe todos os tipos de erros
 
 require_once '../controllers/PetController.php';
+require_once '../controllers/UserController.php'; // Importa o controlador de usuários
 
 // Lógica de roteamento
 $request = $_SERVER['REQUEST_URI']; // Requisição cliente-servidor
 
 
-switch ($request) { //mostra as requisições que o cliente está fazendo ao servidor, dependendo dela, muda as páginas
+switch ($request) { //mostra as requisições que o cliente está fazendo ao servidor, dependendo dela, muda as páginas  
+
+    case '/vetz/cadastrar':
+        $controller = new UserController();
+        $controller->cadastrar();
+        break;
+    case '/vetz/login':
+        $controller = new UserController();
+        $controller->login();
+        break;
+    case 'vetz/enviarCodigo':
+        $controller = new UserController();
+        $controller->enviarCodigo();
+        break;
+    case 'vetz/verificarCodigo':
+        $controller = new UserController();
+        $controller->verificarCodigo();
+        break;
+    case 'vetz/redefinirSenha':    
+        $controller = new UserController();
+        $controller->redefinirSenha();
+        break;
     case '/projeto/vetz/public/':
         $controller = new PetController(); //A classe que contém a lógica do que fazer com as requisições (por exemplo, exibir um formulário, salvar dados, excluir registros, etc.).
         $controller->showForm();
         break;
+
     case '/projeto/vetz/save-pet':
         $controller = new PetController();
         $controller->savePet();                    ;

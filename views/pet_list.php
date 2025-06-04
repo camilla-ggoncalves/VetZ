@@ -28,7 +28,8 @@
         <td><?php echo $pet['porte']; ?></td>
         <td><?php echo $pet['peso']; ?></td>
         <td><?php echo $pet['sexo']; ?></td>
-        <td><?php echo $pet['imagem']; ?></td>
+        <td><img src="/public/uploads/<?= htmlspecialchars($pet['imagem']) ?>" alt="Imagem do pet" width="150"></td>
+
 
             <!-- Link para atualizar o livro -->
             <a href="projeto/vetz/update-pet/<?php echo $pet['id']; ?>">Atualizar</a>

@@ -19,7 +19,7 @@ class PetController {
             $pet->porte = $_POST['porte'];
             $pet->peso = $_POST['peso'];
             $pet->sexo = $_POST['sexo'];
-            $pet->imagem = $_POST['imagem'];
+            $pet->imagem = $_FILES['imagem'];
 
             if ($pet->save()) { //salvando objeto
                 header('Location: projeto/vetz/list-pet');
