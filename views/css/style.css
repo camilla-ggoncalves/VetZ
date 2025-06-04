@@ -402,9 +402,9 @@ R
   font-size: 1rem;
   line-height: 26px;
   text-align: justify;
-  padding: 0 0 20px 0;
-  margin: 0 190px 0 190px;
-  max-width: 800px;
+  padding: 0 0 20px 0; /* Remova o padding lateral */
+  margin: 0 auto; /* Centraliza horizontalmente */
+  max-width: 800px; /* Opcional: Define uma largura máxima para o texto */
 }
  
  /* .sec02ph2{
@@ -421,7 +421,7 @@ R
 .section03{
   position: relative;
   padding-top: 55px;
-  padding-bottom: 540px;
+  padding-bottom: 700px;
   background: #e9f8da;
   background-size: cover;
   z-index: 10;
@@ -774,7 +774,6 @@ table {
   overflow: hidden;
 }
 
-
  /* ========================================================== */
  /* 		             05. END PAGE PERFIL                       */
  /* ========================================================== */
@@ -783,79 +782,34 @@ table {
  /* 		           06. BEGIN PAGE CURIOSIDADES                 */
  /* ========================================================== */
 
-.youtube-section {
-  margin-top: 100px;
-  padding: 20px;
-  text-align: center;
-}
 
-/* Botões de filtro */
-.video-buttons {
-  margin-bottom: 30px;
-}
-
-.video-buttons button {
-  margin: 0 10px;
-  padding: 10px 20px;
-  font-weight: bold;
-  font-size: 14px;
-  border: none;
-  border-radius: 6px;
-  background-color: #e0e0e0;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.video-buttons button:hover {
-  background-color: #c0c0c0;
-}
-
-.video-buttons button.ativo {
-  background-color: #999;
-  color: white;
-}
-
-/* Grades dos vídeos (agora são duas separadas: #recentes e #antigos) */
-.video-grid {
-  display: none;
+#video-list {
+  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 40px;
+  gap: 20px;
   list-style: none;
   padding: 25px;
   margin: 0;
 }
 
-.video-grid.ativo {
-  display: grid;
-}
-
-/* Estilo dos itens de vídeo */
-.video-item {
-  list-style: none;
-}
-
-.video-item img {
+#video-list img {
   max-width: 100%;
   height: auto;
-  border-radius: 8px;
+  display: block;
 }
 
-.video-title {
-  font-weight: bold;
-  font-size: 14px;
-  margin: 10px 0 8px;
-
-   /* Limitar a uma linha com reticências */
-  white-space: nowrap; /* impede que o texto quebre em várias linhas */
-  overflow: hidden; /* esconde qualquer conteúdo que ultrapasse os limites da caixa */
-  text-overflow: ellipsis; /* quando o texto é cortado, ele mostra (...) no final */
+.youtube-section {
+  margin-top: 100px; 
 }
 
-.video-date {
-  font-size: 13px;
-  color: #777;
+  .youtube-section p {
+  font-family: 'Poppins-Bold', Arial, sans-serif;
+  font-size: 16px;
+  color: #000000;
+  margin-top: 8px;
+  line-height: 1.4;
+  text-align: justify;
 }
-
 
  /* ========================================================== */
  /* 		             06. END PAGE CURIOSIDADES                 */
@@ -1040,8 +994,8 @@ table {
 }
 
 .modal-backdrop.show {
+  opacity: 0 !important; /* Remove o escurecimento */
   background-color: transparent !important;
-  opacity: 0.01 !important; /* quase invisível, mas ainda clicável */
 }
 
 
@@ -1053,17 +1007,18 @@ table {
  /* ========================================================== */
  /* 		           09. BEGIN PAGE RECOMENDAÇÕES                */
  /* ========================================================== */
- 
- .section02 {
-  position: relative;
-  padding-top: 108px;
-  padding-bottom: 500px;
-  background: #FEFFEF;
+
+ .section08{
+    position: relative;
+  padding-top: 115px;
+  padding-bottom: 562px;
+  background: #e9f8da;
   background-size: cover;
   z-index: 10;
   overflow: hidden;
- }
- 
+
+}
+
 /* Barra de Pesquisa */
 .group {
   display: flex;
@@ -1072,7 +1027,7 @@ table {
   position: relative;
   max-width: 700px;      /* Aumenta a largura máxima */
   width: 100%;           /* Ocupa toda a largura disponível */
-  margin: 110px auto 0;   /* Centraliza horizontalmente e afasta do topo */
+  margin: 10px auto 0;   /* ele Centraliza horizontalmente e afasta do topo */
 }
 
 .input {
@@ -1108,7 +1063,6 @@ table {
   width: 1rem;
   height: 1rem;
 }
-    
  
  /* ========================================================== */
  /* 		             09. END PAGE RECOMENDAÇÕES                */
