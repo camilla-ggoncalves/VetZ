@@ -1017,8 +1017,9 @@ table {
  /* 		           09. BEGIN PAGE RECOMENDAÇÕES                */
  /* ========================================================== */
 
- .section08{
-    position: relative;
+ /* Centralizar o cachorro animado na seção de recomendações */
+.section08 {
+  position: relative;
   padding-top: 115px;
   padding-bottom: 562px;
   background: #e9f8da;
@@ -1027,6 +1028,18 @@ table {
   z-index: 10;
   overflow: hidden;
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Mantém o conteúdo centralizado horizontalmente */
+}
+
+.dog {
+  display: block;
+  margin: 40px auto 0 auto;
+  position: relative;
+  width: 12vmax; /* Reduzido de 22.5vmax */
+  height: 4.5vmax; /* Reduzido de 8.25vmax */
 }
 
 /* Barra de Pesquisa */
