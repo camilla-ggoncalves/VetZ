@@ -22,7 +22,7 @@ class PetController {
             $pet->imagem = $_POST['imagem'];
 
             if ($pet->save()) { //salvando objeto
-                header('Location: Projeto/VetZ/list-pet');
+                header('Location: projeto/vetz/list-pet');
             } else {
                 echo "Erro ao cadastrar o pet.";
             }
@@ -57,7 +57,7 @@ class PetController {
             $pet->imagem = $_POST['imagem'];
 
             if ($pet->update()) {
-                header('Location: Projeto/VetZ/list-pet');
+                header('Location: projeto/vetz/list-pet');
             } else {
                 echo "Erro ao atualizar o pet.";
             }
@@ -72,7 +72,7 @@ public function deletePetById() {
 
         // Chama o método 'delete()' da model
         if ($pet->delete()) { // Chama o método delete correto
-            header('Location: Projeto/VetZ/list-pet'); // Redireciona após a exclusão
+            header('Location: projeto/vetz/list-pet'); // Redireciona após a exclusão
         } else {
             echo "Erro ao excluir o pet."; // Caso ocorra um erro
         }

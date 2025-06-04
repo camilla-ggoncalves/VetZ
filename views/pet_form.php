@@ -7,36 +7,39 @@
 <body>
     <h1>Cadastrar / Atualizar Pet</h1>
 
-    <!-- Se estiver editando, o campo hidden vai ter o id -->
-    <form action="/projeto/vetz/public/save-pet" method="POST" enctype="multipart/form-data">
-        <!-- Para editar, envie o id -->
-        <?php if (!empty($petInfo['id'])): ?>
-            <input type="hidden" name="id" value="<?= htmlspecialchars($petInfo['id']) ?>">
-        <?php endif; ?>
+    <!-- Se estiver editando, o campo hidden vai ter o id, não vai aparecer -->
+     <form action="/projeto/vetz/save-pet" method="POST" enctype="multipart/form-data">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required><br><br>
 
-        <label>Nome:</label><br />
-        <input type="text" name="nome" required value="<?= htmlspecialchars($petInfo['nome'] ?? '') ?>"><br /><br />
+            <label for="raca">Raça:</label>
+            <input type="text" id="raca" name="raca" required><br><br>
 
-        <label>Raça:</label><br />
-        <input type="text" name="raca" required value="<?= htmlspecialchars($petInfo['raca'] ?? '') ?>"><br /><br />
+            <label for="idade">Idade:</label>
+            <input type="number" id="idade" name="idade" required><br><br>
 
-        <label>Idade:</label><br />
-        <input type="number" name="idade" min="0" value="<?= htmlspecialchars($petInfo['idade'] ?? '') ?>"><br /><br />
+            <label for="porte">Porte:</label>
+            <select type="text" id="porte" name="porte">
+                <option value="">Selecione</option>
+                <option value="pequeno">Pequeno</option>
+                <option value="medio">Médio</option>
+                <option value="grande">Grande</option>
+            </select>
 
-        <label>Porte:</label><br />
-        <input type="text" name="porte" value="<?= htmlspecialchars($petInfo['porte'] ?? '') ?>"><br /><br />
+            <label for="peso">Peso:</label>
+            <input type="number" id="peso" name="peso" required><br><br>
 
-        <label>Peso (kg):</label><br />
-        <input type="number" name="peso" step="0.01" min="0" value="<?= htmlspecialchars($petInfo['peso'] ?? '') ?>"><br /><br />
+            <label for="sexo">Sexo:</label>
+            <select type="text" id="sexo" name="sexo">
+                <option value="">Selecione</option>
+                <option value="M">Macho</option>
+                <option value="F">Fêmea</option>
+            </select>
+            
+            <label for="imagem">Imagem do Pet:</label><br />
+            <input type="file" name="imagem" id="imagem" accept="image/*" required><br /><br />
 
-        <label>Sexo:</label><br />
-        <select name="sexo" required>
-            <option value="">Selecione</option>
-            <option value="M" <?= (isset($petInfo['sexo']) && $petInfo['sexo'] == 'M') ? 'selected' : '' ?>>Macho</option>
-            <option value="F" <?= (isset($petInfo['sexo']) && $petInfo['sexo'] == 'F') ? 'selected' : '' ?>>Fêmea</option>
-        </select><br /><br />
-
-        <button type="submit">Salvar</button>
+            <input type="submit" value="Cadastrar Pet">
     </form>
 </body>
 </html>
