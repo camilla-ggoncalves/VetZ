@@ -17,8 +17,19 @@ class Pet {
     public $imagem;
 
     public function __construct() {
-        $database = new Database();
-        $this->conn = $database->getConnection();
+        try {
+            $database = new Database();
+            $this->conn = $database->getConnection();
+
+            // Verifica se a conexão foi bem-sucedida
+            if (!$this->conn) {
+                throw new Exception("Falha ao conectar com o banco de dados.");
+            }
+        } catch (PDOException $e) {
+            die("Erro na conexão PDO: " . $e->getMessage());
+        } catch (Exception $e) {
+            die("Erro: " . $e->getMessage());
+        }
     }
 
     // Método para salvar um pet
