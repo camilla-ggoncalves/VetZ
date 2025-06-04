@@ -10,16 +10,10 @@
         <title>VetZ</title>
         
         <!-- Loading Bootstrap -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-
-        <!-- Loading código CSS -->
-        <link href="css/style.css" rel="stylesheet" media="screen and (color)">
-
-        <!-- Awsome Fonts -->
-        <link href="css/all.min.css" rel="stylesheet">
-
-        <!-- Favicon -->
-        <link href="images/logoPNG.png" rel="shortcut icon">
+        <link href="/Projeto/VetZ/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/Projeto/VetZ/css/style.css" rel="stylesheet" media="screen and (color)">
+        <link href="/Projeto/VetZ/css/all.min.css" rel="stylesheet">
+        <link href="/Projeto/VetZ/images/logoPNG.png" rel="shortcut icon">
     </head>
 
     <body>
@@ -30,7 +24,7 @@
                     <nav class="navbar navbar-expand-lg">
         
                         <a href="index.html" rel="home">
-                            <img class="logomenu" src="images/Logo VETZ.svg" alt="VET Z" title="VetZ">
+                            <img class="logomenu" src="/Projeto/VetZ/images/Logo VETZ.svg" alt="VET Z" title="VetZ">
                         </a>
                         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon">
@@ -57,70 +51,69 @@
 
     <!-- --------------- CONTEÚDO DA PÁGINA ----------------->
     <section class="secUser">
-    <form action="{{ $action }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        @if($method === 'PUT')
-            @method('PUT')
-        @endif
+        <form action="<?php echo htmlspecialchars($action ?? ''); ?>" method="POST" enctype="multipart/form-data">
+            <!-- CSRF (simples, para PHP puro) -->
+            <input type="hidden" name="_token" value="<?php echo htmlspecialchars($_SESSION['_token'] ?? ''); ?>">
+            <?php if (($method ?? '') === 'PUT'): ?>
+                <input type="hidden" name="_method" value="PUT">
+            <?php endif; ?>
 
-        <!-- Campo Nome -->
-        <div>
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" 
-                   value="{{ old('nome', $paciente->nome ?? '') }}" required>
-        </div>
+            <!-- Campo Nome -->
+            <div>
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" value="<?php echo htmlspecialchars($usuarios['nome'] ?? ''); ?>" required>
+            </div>
 
-        <!-- Campo Raça -->
-        <div>
-            <label for="raca">Raça:</label>
-            <input type="text" id="raca" name="raca" 
-                   value="{{ old('raca', $paciente->raca ?? '') }}" required>
-        </div>
+            <!-- Campo Raça -->
+            <div>
+                <label for="raca">Raça:</label>
+                <input type="text" id="raca" name="raca" 
+                    value="<?php echo htmlspecialchars($_POST['raca'] ?? ($usuarios['raca'] ?? '')); ?>" required>
+            </div>
 
-        <!-- Campo Sexo -->
-        <div>
-            <label for="sexo">Sexo:</label>
-            <input type="sexo" id="sexo" name="sexo" 
-                   value="{{ old('sexo', $paciente->sexo ?? '') }}" required>
-        </div>
+            <!-- Campo Sexo -->
+            <div>
+                <label for="sexo">Sexo:</label>
+                <input type="text" id="sexo" name="sexo" 
+                    value="<?php echo htmlspecialchars($_POST['sexo'] ?? ($usuarios['sexo'] ?? '')); ?>" required>
+            </div>
 
-        <!-- Campo Idade -->
-        <div>
-            <label for="idade">Idade:</label>
-            <input type="number" id="idade" name="idade" 
-                   value="{{ old('idade', $paciente->idade ?? '') }}" required>
-        </div>
+            <!-- Campo Idade -->
+            <div>
+                <label for="idade">Idade:</label>
+                <input type="number" id="idade" name="idade" 
+                    value="<?php echo htmlspecialchars($_POST['idade'] ?? ($usuarios['idade'] ?? '')); ?>" required>
+            </div>
 
-        <!-- Campo Porte -->
-        <div>
-            <label for="porte">Porte:</label>
-            <input type="number" id="porte" name="porte" 
-                   value="{{ old('porte', $paciente->porte ?? '') }}" required>
-        </div>
+            <!-- Campo Porte -->
+            <div>
+                <label for="porte">Porte:</label>
+                <input type="number" id="porte" name="porte" 
+                    value="<?php echo htmlspecialchars($_POST['porte'] ?? ($usuarios['porte'] ?? '')); ?>" required>
+            </div>
 
-        <!-- Campo Peso -->
-        <div>
-            <label for="peso">Peso:</label>
-            <input type="number" id="peso" name="peso" 
-                   value="{{ old('peso', $paciente->peso ?? '') }}" required>
-        </div>
+            <!-- Campo Peso -->
+            <div>
+                <label for="peso">Peso:</label>
+                <input type="number" id="peso" name="peso" 
+                    value="<?php echo htmlspecialchars($_POST['peso'] ?? ($usuarios['peso'] ?? '')); ?>" required>
+            </div>
 
-        <!-- Campo Foto -->
-        <div>
-            <label for="foto">Foto:</label>
-            <input type="file" id="foto" name="foto">
-            
-            @if(isset($paciente) && $paciente->foto)
-                <div>
-                    <img src="{{ asset('storage/' . $paciente->foto) }}" 
-                         width="100" alt="Foto atual do pet">
-                </div>
-            @endif
-        </div>
+            <!-- Campo Foto -->
+            <div>
+                <label for="foto">Foto:</label>
+                <input type="file" id="foto" name="foto">
+                <?php if (isset($usuarios['foto']) && $usuarios['foto']): ?>
+                    <div>
+                        <img src="<?php echo '/Projeto/VetZ/storage/' . htmlspecialchars($usuarios['foto']); ?>" 
+                            width="100" alt="Foto atual do pet">
+                    </div>
+                <?php endif; ?>
+            </div>
 
-        <!-- Botão de Submissão -->
-        <button type="submit">{{ $buttonText }}</button>
-    </form>
+            <!-- Botão de Submissão -->
+            <button type="submit"><?php echo htmlspecialchars($buttonText ?? 'Salvar'); ?></button>
+        </form>
     </section>
 
 
@@ -149,9 +142,13 @@
 
         <!-- Load JS =============================-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="js/jquery-3.3.1.min.js"></script>
-        <script src="js/jquery.scrollTo-min.js"></script>
-        <script src="js/jquery.nav.js"></script>
-        <script src="js/scripts.js"></script>
+        <script src="/Projeto/VetZ/js/jquery-3.3.1.min.js"></script>
+        <script src="/Projeto/VetZ/js/jquery.scrollTo-min.js"></script>
+        <script src="/Projeto/VetZ/js/jquery.nav.js"></script>
+        <script src="/Projeto/VetZ/js/scripts.js"></script>
     </body>
 </html>
+
+<?php
+Route::get('/user/update', [UserController::class, 'edit']);
+?>

@@ -618,6 +618,15 @@ R
   margin: 0 0 0 -78px;
   text-align: left;
 }
+
+.sec04editar{
+  font-family: 'Poppins-Regular';
+  text-decoration: underline;
+  color: #038654;
+  font-size: 17px;
+  text-align: right;
+  text-transform: none;
+}
 /* End section 04 */
 
 /* Begin Section 04.1 */
@@ -1013,7 +1022,7 @@ table {
   padding-top: 115px;
   padding-bottom: 562px;
   background: #e9f8da;
-  background: url(../images/vaca.png) top center no-repeat;
+  background: url(../images/cena-de-uma-fazenda-de-galinhas-com-aves-e-pessoas.jpg) top center no-repeat;
   background-size: cover;
   z-index: 10;
   overflow: hidden;

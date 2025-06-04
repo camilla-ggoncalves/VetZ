@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+
+        <title>VetZ</title>
+        
+        <!-- Loading Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Loading código CSS -->
+        <link href="css/style.css" rel="stylesheet" media="screen and (color)">
+
+        <!-- Awsome Fonts -->
+        <link href="css/all.min.css" rel="stylesheet">
+
+        <!-- Favicon -->
+        <link href="images/logoPNG.png" rel="shortcut icon">
+    </head>
+
+    <body>
+        <!--Begin Header-->
+        <header class="header">
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container">
+                    <nav class="navbar navbar-expand-lg">
+        
+                        <a href="index.html" rel="home">
+                            <img class="logomenu" src="images/Logo VETZ.svg" alt="VET Z" title="VetZ">
+                        </a>
+                        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon">
+                                <i class="fas fa-bars"></i>
+                            </span>
+                        </button>
+        
+                        <div class="navbar-collapse collapse" id="navbarCollapse">
+                            <ul class="navbar-nav ml-auto 1  left-menu">
+                                <li><a href="./index.html">HOME PAGE</a></li>
+                                <li><a href="./sobreNOS.html">SOBRE NÓS</a></li>
+                                <li><a href="./curiosidades.html">CURIOSIDADES</a></li>
+                                <li><a href="./recomendacoes.html">RECOMENDAÇÕES</a></li>
+                                <li><a href="./vacinacao.html">VACINAÇÃO</a></li>
+                                <li><a class="btn btn-menu" href="./perfil.html" role="button"><img class="imgperfil" src="images/perfil.svg"> SEU PERFIL</a></li>
+                            </ul> 
+                            
+                        </div>
+                    </nav>
+                </div> 
+            </nav>
+        </header>
+        <!--End Header-->
+
+
+        <!-- --------------- CONTEÚDO DA PÁGINA ----------------->
+
+        <!-- Begin Section 04 -->
+        <section class="section04" id="sec04">
+            <div class="container">
+                <p class="sec04phtiltle">PERFIL DO USUÁRIO</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="images/marcela.jpg" class="card-img-top-perfil" alt="Marcela">
+                        <a href="#" class="sec04alterar">Alterar Foto de Perfil</a>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="dadoPerfilsec04">
+
+                            <div class="form-group">
+                                <label for="nome">Nome</label>
+                                <input type="text" id="nome" class="form-control perfil-input" value="Marcela Sanches" readonly>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">E-mail</label>
+                                <input type="email" id="email" class="form-control perfil-input" value="marcelasanches@gmail.com" readonly>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="senha">Senha</label>
+                                <input type="password" id="senha" class="form-control perfil-input" value="Mané123" readonly>
+                            </div>
+                           <a href="#" ><p class="sec04editar">Editar Perfil</p></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- End Section 04 -->
+
+        
+        <!-- Begin Section 04.1 -->
+        <section class="sec04-1">
+            <div class="container py-4">
+                <h2 class="sec04-1titleh3">🐾 Pets Cadastrados</h2>
+
+                <!-- Pet Card 1 -->
+                <div class="pet-card d-flex align-items-start justify-content-between">
+                    <div class="d-flex">
+                        <img src="images/imgMane.png" alt="Pet Icon" class="pet-icon">
+                        <div>
+                            <p class="sec04-1ph1">LUCK (Mané)</p>
+                                <p class="descricaoAnimal"><Strong>Raça:</Strong> Vira-Lata</p>
+                                <p class="descricaoAnimal"><Strong>Sexo:</Strong> Macho </p>
+                                <p class="descricaoAnimal"><Strong>Idade:</Strong> 4 anos </p>
+                                <p class="descricaoAnimal"><Strong>Porte:</Strong> Médio (48 cm - do chão até os ombros)</p>
+                                <p class="descricaoAnimal"><Strong>Peso:</Strong> 18 kg </p>
+                        </div>
+                    </div>
+                    <div class="ms-3 text-end">
+                        <button class="btn btn-sm btn-primary mb-2" onclick="editPet('LUCK (Mané)', 'Cachorro vira-lata, macho de porte médio, 4 anos e pelagem preta.')">Editar</button>
+                        <button class="btn btn-sm btn-secondary mb-2" onclick="changePhoto()">Trocar Foto</button>
+                        <input type="file" id="photoInput" accept="image/*" class="form-control form-control-sm d-none">
+                        <button class="btn btn-sm btn-danger" onclick="deletePet(this)">Excluir</button>
+                    </div>
+                </div>
+
+                <!-- Pet Card 2 -->
+                <div class="pet-card d-flex align-items-start justify-content-between">
+                    <div class="d-flex">
+                        <img src="images/imgShakira.png" alt="Pet Icon" class="pet-icon">
+                        <div>
+                            <p class="sec04-1ph1">SHAKIRA</p>
+                            <p class="descricaoAnimal"><Strong>Raça:</Strong> Lhasa Apso</p>
+                            <p class="descricaoAnimal"><Strong>Sexo:</Strong> Femêa </p>
+                            <p class="descricaoAnimal"><Strong>Idade:</Strong> 15 anos </p>
+                            <p class="descricaoAnimal"><Strong>Porte:</Strong> Pequeno (25 cm - do chão até os ombros)</p>
+                            <p class="descricaoAnimal"><Strong>Peso:</Strong> 6 kg </p>
+                        </div>
+                        <div class="ms-3 text-end">
+                            <button class="btn btn-sm btn-primary mb-2" onclick="editPet('SHAKIRA', 'Cadela Lhasa Apso, fêmea de porte pequeno, 15 anos e pelagem branco e preto.')">Editar</button>
+                            <button class="btn btn-sm btn-secondary mb-2" onclick="changePhoto()">Trocar Foto</button>
+                            <input type="file" id="photoInput" accept="image/*" class="form-control form-control-sm d-none">
+                            <button class="btn btn-sm btn-danger" onclick="deletePet(this)">Excluir</button>
+                        </div>
+                    </div>
+                </div>
+
+            <!-- Modal de Edição -->
+            <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <form id="editForm">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editModalLabel">Editar Informações do Pet</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="petName" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="petName" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="petDesc" class="form-label">Descrição</label>
+                            <textarea class="form-control" id="petDesc" rows="3" required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Salvar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- End Section 04.1 -->
+
+        <section>
+                @if(session('success'))
+                <p>{{ session('success') }}</p>
+            @endif
+
+            <table>
+                <tr class="tabelaAnimal">
+                    <th class="tableDesc">Nome</th>
+                    <th class="tableDesc">Raça</th>
+                    <th class="tableDesc">Sexo</th>
+                    <th class="tableDesc">Idade</th>
+                    <th class="tableDesc">Porte</th>
+                    <th class="tableDesc">Peso</th>
+                    <th class="tableDesc">Foto</th>
+                    <th class="tableDesc">Ações</th>
+                </tr>
+
+                @foreach ($pacientes as $p)
+                    <tr class="tabelaInfo">
+                        <td>{{ $p->nome }}</td>
+                        <td>{{ $p->raca }}</td>
+                        <td>{{ $p->sexo }}</td>
+                        <td>{{ $p->idade }}</td>
+                        <td>{{ $p->porte }}</td>
+                        <td>{{ $p->peso }}</td>
+                        <td>
+                            @if($p->foto)
+                                <img src="{{ asset('storage/' . $p->foto) }}" width="60">
+                            @else
+                                <span style="color: #888;">Sem foto</span>
+                            @endif
+                        </td>
+                        <td>
+                            <a href="{{ route('animais.edit', $p) }}" class="edit-btn">Editar</a>
+                            <form action="{{ route('animais.destroy', $p) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" onclick="return confirm('Tem certeza?')">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            </table>
+            
+            <a href="{{ route('animais.create') }}">Novo Animal</a>
+
+        </section>
+
+
+        <!-- Begin footer-->
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="footerp1">
+                            Todos os direitos reservados <span id="footer-year"></span> © - VetZ </p>
+                    </div>
+
+                    <!-- <div class="col-md-1">
+                        <p class="instagram">
+                            <a><img href="#!" src="images/instagram.svg"></a>
+                    </div>
+                    <div class="col-md-1">
+                        <p class="email">
+                            <a><img href="#!" src="images/email.svg"></a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <!--End footer-->
+
+
+        <!-- Load JS =============================-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/jquery.scrollTo-min.js"></script>
+        <script src="js/jquery.nav.js"></script>
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
