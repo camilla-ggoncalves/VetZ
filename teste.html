@@ -1,63 +1,88 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Perfil do Usuário</title>
-  <link rel="stylesheet" href="teste.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pacientes Cadastrados - SP MEDICAL GROUP</title>
+    <style>
+        .message { padding: 10px; margin: 10px 0; }
+        .success { background: #dff0d8; color: #3c763d; }
+        .error { background: #f2dede; color: #a94442; }
+        .actions { margin: 20px 0; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 8px; text-align: left; border-bottom: 1px solid #ddd; }
+    </style>
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <ul>
-        <li><a href="#">HOMEPAGE</a></li>
-        <li><a href="#">SOBRE NÓS</a></li>
-        <li><a href="#">CURIOSIDADES</a></li>
-        <li><a href="#">RECOMENDAÇÕES</a></li>
-        <li><a href="#">VACINAÇÃO</a></li>
-        <li><a href="#">SEU PERFIL</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main class="perfil-container">
-    <section class="perfil-foto">
-      <h2>FOTO DE PERFIL</h2>
-      <img src="foto-perfil.jpg" alt="Foto de Perfil" class="foto-perfil">
-    </section>
-
-    <section class="perfil-dados">
-      <h2><strong><em>PERFIL DO USUÁRIO</em></strong></h2>
-      <label>Nome</label>
-      <input type="text" value="Marcela Sanches" readonly>
-      <label>E-mail</label>
-      <input type="email" value="marcelasanches@gmail.com" readonly>
-      <label>Senha</label>
-      <input type="password" value="Mané123" readonly>
-    </section>
-  </main>
-
-  <section class="pets-cadastrados">
-    <h3><span>PETs CADASTRADOS</span></h3>
+    <h1>Pacientes Cadastrados</h1>
     
-    <div class="pet-box">
-      <h4><strong>LUCK (Mané)</strong></h4>
-      <p>Cachorro vira-lata, macho de porte médio, 4 anos e pelagem preta.</p>
+    <!-- Mensagens de Status -->
+    @if(session('success'))
+        <div class="message success">{{ session('success') }}</div>
+    @endif
+    @if(session('error'))
+        <div class="message error">{{ session('error') }}</div>
+    @endif
+    
+    <!-- Área de Ações -->
+    <div class="actions">
+        <a href="{{ route('pacientes.export.pdf') }}">Exportar PDF</a> |
+        <a href="{{ route('pacientes.export.csv') }}">Exportar CSV</a> |
+        <a href="{{ route('pacientes.create') }}">Novo Paciente</a>
+        
+        <!-- Formulários de Integração com API -->
+        <form action="{{ route('pacientes.send.api') }}" method="POST" style="display:inline">
+            @csrf
+            <button type="submit">Enviar dados para API</button>
+        </form>
+        
+        <form action="{{ route('pacientes.from.api') }}" method="POST" style="display:inline">
+            @csrf
+            <button type="submit">Importar Pacientes da API</button>
+        </form>
     </div>
-
-    <div class="pet-box">
-      <h4><strong>SHAKIRA</strong></h4>
-      <p>Cadela Lhasa Apso, fêmea de porte pequeno, 15 anos e pelagem branco e preto.</p>
-    </div>
-
-    <a href="#" class="adicionar-pet">ADICIONAR PET</a>
-  </section>
-
-  <footer>
-    <p>Todos os direitos reservados 2025 © - VetZ</p>
-    <div class="icones">
-      <img src="icone-instagram.png" alt="Instagram">
-      <img src="icone-menu.png" alt="Menu">
-    </div>
-  </footer>
+    
+    <!-- Tabela de Pacientes -->
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Email</th>
+                <th>Idade</th>
+                <th>Foto</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($pacientes as $p)
+                <tr>
+                    <td>{{ $p->id }}</td>
+                    <td>{{ $p->nome }}</td>
+                    <td>{{ $p->cpf }}</td>
+                    <td>{{ $p->email }}</td>
+                    <td>{{ $p->idade }}</td>
+                    <td>
+                        @if($p->foto)
+                            <img src="{{ asset('storage/' . $p->foto) }}" width="60" alt="Foto do paciente">
+                        @else
+                            Sem foto
+                        @endif
+                    </td>
+                    <td>
+                        <a href="{{ route('pacientes.edit', $p) }}">Editar</a> |
+                        <form action="{{ route('pacientes.destroy', $p) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" onclick="return confirm('Tem certeza que deseja excluir?')">
+                                Excluir
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 </body>
 </html>
