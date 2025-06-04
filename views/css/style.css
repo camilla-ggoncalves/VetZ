@@ -618,6 +618,15 @@ R
   margin: 0 0 0 -78px;
   text-align: left;
 }
+
+.sec04editar{
+  font-family: 'Poppins-Regular';
+  text-decoration: underline;
+  color: #038654;
+  font-size: 17px;
+  text-align: right;
+  text-transform: none;
+}
 /* End section 04 */
 
 /* Begin Section 04.1 */
