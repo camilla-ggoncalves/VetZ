@@ -11,48 +11,44 @@ require_once '../controllers/PetController.php';
 // Lógica de roteamento
 $request = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); // Requisição cliente-servidor
 
-$basePath = 'Projeto/VetZ/public'; 
+$basePath = '/projeto/vetz/public';
 $route = str_replace($basePath, '', $request);
 
 
-$controller = new PetController();
-
-switch ($route) {
-   
-    case '/projeto/vetz/public/':
-
 switch ($request) { //mostra as requisições que o cliente está fazendo ao servidor, dependendo dela, muda as páginas
-
-    case '/VetZ/public':
-
-    case '/Projeto/VetZ/public/':
-
-    case '/VetZ/public/index':
+    case '/projeto/vetz/public/':
         $controller = new PetController(); //A classe que contém a lógica do que fazer com as requisições (por exemplo, exibir um formulário, salvar dados, excluir registros, etc.).
-
         $controller->showForm();
         break;
     case '/projeto/vetz/save-pet':
-        $controller->savePet();
+        $controller = new PetController();
+        $controller->savePet();                    ;
         break;
     case '/projeto/vetz/list-pet':
+        $controller = new PetController();
         $controller->listPet();
         break;
-    case '/projeto/vetz/delete-pet':
-        $controller->deletePetById();
-        break;
-    case '/projeto/vetz/update-pet':
-        $controller->updatePet();
-        break;
+        case '/projeto/vetz/delete-pet':
+            require_once '../controllers/PetController.php';
+            $controller = new PetController();
+            $controller->deletePetById();
+            break;
+    
+        case (preg_match('/\/vetz\/update-pet\/(\d+)/', $request, $matches) ? true : false):
+            $id = $matches[1];
+            require_once '../controllers/PetController.php';
+            $controller = new PetController();
+            $controller->showUpdateForm($id);
+            break;
+    
+        case '/projeto/vetz/update-pet':
+            require_once '../controllers/PetController.php';
+            $controller = new PetController();
+            $controller->updatePet();
+            break;
     default:
-        // Rota dinâmica com ID, que muda de acordo com o conteúdo da URL
-        if (preg_match('#^/update-pet/(\d+)$#', $route, $matches)) {
-            $controller->showUpdateForm($matches[1]);
-        } else {
-            http_response_code(404);
-            echo "404 - Página não encontrada<br>";
-            echo "Rota: $request";
-        }
+        http_response_code(404);
+        echo $request;
+        echo "Página não encontrada.";
         break;
-}
-}
+ }
