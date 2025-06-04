@@ -55,53 +55,73 @@
         </header>
         <!--End Header-->
 
+    <!-- --------------- CONTEÚDO DA PÁGINA ----------------->
+    <section class="secUser">
+    <form action="{{ $action }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        @if($method === 'PUT')
+            @method('PUT')
+        @endif
 
-        <!-- --------------- CONTEÚDO DA PÁGINA ----------------->
+        <!-- Campo Nome -->
+        <div>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" 
+                   value="{{ old('nome', $paciente->nome ?? '') }}" required>
+        </div>
 
-        <!-- Begin Section 04 -->
-        <section class="section04" id="sec04">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h2 class="sec04titleh2">SEU PERFIL</h2>
-                        <img src="images/marcela.jpg" class="card-img-top" alt="Marcela">
-                        <p class="sec04phinte">MARCELA SANCHES</p>
-                    </div>
+        <!-- Campo Raça -->
+        <div>
+            <label for="raca">Raça:</label>
+            <input type="text" id="raca" name="raca" 
+                   value="{{ old('raca', $paciente->raca ?? '') }}" required>
+        </div>
 
-                    <div class="col-md-6">
-                        <div class="dadoPerfilsec04">
-                            <h2><strong><em>PERFIL DO USUÁRIO</em></strong></h2>
-                            <label>Nome</label>
-                            <input type="text" value="Marcela Sanches" readonly>
-                            <label>E-mail</label>
-                            <input type="email" value="marcelasanches@gmail.com" readonly>
-                            <label>Senha</label>
-                            <input type="password" value="Mané123" readonly>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End Section 04 -->
+        <!-- Campo Sexo -->
+        <div>
+            <label for="sexo">Sexo:</label>
+            <input type="sexo" id="sexo" name="sexo" 
+                   value="{{ old('sexo', $paciente->sexo ?? '') }}" required>
+        </div>
 
-        
-        <!-- Begin Section 04.1 -->
-        <section class="sec04-1">
-            <h3 class="sec04-1titleh3">PETs CADASTRADOS</h3>
+        <!-- Campo Idade -->
+        <div>
+            <label for="idade">Idade:</label>
+            <input type="number" id="idade" name="idade" 
+                   value="{{ old('idade', $paciente->idade ?? '') }}" required>
+        </div>
+
+        <!-- Campo Porte -->
+        <div>
+            <label for="porte">Porte:</label>
+            <input type="number" id="porte" name="porte" 
+                   value="{{ old('porte', $paciente->porte ?? '') }}" required>
+        </div>
+
+        <!-- Campo Peso -->
+        <div>
+            <label for="peso">Peso:</label>
+            <input type="number" id="peso" name="peso" 
+                   value="{{ old('peso', $paciente->peso ?? '') }}" required>
+        </div>
+
+        <!-- Campo Foto -->
+        <div>
+            <label for="foto">Foto:</label>
+            <input type="file" id="foto" name="foto">
             
-            <div class="sec04Pet1">
-                <p class="sec04-1ph1">LUCK (Mané)</p>
-                <p class="sec04-1ph2">Cachorro vira-lata, macho de porte médio, 4 anos e pelagem preta.</p>
-            </div>
+            @if(isset($paciente) && $paciente->foto)
+                <div>
+                    <img src="{{ asset('storage/' . $paciente->foto) }}" 
+                         width="100" alt="Foto atual do pet">
+                </div>
+            @endif
+        </div>
 
-            <div class="sec04Pet2">
-                <p class="sec04-1ph1">SHAKIRA</p>
-                <p class="sec04-1ph2">Cadela Lhasa Apso, fêmea de porte pequeno, 15 anos e pelagem branco e preto.</p>
-            </div>
-
-            <a href="#" class="addPet">ADICIONAR PET</a>
-        </section>
-        <!-- End Section 04.1 -->
+        <!-- Botão de Submissão -->
+        <button type="submit">{{ $buttonText }}</button>
+    </form>
+    </section>
 
 
         <!-- Begin footer-->
@@ -128,6 +148,7 @@
 
 
         <!-- Load JS =============================-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="js/jquery-3.3.1.min.js"></script>
         <script src="js/jquery.scrollTo-min.js"></script>
         <script src="js/jquery.nav.js"></script>

@@ -14,6 +14,7 @@ Sequência do CSS Da Página: (use esses nomes a pesquisa rápida no código.)
     02. Section 03
 05. BEGIN PAGE PERFIL
     01. Section 04
+    02. Section 04.1
 06. BEGIN PAGE CURIOSIDADES
     01. Section 05
 07. BEGIN PAGE VACINAÇÃO CÃO
@@ -561,7 +562,7 @@ R
 .section04 {
   position: relative;
   padding-top: 108px;
-  padding-bottom: 500px;
+  padding-bottom: 590px;
   background: #FEFFEF;
   background-size: cover;
   z-index: 10;
@@ -578,19 +579,43 @@ R
   margin: 0 auto;
 }
 
-.sec04phinte{
-  font-family: 'Poppins-Bold';
+.sec04alterar{
+  font-family: 'Poppins-Regular';
   font-size: 17px;
   line-height: 26px;
-  margin: 0;
+  margin: 0 0 0 115px;
   text-align: left;
+}
+
+.sec04phtiltle{
+  font-family: 'Poppins-Bold';
+  font-size: 26px;
+  color: #038654;
+  line-height: 26px;
+  margin: 15px 50px 50px 0;
+  text-align: center;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  display: block;
+  font-size: 16px;
+}
+
+.card-img-top-perfil{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 27px 0 8px 100px;
+  display: block;
 }
 
 .dadoPerfilsec04{
   font-family: 'Poppins-Bold';
   font-size: 17px;
   line-height: 26px;
-  margin: 0;
+  margin: 0 0 0 -78px;
   text-align: left;
 }
 /* End section 04 */
@@ -599,7 +624,7 @@ R
 .section04-1 {
   position: relative;
   padding-top: 108px;
-  padding-bottom: 500px;
+  padding-bottom: 590px;
   background: #FEFFEF;
   background-size: cover;
   z-index: 10;
@@ -618,10 +643,7 @@ R
 
 .sec04Pet1{
   font-family: 'Poppins-Bold';
-  font-size: 26px;
-  line-height: 52px;
-  padding: 0px 0 35px 0;
-  text-align: left;
+  padding: 0 929px 35px 150px;
   color: #038654;
   margin: 0 auto;
 }
@@ -629,16 +651,9 @@ R
 .sec04-1ph1{
   font-family: 'Poppins-Bold';
   font-size: 17px;
+  color: #038654;
   line-height: 26px;
-  margin: 0;
-  text-align: left;
-}
-
-.sec04-1ph2{
-  font-family: 'Poppins-Bold';
-  font-size: 17px;
-  line-height: 26px;
-  margin: 0;
+  margin: 0 0 0 16px;
   text-align: left;
 }
 
@@ -649,6 +664,116 @@ R
   margin: 0;
   text-align: left;
 }
+
+.descricaoAnimal{
+  font-family: 'Poppins-Regular';
+  font-size: 16px;
+  line-height: 26px;
+  margin: 0 0 0 16px;
+  text-align: left;
+}
+
+.pet-card {
+  background-color: #e5e5e5;
+  border-radius: 12px;
+  padding: 15px 20px;
+  margin: 0 287px 0 0;
+  margin-bottom: 20px;
+}
+
+.pet-icon{
+  width: 220px;
+  height: 260px;
+  border-radius: 5%;
+  object-fit: cover;
+  margin: 5px 0 5px 10px;
+  display: block;
+}
+
+.pet-icon {
+  font-size: 40px;
+  margin-right: 15px;
+}
+
+.card-header {
+  color: #2e7d32;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+table {
+  border-collapse: collapse;
+  border-radius: 12px;
+  padding: 15px 20px;
+  margin: 0 287px 0 200px;
+  margin-top: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #e5e5e5;
+}
+
+.tabelaAnimal {
+    background-color: #e5e5e5;
+    text-align: left;
+}
+
+.tabelaInfo {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.tabelaInfo td {
+    padding: 10px 16px;
+    vertical-align: middle;
+}
+
+.tabelaInfo:nth-child(odd) {
+    background-color: #e5e5e5;
+}
+
+.tabelaInfo img {
+    border-radius: 5%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.edit-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 5px;
+    background-color: #0d6efd;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.edit-btn:hover {
+    background-color: #0b5ed7;
+}
+
+.tabelaInfo button {
+    padding: 6px 12px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.tabelaInfo button:hover {
+    background-color: #bb2d3b;
+}
+
+/* User PHP */
+.secUser{
+  position: relative;
+  padding-top: 108px;
+  padding-bottom: 590px;
+  background: #FEFFEF;
+  background-size: cover;
+  z-index: 10;
+  overflow: hidden;
+}
+
 
  /* ========================================================== */
  /* 		             05. END PAGE PERFIL                       */
