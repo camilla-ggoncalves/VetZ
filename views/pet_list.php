@@ -9,9 +9,9 @@
 </head>
 <body>
 
-<h1>Pacientes Cadastrados</h1>
+<h1>Pets Cadastrados</h1>
 <table border="1">
-    <tr>
+    <tr> <!-- Tabela -->
         <th>Nome</th>
         <th>Raça</th>
         <th>Idade</th>
@@ -19,9 +19,10 @@
         <th>Peso</th>
         <th>Sexo</th>
         <th>Imagem</th>
+        <th>Ações</th> 
     </tr>
     <?php foreach ($pets as $pet): ?>
-    <tr> <!-- Tabela de valor dentro de Book -->
+    <tr>
         <td><?php echo $pet['nome']; ?></td>
         <td><?php echo $pet['raca']; ?></td>
         <td><?php echo $pet['idade']; ?></td>
@@ -29,21 +30,15 @@
         <td><?php echo $pet['peso']; ?></td>
         <td><?php echo $pet['sexo']; ?></td>
         <td><img src="/public/uploads/<?= htmlspecialchars($pet['imagem']) ?>" alt="Imagem do pet" width="150"></td>
-
-
-            <!-- Link para atualizar o livro -->
-            <a href="projeto/vetz/update-pet/<?php echo $pet['id']; ?>">Atualizar</a>
-            <!-- Formulário para deletar o livro -->
-            <form action="projeto/vetz/delete-pet" method="POST" style="display:inline;">
-                <input type="hidden" name="id" value="<?php echo $pet['id']; ?>">
-                <button type="submit">Excluir</button>
+        <td>
+            <a href="/projeto/vetz/update-pet/<?php echo $pet['id']; ?>">Atualizar</a><br>
+    <form action="/projeto/vetz/delete-pet/" method="POST" style="display:inline;">
+    <input type="hidden" name="id" value="<?php echo $pet['id']; ?>">
+    <button type="submit">Excluir</button>
             </form>
         </td>
     </tr>
     <?php endforeach; ?>
 </table>
 
-<a href="projeto/vetz/public">Cadastrar novo pet</a>
-
-</body>
-</html>
+<a href="/projeto/vetz/public">Cadastrar novo pet</a>
