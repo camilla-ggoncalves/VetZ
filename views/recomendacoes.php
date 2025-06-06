@@ -10,13 +10,9 @@
         <title>VetZ</title>
         
         <!-- Loading Bootstrap -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-
-        <!-- Loading código CSS -->
-        <link href="css/style.css" rel="stylesheet" media="screen and (color)">
-
-        <!-- Awsome Fonts -->
-        <link href="css/all.min.css" rel="stylesheet">
+        <link href="/projeto/VetZ/views/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/projeto/VetZ/views/css/style.css" rel="stylesheet" media="screen and (color)">
+        <link href="/projeto/VetZ/views/css/all.min.css" rel="stylesheet">
 
         <!-- Favicon -->
         <link href="images/logoPNG.png" rel="shortcut icon">

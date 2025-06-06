@@ -1,7 +1,11 @@
 <?php
 
+
 require_once '../models/User.php';
 require_once '../controllers/UserController.php';
+
+require_once __DIR__ . '/../models/User.php';
+
 
 
 class UsuarioController {

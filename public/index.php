@@ -5,8 +5,14 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 require_once '../controllers/PetController.php';
+
 require_once '../controllers/FichaTecnicaController.phpController.php';
 require_once '../controllers/UserController.php'; // Importa o controlador de usuários
+
+require_once '../controllers/UserController.php';
+require_once '../controllers/FichaTecnicaController.php';
+
+
 
 
 // Lógica de roteamento
