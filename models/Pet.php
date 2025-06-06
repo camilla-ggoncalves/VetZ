@@ -46,9 +46,9 @@ class Pet {
         $stmt->bindParam(':peso', $this->peso);
         $stmt->bindParam(':sexo', $this->sexo);
         $stmt->bindParam(':imagem', $this->imagem);
-    
-        // Executa a consulta
+
         return $stmt->execute();
+
     }
 
     // Método para listar todos os pets
@@ -79,7 +79,10 @@ class Pet {
         $stmt->bindParam(':porte', $this->porte);
         $stmt->bindParam(':peso', $this->peso);
         $stmt->bindParam(':sexo', $this->sexo);
-        $stmt->bindParam(':imagem', $this->imagem);
+        if (!empty($_FILES['imagem']['name'])) {
+    // processar upload da nova imagem e substituir a antiga
+}
+
         $stmt->bindParam(':id', $this->id); // Agora bindamos o ID corretamente
 
         return $stmt->execute();
