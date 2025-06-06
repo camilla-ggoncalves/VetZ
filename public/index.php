@@ -7,12 +7,9 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL); //E_ALL = exibe todos os tipos de erros
 
 require_once '../controllers/PetController.php';
-<<<<<<< HEAD
-require_once '../controllers/FichaTecnicaController.phpController.php';
-require_once '../controllers/UserController.php'; // Importa o controlador de usuários
-=======
+require_once '../controllers/FichaTecnicaController.php';
 require_once '../controllers/UsuarioController.php'; // Importa o controlador de usuários
->>>>>>> 96a34f25ca9c845c51b6f4c5090dec726bed3ff2
+
 
 // Lógica de roteamento
 $request = $_SERVER['REQUEST_URI']; // Requisição cliente-servidor

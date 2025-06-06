@@ -1,11 +1,5 @@
-<<<<<<< HEAD
-                                            <?php
-
-require_once '../models/Usuario.php';
-=======
 <?php
-require_once __DIR__ . '../models/Usuario.php';
->>>>>>> 96a34f25ca9c845c51b6f4c5090dec726bed3ff2
+require_once __DIR__ . '/../models/Usuario.php';
 
 
 class UsuarioController {
