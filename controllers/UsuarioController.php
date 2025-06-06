@@ -1,16 +1,16 @@
 <?php
+require_once __DIR__ . '../models/Usuario.php';
 
-require_once '../models/Usuario.php';
 
-
-class UserController {
+class UsuarioController {
     private $model;
 
     public function __construct() {
-        $this->model = new User();
+        $this->model = new Usuario();
     }
 
     public function cadastrar() {
+       
         $dados = $_POST;
         $ok = $this->model->cadastrar($dados['nome'], $dados['email'], $dados['senha']);
         if ($ok) {
@@ -22,8 +22,8 @@ class UserController {
     }
 
     public function login() {
-        $email = $_POST['email'];
-        $senha = $_POST['senha'];
+        //$email = $_POST['email'];
+        //$senha = $_POST['senha'];
         $usuario = $this->model->autenticar($email, $senha);
         if ($usuario) {
             // Aqui você pode iniciar a sessão e redirecionar para o perfil
@@ -56,4 +56,5 @@ class UserController {
         $ok = $this->model->redefinirSenha($email, $novaSenha);
         echo $ok ? "Senha alterada com sucesso!" : "Erro ao alterar senha.";
     }
-}  
+}
+

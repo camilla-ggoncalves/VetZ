@@ -1,17 +1,20 @@
 <?php
-// Class ligada com o banco de dados
+require_once __DIR__ . '/../config/database_site.php';
+require_once __DIR__ . '/../models/Usuario.php';
 
-
-require_once '../config/database_site.php';
-
-class User {
+class Usuario { // <-- Corrigido aqui!
     private $conn;
+
+    public $nome;
+    public $email; 
+    public $senha;
 
     public function __construct() {
         $this->conn = Conexao::conectar();
+        
     }
 
-    public function cadastrar($nome, $email, $senha) {
+    public function cadastrar() {
         $sql = "INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)";
         $stmt = $this->conn->prepare($sql);
         $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
@@ -49,3 +52,5 @@ class User {
         return $stmt->execute([$senhaHash, $email]);
     }
 }
+
+
