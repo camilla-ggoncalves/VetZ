@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../config/database_site.php';
-require_once __DIR__ . '/../models/Usuario.php';
+require_once __DIR__ . '/../models/User.php';
 
 class Usuario { // <-- Corrigido aqui!
     private $conn;

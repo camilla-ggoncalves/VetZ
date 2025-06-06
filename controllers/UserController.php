@@ -1,5 +1,6 @@
 <?php
-require_once __DIR__ . '/../models/Usuario.php';
+
+require_once __DIR__ . '/../models/User.php';
 
 
 class UsuarioController {
