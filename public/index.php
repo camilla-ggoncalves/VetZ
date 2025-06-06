@@ -5,15 +5,8 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 require_once '../controllers/PetController.php';
-
-require_once '../controllers/FichaTecnicaController.phpController.php';
-require_once '../controllers/UserController.php'; // Importa o controlador de usuários
-
-require_once '../controllers/UserController.php';
 require_once '../controllers/FichaTecnicaController.php';
-
-
-
+require_once '../controllers/UsuarioController.php'; // Importa o controlador de usuários
 
 // Lógica de roteamento
 $request = $_SERVER['REQUEST_URI'];
@@ -41,27 +34,27 @@ if (preg_match('#^/projeto/vetz/delete-pet/(\d+)$#', $request, $matches)) {
 // Roteamento padrão para rotas fixas
 switch ($request) {
     case '/projeto/vetz/cadastrar':
-        $controller = new UserController();
+        $controller = new UsuarioController();
         $controller->cadastrar();
         break;
 
     case '/projeto/vetz/login':
-        $controller = new UserController();
+        $controller = new UsuarioController();
         $controller->login();
         break;
 
     case '/projeto/vetz/enviarCodigo':
-        $controller = new UserController();
+        $controller = new UsuarioController();
         $controller->enviarCodigo();
         break;
 
     case '/projeto/vetz/verificarCodigo':
-        $controller = new UserController();
+        $controller = new UsuarioController();
         $controller->verificarCodigo();
         break;
 
     case '/projeto/vetz/redefinirSenha':
-        $controller = new UserController();
+        $controller = new UsuarioController();
 
     case '/projeto/vetz/cadastrarei':
         $controller = new UsuarioController();
@@ -100,21 +93,6 @@ switch ($request) {
         $controller = new PetController();
         $controller->listPet();
         break;
-
-    
-    
-        case (preg_match('/\/vetz\/update-pet\/(\d+)/', $request, $matches) ? true : false):
-            $id = $matches[1];
-            require_once '../controllers/PetController.php';
-            $controller = new PetController();
-            $controller->showUpdateForm($id);
-            break;
-    
-        case '/projeto/vetz/update-pet':
-            require_once '../controllers/PetController.php';
-            $controller = new PetController();
-            $controller->updatePet();
-            break;
 
             case '/projeto/vetz/list-ficha':
         $controller = new FichaController();

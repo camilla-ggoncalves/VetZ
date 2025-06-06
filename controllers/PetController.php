@@ -20,7 +20,6 @@ class PetController {
             $pet->porte = $_POST['porte'];
             $pet->peso = $_POST['peso'];
             $pet->sexo = $_POST['sexo'];
-
             $pet->imagem = $_FILES['imagem'];
 
 
@@ -66,7 +65,7 @@ class PetController {
     }
 
     // Método para atualizar um pet
-public function updatePet() {
+public function updatePet($id) {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $pet = new Pet();
         $pet->id = $_POST['id'];
