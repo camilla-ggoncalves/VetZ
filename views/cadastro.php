@@ -21,7 +21,7 @@
   <main>
     <div class="cadastro-box">
       <h2 class="cadastro-title">Registrar-se</h2>
-      <form action="/User/cadastrar" method="POST">
+      <form action="/projeto/vetz/cadastrarei" method="POST">
         <input name="nome" placeholder="Nome completo" required>
         <input name="email" type="email" placeholder="Email" required>
         <input name="senha" type="password" placeholder="Senha" required>

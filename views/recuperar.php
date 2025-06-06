@@ -140,7 +140,7 @@
       <h2>Recuperando a senha</h2>
       <p>Será enviado um código para recuperação de senha<br>no email marc*********@gmail.com</p>
 
-      <form action="/User/enviarCodigo" method="POST">
+      <form action="/projeto/vetz/enviarCodigo" method="POST">
     <input name="email" type="email" placeholder="Digite seu e-mail" required>
     <button type="submit">Enviar código</button>
 </form>

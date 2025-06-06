@@ -7,8 +7,12 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL); //E_ALL = exibe todos os tipos de erros
 
 require_once '../controllers/PetController.php';
+<<<<<<< HEAD
 require_once '../controllers/FichaTecnicaController.phpController.php';
 require_once '../controllers/UserController.php'; // Importa o controlador de usuários
+=======
+require_once '../controllers/UsuarioController.php'; // Importa o controlador de usuários
+>>>>>>> 96a34f25ca9c845c51b6f4c5090dec726bed3ff2
 
 // Lógica de roteamento
 $request = $_SERVER['REQUEST_URI']; // Requisição cliente-servidor
@@ -16,24 +20,25 @@ $request = $_SERVER['REQUEST_URI']; // Requisição cliente-servidor
 
 switch ($request) { //mostra as requisições que o cliente está fazendo ao servidor, dependendo dela, muda as páginas  
 
-    case '/vetz/cadastrar':
-        $controller = new UserController();
-        $controller->cadastrar();
+    case '/projeto/vetz/cadastrarei':
+        //$controller = new UsuarioController();
+        //$controller->cadastrar();
+        echo $request;
         break;
-    case '/vetz/login':
-        $controller = new UserController();
+    case '/projeto/vetz/login':
+        $controller = new UsuarioController();
         $controller->login();
         break;
-    case 'vetz/enviarCodigo':
-        $controller = new UserController();
+    case '/projeto/vetz/enviarCodigo':
+        $controller = new UsuarioController();
         $controller->enviarCodigo();
         break;
-    case 'vetz/verificarCodigo':
-        $controller = new UserController();
+    case '/projeto/vetz/verificarCodigo':
+        $controller = new UsuarioController();
         $controller->verificarCodigo();
         break;
-    case 'vetz/redefinirSenha':    
-        $controller = new UserController();
+    case '/projeto/vetz/redefinirSenha':    
+        $controller = new UsuarioController();
         $controller->redefinirSenha();
         break;
     case '/projeto/vetz/public/':
