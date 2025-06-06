@@ -5,14 +5,8 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 require_once '../controllers/PetController.php';
-
-require_once '../controllers/UserController.php';
-
-
 require_once '../controllers/FichaTecnicaController.phpController.php';
 require_once '../controllers/UserController.php'; // Importa o controlador de usuários
-
-require_once '../controllers/UsuarioController.php'; // Importa o controlador de usuários
 
 
 // Lógica de roteamento
@@ -64,8 +58,8 @@ switch ($request) {
         $controller = new UserController();
 
     case '/projeto/vetz/cadastrarei':
-        //$controller = new UsuarioController();
-        //$controller->cadastrar();
+        $controller = new UsuarioController();
+        $controller->cadastrar();
         echo $request;
         break;
     case '/projeto/vetz/login':
@@ -101,22 +95,7 @@ switch ($request) {
         $controller->listPet();
         break;
 
-    case '/projeto/vetz/delete-pet': // POST com id no body
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
-            $controller = new PetController();
-
-            $controller->deletePetById($_POST['id']);
-        }
-        break;
-
-    case '/projeto/vetz/update-pet': // Acessado por formulário de update sem ID na URL
-        $controller = new PetController();
-        $controller->updatePet();
-        break;
-
-
-            $controller->deletePetById();
-            break;
+    
     
         case (preg_match('/\/vetz\/update-pet\/(\d+)/', $request, $matches) ? true : false):
             $id = $matches[1];

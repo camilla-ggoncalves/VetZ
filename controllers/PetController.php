@@ -1,18 +1,18 @@
 <?php
 // Fluxo entre a model e a view
 
-require_once '../models/FichaTecnica.php'; //Intermediador entre o BD e o PHP
+require_once '../models/Pet.php'; //Intermediador entre o BD e o PHP
 
 class PetController {
     // Método para exibir o formulário de cadastro do pet
-    public function showRecomendacoes() {
-        include '../views/recomendacoes.php'; // Inclua o arquivo do formulário
+    public function showForm() {
+        include '../views/pet_form.php'; // Inclua o arquivo do formulário
     }
 
     // Método para salvar o pet
     public function savePet() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') { // Está no método POST, ou seja, as informações obtidas no meu pet_form.php
-            $pet = new Ficha();
+            $pet = new Pet();
             $pet->nome = $_POST['nome'];
 
             $pet->raca = $_POST['raca'];

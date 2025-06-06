@@ -1,7 +1,7 @@
 <?php
 
-require_once '../models/Usuario.php';
-require_once '../controllers/UsuarioController.php';
+require_once '../models/User.php';
+require_once '../controllers/UserController.php';
 
 
 class UsuarioController {

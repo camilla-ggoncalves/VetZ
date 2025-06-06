@@ -13,7 +13,7 @@ class FichaController {
         include '../views/recomendacoes.html'; // essa função salvou os objetos que antes eram individuais em um só (pet -> pets). Depois foi incluído no pet_list, para os dados serem exibidos na tabela 
     }
 
-    //Método para exibir o formulário de atualização
+    // Método para exibir o formulário de atualização
     
 
 }
