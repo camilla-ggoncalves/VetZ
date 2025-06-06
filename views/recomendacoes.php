@@ -71,7 +71,11 @@
             <input placeholder="Pesquisar" type="search" class="input">
         </div>
 
-                <!-- Cole o cachorro animado AQUI -->
+                <!-- Cole<?php foreach ($fichas as $ficha): ?>
+    <tr> Tabela de valor dentro de Book -->
+        <td><?php echo $ficha['nome_comum']; ?></td>
+        <td><img src="/public/uploads/<?= htmlspecialchars($ficha['imagem']) ?>" alt="Imagem do pet" width="150"></td>
+         <?php endforeach; ?>
                 
                 <!-- Fim do cachorro animado -->
 

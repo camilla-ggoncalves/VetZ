@@ -7,6 +7,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL); //E_ALL = exibe todos os tipos de erros
 
 require_once '../controllers/PetController.php';
+require_once '../controllers/FichaTecnicaController.phpController.php';
 require_once '../controllers/UserController.php'; // Importa o controlador de usuários
 
 // Lógica de roteamento
@@ -66,6 +67,12 @@ switch ($request) { //mostra as requisições que o cliente está fazendo ao ser
             $controller = new PetController();
             $controller->updatePet();
             break;
+
+            case '/projeto/vetz/list-ficha':
+        $controller = new FichaController();
+        $controller->listFicha();
+        break;
+            
     default:
         http_response_code(404);
         echo $request;
