@@ -32,8 +32,8 @@
             <label for="sexo">Sexo:</label>
             <select type="text" id="sexo" name="sexo">
                 <option value="">Selecione</option>
-                <option value="M">Macho</option>
-                <option value="F">Fêmea</option>
+                <option value="Macho">Macho</option>
+                <option value="Fêmea">Fêmea</option>
             </select>
             
             <label>Imagem do Pet:</label>
