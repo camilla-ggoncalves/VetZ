@@ -127,7 +127,3 @@
         <script src="/Projeto/VetZ/js/scripts.js"></script>
     </body>
 </html>
-
-<?php
-Route::get('/user/update', [UserController::class, 'edit']);
-?>
