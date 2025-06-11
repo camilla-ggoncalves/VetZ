@@ -68,24 +68,30 @@ class Pet {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    // Método para atualizar um pet
+    // Método para atualizar um pet sem apagar a imagem existente
     public function update() {
-        $query = "UPDATE pets SET nome = :nome, raca = :raca, idade = :idade, porte = :porte, peso = :peso, sexo = :sexo, imagem = :imagem WHERE id = :id"; // Corrigido a query
-        $stmt = $this->conn->prepare($query);
+        $query = "UPDATE pets SET nome = :nome, raca = :raca, idade = :idade, porte = :porte, peso = :peso, sexo = :sexo";
 
-        $stmt->bindParam(':nome', $this->nome);
-        $stmt->bindParam(':raca', $this->raca);
-        $stmt->bindParam(':idade', $this->idade);
-        $stmt->bindParam(':porte', $this->porte);
-        $stmt->bindParam(':peso', $this->peso);
-        $stmt->bindParam(':sexo', $this->sexo);
-        if (!empty($_FILES['imagem']['name'])) {
-    // processar upload da nova imagem e substituir a antiga
+if (!empty($this->imagem)) {
+    $query .= ", imagem = :imagem"; //caso o campo não esteja vazio, a imagem será substituída, senão permanecerá a mesma
 }
 
-        $stmt->bindParam(':id', $this->id); // Agora bindamos o ID corretamente
+$query .= " WHERE id = :id";
+$stmt = $this->conn->prepare($query);
 
-        return $stmt->execute();
+$stmt->bindParam(':nome', $this->nome);
+$stmt->bindParam(':raca', $this->raca);
+$stmt->bindParam(':idade', $this->idade);
+$stmt->bindParam(':porte', $this->porte);
+$stmt->bindParam(':peso', $this->peso);
+$stmt->bindParam(':sexo', $this->sexo);
+if (!empty($this->imagem)) {
+    $stmt->bindParam(':imagem', $this->imagem);
+}
+$stmt->bindParam(':id', $this->id);
+
+return $stmt->execute();
+
     }
 
     // Método para excluir um pet pelo ID
