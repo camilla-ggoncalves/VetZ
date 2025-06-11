@@ -64,18 +64,39 @@
                 <input type="text" id="nome" name="nome" value="<?php echo htmlspecialchars($usuarios['nome'] ?? ''); ?>" required>
             </div>
 
-            <!-- Campo Email -->
+            <!-- Campo Raça -->
             <div>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" 
-                    value="<?php echo htmlspecialchars($_POST['email'] ?? ($usuarios['email'] ?? '')); ?>" required>
+                <label for="raca">Raça:</label>
+                <input type="text" id="raca" name="raca" 
+                    value="<?php echo htmlspecialchars($_POST['raca'] ?? ($usuarios['raca'] ?? '')); ?>" required>
             </div>
 
-            <!-- Campo Senha -->
+            <!-- Campo Sexo -->
             <div>
-                <label for="senha">Senha:</label>
-                <input type="password" id="senha" name="senha" 
-                    value="<?php echo htmlspecialchars($_POST['senha'] ?? ($usuarios['senha'] ?? '')); ?>" required>
+                <label for="sexo">Sexo:</label>
+                <input type="text" id="sexo" name="sexo" 
+                    value="<?php echo htmlspecialchars($_POST['sexo'] ?? ($usuarios['sexo'] ?? '')); ?>" required>
+            </div>
+
+            <!-- Campo Idade -->
+            <div>
+                <label for="idade">Idade:</label>
+                <input type="number" id="idade" name="idade" 
+                    value="<?php echo htmlspecialchars($_POST['idade'] ?? ($usuarios['idade'] ?? '')); ?>" required>
+            </div>
+
+            <!-- Campo Porte -->
+            <div>
+                <label for="porte">Porte:</label>
+                <input type="text" id="porte" name="porte" 
+                    value="<?php echo htmlspecialchars($_POST['porte'] ?? ($usuarios['porte'] ?? '')); ?>" required>
+            </div>
+
+            <!-- Campo Peso -->
+            <div>
+                <label for="peso">Peso:</label>
+                <input type="number" id="peso" name="peso" 
+                    value="<?php echo htmlspecialchars($_POST['peso'] ?? ($usuarios['peso'] ?? '')); ?>" required>
             </div>
 
             <!-- Campo Foto -->
