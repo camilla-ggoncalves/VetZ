@@ -9,6 +9,8 @@ class PetController {
         include '../views/pet_form.php'; // Inclua o arquivo do formulário
     }
 
+
+
     // Método para salvar o pet
     public function savePet() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') { // Está no método POST, ou seja, as informações obtidas no meu pet_form.php
@@ -20,6 +22,7 @@ class PetController {
             $pet->porte = $_POST['porte'];
             $pet->peso = $_POST['peso'];
             $pet->sexo = $_POST['sexo'];
+
             $pet->imagem = $_FILES['imagem'];
 
 
@@ -57,15 +60,7 @@ class PetController {
         include '../views/pet_list.php'; // essa função salvou os objetos que antes eram individuais em um só (pet -> pets). Depois foi incluído no pet_list, para os dados serem exibidos na tabela 
     }
 
-    //Método para exibir o formulário de atualização
-    public function showUpdateForm($id) { //pega do pet_list
-        $pet = new Pet();
-        $petInfo = $pet->getById($id);
-        include '../views/pet_form.php'; // Inclua o arquivo do formulário de atualização
-    }
-
-    // Método para atualizar um pet
-public function updatePet($id) {
+public function updatePet() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $pet = new Pet();
         $pet->id = $_POST['id'];
@@ -76,6 +71,7 @@ public function updatePet($id) {
         $pet->peso = $_POST['peso'];
         $pet->sexo = $_POST['sexo'];
 
+        // Verifica se enviou uma nova imagem
         if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
             $extensao = pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION);
             $nomeImagem = uniqid() . '.' . $extensao;
@@ -83,13 +79,10 @@ public function updatePet($id) {
 
             if (move_uploaded_file($_FILES['imagem']['tmp_name'], $caminhoDestino)) {
                 $pet->imagem = $nomeImagem;
-            } else {
-                echo "Erro ao mover a nova imagem.";
-                return;
             }
-        } 
-        
+        }
 
+        // Verifica se a função update() existe e executa
         if ($pet->update()) {
             header('Location: /projeto/vetz/list-pet');
             exit;
@@ -98,6 +91,8 @@ public function updatePet($id) {
         }
     }
 }
+
+
 
 
 // Método para excluir um pet pelo id
@@ -113,6 +108,6 @@ public function deletePetById() {
             echo "Erro ao excluir o pet."; // Caso ocorra um erro
         }
     }
-}
+    }
 }
 
