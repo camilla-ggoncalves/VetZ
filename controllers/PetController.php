@@ -60,14 +60,6 @@ class PetController {
         include '../views/pet_list.php'; // essa função salvou os objetos que antes eram individuais em um só (pet -> pets). Depois foi incluído no pet_list, para os dados serem exibidos na tabela 
     }
 
-    //Método para exibir o formulário de atualização
-    public function showUpdateForm($id) { //pega do pet_list
-        $pet = new Pet();
-        $petInfo = $pet->getById($id);
-        include '../views/update_pet.php'; // Inclua o arquivo do formulário de atualização
-    }
-
-    // Método para atualizar um pet
 public function updatePet() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $pet = new Pet();
@@ -79,29 +71,26 @@ public function updatePet() {
         $pet->peso = $_POST['peso'];
         $pet->sexo = $_POST['sexo'];
 
+        // Verifica se enviou uma nova imagem
         if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
-    $extensao = pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION);
-    $nomeImagem = uniqid() . '.' . $extensao;
-    $caminhoDestino = __DIR__ . '/../uploads/' . $nomeImagem;
+            $extensao = pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION);
+            $nomeImagem = uniqid() . '.' . $extensao;
+            $caminhoDestino = __DIR__ . '/../uploads/' . $nomeImagem;
 
-    if (move_uploaded_file($_FILES['imagem']['tmp_name'], $caminhoDestino)) {
-        $pet->imagem = $nomeImagem;
-    }
-
-// Se não enviar nova imagem, não altera nada
-
+            if (move_uploaded_file($_FILES['imagem']['tmp_name'], $caminhoDestino)) {
+                $pet->imagem = $nomeImagem;
             }
-        } 
-        
+        }
 
+        // Verifica se a função update() existe e executa
         if ($pet->update()) {
-        header('Location: /projeto/vetz/list-pet'); //após atualização retorna novamente para a página de listagem
-
+            header('Location: /projeto/vetz/list-pet');
             exit;
         } else {
             echo "Erro ao atualizar o pet.";
         }
     }
+}
 
 
 
