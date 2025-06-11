@@ -22,11 +22,11 @@
     <div class="cadastro-box">
       <h2 class="cadastro-title">Registrar-se</h2>
       <form action="/projeto/vetz/cadastrar" method="POST">
-        <input name="nome" placeholder="Nome completo" required>
-        <input name="email" type="email" placeholder="Email" required>
-        <input name="senha" type="password" placeholder="Senha" required>
-        <button class="cadastrar" type="submit">CADASTRAR</button>
-      </form>
+    <input type="text" name="nome" required>
+    <input type="email" name="email" required>
+    <input type="password" name="senha" required>
+    <button type="submit">Cadastrar</button>
+</form>
     </div>
   </main>
 

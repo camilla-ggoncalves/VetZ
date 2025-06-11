@@ -4,6 +4,13 @@ require_once __DIR__ . '/../models/Usuario.php';
 
 class UsuarioController {
 
+   public function loginForm() {
+        include '../views/login.php'; // Inclua o arquivo do formulário
+    }
+    public function cadastrarForm() {
+        include '../views/cadastro.php'; // Inclua o arquivo do formulário
+    }
+
     public function cadastrar() {
        
         $dados = $_POST;
@@ -18,9 +25,11 @@ class UsuarioController {
     }
 
     public function login() {
-        //$email = $_POST['email'];
-        //$senha = $_POST['senha'];
-        $usuario = $this->model->autenticar($email, $senha);
+
+        $email = $_POST['email'];
+        $senha = $_POST['senha'];
+        $model = new Usuario(); 
+        $usuario = $model->autenticar($email, $senha);
         if ($usuario) {
             // Aqui você pode iniciar a sessão e redirecionar para o perfil
             session_start();
@@ -34,19 +43,27 @@ class UsuarioController {
 
     public function enviarCodigo() {
         $email = $_POST['email'];
-        $codigo = rand(100000, 999999);
-        $model = new Usuario(); // Corrigido aqui
-        $model->salvarCodigo($email, $codigo);
-        echo "Código enviado: $codigo (simulação de envio)";
+        $codigo = rand(100000, 999999); // Gera código aleatório
+        $usuario = new Usuario();
+        $usuario->salvarCodigo($email, $codigo);
+        // Aqui você pode enviar o e-mail real, se quiser
+        echo $codigo; // <-- Só isso! Não retorne HTML, só o código
+        exit;
     }
 
     public function verificarCodigo() {
-        $email = $_POST['email'];
-        $codigo = $_POST['codigo'];
-        $model = new Usuario(); // Corrigido aqui
-        $valido = $model->verificarCodigo($email, $codigo);
-        echo $valido ? "Código verificado!" : "Código inválido ou expirado.";
+    $email = $_POST['email'];
+    $codigo = $_POST['codigo'];
+    $novaSenha = $_POST['nova_senha'];
+    $model = new Usuario();
+    $valido = $model->verificarCodigo($email, $codigo);
+    if ($valido) {
+        $model->redefinirSenha($email, $novaSenha);
+        echo "Senha alterada com sucesso!";
+    } else {
+        echo "Código inválido ou expirado.";
     }
+}
 
     public function redefinirSenha() {
         $email = $_POST['email'];
@@ -57,10 +74,7 @@ class UsuarioController {
     }
 }
 ?>
-<form id="form-email" action="/projeto/vetz/enviarCodigo" method="POST" onsubmit="return mostrarPopup();">
-  <input name="email" type="email" placeholder="Digite seu e-mail" required>
-  <button type="submit">Enviar código</button>
-</form>
+
 
 <!-- Popup para inserir código e nova senha -->
 <div id="popup-codigo" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.4); z-index:1000; align-items:center; justify-content:center;">

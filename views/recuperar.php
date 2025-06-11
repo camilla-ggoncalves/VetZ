@@ -138,11 +138,30 @@
   <main>
     <div class="box">
       <h2>Recuperando a senha</h2>
-      <p>Será enviado um código para recuperação de senha<br>no email marc*********@gmail.com</p>
+      <p>Será enviado um código para recuperação de senha no email. (exemplo: marc*********@gmail.com)</p>
 
-      <form action="/projeto/vetz/enviarCodigo" method="POST">
-    <input name="email" type="email" placeholder="Digite seu e-mail" required>
-    <button type="submit">Enviar código</button>
+      <form id="form-email" action="/projeto/vetz/enviarCodigo" method="POST" onsubmit="return mostrarPopup();">
+  <input name="email" type="email" placeholder="Digite seu e-mail" required>
+  <button type="submit">Enviar código</button>
+
+
+
+  <!-- ...existing code... -->
+
+  <p>
+    <h3>Digite o código recebido</h3></p>
+    <br>
+    <form action="/projeto/vetz/verificarCodigo" method="POST">
+      <input name="email" id="popup-email" type="hidden">
+      <input name="codigo" type="text" placeholder="Código" required style="margin-bottom:10px; width:90%;"><br>
+      <input name="nova_senha" type="password" placeholder="Nova senha" required style="margin-bottom:10px; width:90%;"><br>
+      <button type="submit">Trocar senha</button>
+    </form>
+    
+  </div>
+</div>
+
+
 </form>
     </div>
   </main>
@@ -152,6 +171,8 @@
     <div class="icons">
      
     </div>
+
+
   </footer>
 
 </body>

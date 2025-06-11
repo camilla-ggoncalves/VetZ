@@ -19,6 +19,14 @@ switch ($request) { //mostra as requisições que o cliente está fazendo ao ser
         $controller = new UsuarioController();
         $controller->cadastrar();
         break;
+        case '/projeto/vetz/cadastrarForm':
+        $controller = new UsuarioController();
+        $controller->cadastrarForm();
+        break;
+    case '/projeto/vetz/loginForm':
+        $controller = new UsuarioController();
+        $controller->loginForm();
+        break;
     case '/projeto/vetz/login':
         $controller = new UsuarioController();
         $controller->login();

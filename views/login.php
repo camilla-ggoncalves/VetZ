@@ -24,12 +24,12 @@
       <h2 class="login-title">LOGIN</h2>
       <form action="/projeto/vetz/login" method="POST">
     <input name="email" type="email" placeholder="Email" required>
-    <input name="senha" type="password" placeholder="Senha" required>
+    <input name="senha" type="senha" placeholder="Senha" required>
     <button type="submit">Entrar</button>
 </form>  
 
       <div class="links">
-        <a href="cadastro.php">Criar conta</a> 
+        <a href="/projeto/vetz/cadastrarForm">Criar conta</a> 
         <br>
         <a href="recuperar.php">Esqueceu a senha?</a>
       </div>
