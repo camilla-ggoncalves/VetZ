@@ -70,7 +70,7 @@
                 <!-- Cole<?php foreach ($fichas as $ficha): ?>
     <tr> Tabela de valor dentro de Book -->
         <td><?php echo $ficha['nome_comum']; ?></td>
-        <td><img src="/public/uploads/<?= htmlspecialchars($ficha['imagem']) ?>" alt="Imagem do pet" width="150"></td>
+        <td><img src="/projeto/VetZ/views/<?php echo ($ficha['imagem']); ?>" alt="Imagem do pet" width="150"></td>
          <?php endforeach; ?>
                 
                 <!-- Fim do cachorro animado -->
