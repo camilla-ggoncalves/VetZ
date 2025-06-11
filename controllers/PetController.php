@@ -24,21 +24,21 @@ class PetController {
 
 
             if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
-            $extensao = pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION);
-            $nomeImagem = uniqid() . '.' . $extensao;
+                $extensao = pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION);
+                $nomeImagem = uniqid() . '.' . $extensao;
 
-            $caminhoDestino = __DIR__ . '/../uploads/' . $nomeImagem;
+                $caminhoDestino = __DIR__ . '/../uploads/' . $nomeImagem;
 
-            if (move_uploaded_file($_FILES['imagem']['tmp_name'], $caminhoDestino)) {
-                $pet->imagem = $nomeImagem;
+                if (move_uploaded_file($_FILES['imagem']['tmp_name'], $caminhoDestino)) {
+                    $pet->imagem = $nomeImagem;
+                } else {
+                    echo "Erro ao mover a imagem.";
+                    return;
+                }
             } else {
-                echo "Erro ao mover a imagem.";
+                echo "Imagem não enviada.";
                 return;
-            }
-        } else {
-            echo "Imagem não enviada.";
-            return;
-        }        
+            }        
 
         // Salvar no banco
         if ($pet->save()) {
