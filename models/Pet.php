@@ -6,7 +6,6 @@ require_once '../config/database_site.php'; // Conectar páginas
 class Pet {
     private $conn; // Variável de conexão com o banco de dados
     private $table_name = "pets";
-
     public $id;
     public $nome;
     public $raca;
@@ -70,38 +69,44 @@ class Pet {
 
     // Método para atualizar um pet sem apagar a imagem existente
     public function update() {
-        $query = "UPDATE pets SET nome = :nome, raca = :raca, idade = :idade, porte = :porte, peso = :peso, sexo = :sexo";
+    $query = "UPDATE pets SET nome = :nome, raca = :raca, idade = :idade, porte = :porte, peso = :peso, sexo = :sexo";
 
-if (!empty($this->imagem)) {
-    $query .= ", imagem = :imagem"; //caso o campo não esteja vazio, a imagem será substituída, senão permanecerá a mesma
-}
-
-$query .= " WHERE id = :id";
-$stmt = $this->conn->prepare($query);
-
-$stmt->bindParam(':nome', $this->nome);
-$stmt->bindParam(':raca', $this->raca);
-$stmt->bindParam(':idade', $this->idade);
-$stmt->bindParam(':porte', $this->porte);
-$stmt->bindParam(':peso', $this->peso);
-$stmt->bindParam(':sexo', $this->sexo);
-if (!empty($this->imagem)) {
-    $stmt->bindParam(':imagem', $this->imagem);
-}
-$stmt->bindParam(':id', $this->id);
-
-return $stmt->execute();
-
+    if (!empty($this->imagem)) {
+        $query .= ", imagem = :imagem";
     }
+
+    $query .= " WHERE id = :id";
+    $stmt = $this->conn->prepare($query);
+
+    $stmt->bindParam(':nome', $this->nome);
+    $stmt->bindParam(':raca', $this->raca);
+    $stmt->bindParam(':idade', $this->idade);
+    $stmt->bindParam(':porte', $this->porte);
+    $stmt->bindParam(':peso', $this->peso);
+    $stmt->bindParam(':sexo', $this->sexo);
+    
+    if (!empty($this->imagem)) {
+        $stmt->bindParam(':imagem', $this->imagem);
+    }
+
+    $stmt->bindParam(':id', $this->id);
+
+    return $stmt->execute();
+}
+
 
     // Método para excluir um pet pelo ID
-    public function delete() {
-        $query = "DELETE FROM " . $this->table_name . " WHERE id = :id"; // Corrigido o nome do parâmetro
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':id', $this->id); // Corrigido o nome da variável
+   public function delete() {
+    $query = "DELETE FROM " . $this->table_name . " WHERE id = :id";
+    $stmt = $this->conn->prepare($query);
+    $stmt->bindParam(':id', $this->id);
 
-        return $stmt->execute();
-    }
-
-    // teste
+    return $stmt->execute();
 }
+
+public function listar() {
+    $stmt = $this->conn->query("SELECT id, nome FROM pets");
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+}
+
