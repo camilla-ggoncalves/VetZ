@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login - VetZ-</title>
   <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -22,7 +22,7 @@
   <main>
     <div class="login-box">
       <h2 class="login-title">LOGIN</h2>
-      <form action="/User/login" method="POST">
+      <form action="/projeto/vetz/login" method="POST">
     <input name="email" type="email" placeholder="Email" required>
     <input name="senha" type="password" placeholder="Senha" required>
     <button type="submit">Entrar</button>

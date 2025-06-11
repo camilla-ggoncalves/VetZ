@@ -1,22 +1,29 @@
 <?php
-// Class ligada com o banco de dados
+require_once __DIR__ . '/../config/database_site.php';
+require_once __DIR__ . '/../models/Usuario.php';
 
-
-require_once '../config/database_site.php';
-
-class User {
+class Usuario { // <-- Corrigido aqui!
     private $conn;
 
     public function __construct() {
-        $this->conn = Conexao::conectar();
+        $database = new Database();
+        $this->conn = $database->getConnection();
+        
     }
 
-    public function cadastrar($nome, $email, $senha) {
-        $sql = "INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)";
-        $stmt = $this->conn->prepare($sql);
-        $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
-        return $stmt->execute([$nome, $email, $senhaHash]);
-    }
+   public function cadastrar($nome, $email, $senha) {
+    $sql = "INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)";
+    $stmt = $this->conn->prepare($sql);
+
+    // Hash da senha antes de salvar
+    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+
+    $stmt->bindParam(':nome', $nome);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':senha', $senhaHash);
+
+    return $stmt->execute();
+}
 
     public function autenticar($email, $senha) {
         $sql = "SELECT * FROM usuarios WHERE email = ?";
@@ -49,3 +56,5 @@ class User {
         return $stmt->execute([$senhaHash, $email]);
     }
 }
+
+

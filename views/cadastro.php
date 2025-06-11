@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Cadastro - VetZ</title>
-  <link rel="stylesheet" href="css/cadastro.css" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>    
 
@@ -21,7 +21,7 @@
   <main>
     <div class="cadastro-box">
       <h2 class="cadastro-title">Registrar-se</h2>
-      <form action="/User/cadastrar" method="POST">
+      <form action="/projeto/vetz/cadastrar" method="POST">
         <input name="nome" placeholder="Nome completo" required>
         <input name="email" type="email" placeholder="Email" required>
         <input name="senha" type="password" placeholder="Senha" required>
