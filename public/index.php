@@ -23,6 +23,7 @@ if (preg_match('#^/projeto/vetz/update-pet/(\d+)$#', $request, $matches)) {
     exit;
 }
 
+// teste
 
 // (Opcional) Ex: /projeto/vetz/delete-pet/5 (se quiser fazer delete via GET, não recomendado)
 if (preg_match('#^/projeto/vetz/delete-pet/(\d+)$#', $request, $matches)) {
