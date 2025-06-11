@@ -2,7 +2,6 @@
 
 
 require_once '../models/Usuario.php';
-require_once '../controllers/UsuarioController.php';
 
 require_once __DIR__ . '/../models/Usuario.php';
 
@@ -20,12 +19,13 @@ class UsuarioController {
         $dados = $_POST;
         $ok = $this->model->cadastrar($dados['nome'], $dados['email'], $dados['senha']);
         if ($ok) {
-            header('Location: login.html');
+            header('Location: login.php');
             exit;
         } else {
             echo "Erro ao cadastrar.";
         }
     }
+    
 
     public function login() {
         //$email = $_POST['email'];

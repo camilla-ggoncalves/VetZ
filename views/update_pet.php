@@ -26,6 +26,7 @@ if (!$pet) {
 <body>
     <h1>Atualizar Pet</h1>
     <form action="/projeto/vetz/update-pet" method="POST" enctype="multipart/form-data">
+
         <input type="hidden" name="id" value="<?= htmlspecialchars($pet['id']) ?>">
 
         <label for="nome">Nome:</label>
