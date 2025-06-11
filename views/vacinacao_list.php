@@ -23,7 +23,7 @@
                 <th>Doses</th>
                 <th>Vacina</th>
                 <th>Pet</th>
-                <th>Tutor</th>
+                <!-- <th>Tutor</th> -->
                 <th>Ações</th>
             </tr>
         </thead>
@@ -35,7 +35,6 @@
                         <td><?= htmlspecialchars($vacina['doses']) ?></td>
                         <td><?= htmlspecialchars($vacina['vacina']) ?></td>
                         <td><?= htmlspecialchars($vacina['nome_pet']) ?></td>
-                        <td><?= htmlspecialchars($vacina['nome_usuario']) ?></td>
                         <td>
                             <a href="/projeto/vetz/editar-vacina/<?= $vacina['id'] ?>">Editar</a> |
                             <a href="/projeto/vetz/excluir-vacina/<?= $vacina['id'] ?>" onclick="return confirm('Tem certeza que deseja excluir esta vacinação?');">Excluir</a>

@@ -13,10 +13,19 @@ $request = $_SERVER['REQUEST_URI'];
 $request = parse_url($request, PHP_URL_PATH);
 
 // Primeiras rotas com parâmetros dinâmicos via REGEX
-if (preg_match('#^/projeto/vetz/update-pet/(\d+)$#', $request, $matches)) {
+// Exibir o formulário de edição (GET)
+if (preg_match('#^/projeto/vetz/update-pet/(\d+)$#', $request, $matches) && $_SERVER['REQUEST_METHOD'] === 'GET') {
     $id = $matches[1];
     $controller = new PetController();
-    $controller->showUpdateForm($id); // Mostrar o formulário de edição
+    $controller->showUpdateForm($id);
+    exit;
+}
+
+// Processar o update (POST)
+if (preg_match('#^/projeto/vetz/update-pet/(\d+)$#', $request, $matches) && $_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id = $matches[1];
+    $controller = new PetController();
+    $controller->updatePet($id);
     exit;
 }
 
@@ -76,22 +85,35 @@ switch ($request) {
         $controller->updatePet(); // POST do formulário
         break;
 
+    case '/projeto/vetz/delete-pet':
+        $controller = new PetController();
+        $controller->deletePetById(); // POST do formulário
+        break;
+
+    if (preg_match('#^/projeto/vetz/delete-pet/(\d+)$#', $request, $matches)) {
+    $id = $matches[1];
+    $controller = new PetController();
+    $controller->deletePet($id);
+    exit;
+}
+
+if (preg_match('#^/projeto/vetz/cadastrar-vacina/(\d+)$#', $request, $matches)) {
+    $id = $matches[1];
+    $controller = new VacinacaoController();
+    $controller->cadastrarVacina($id);
+    
+    exit;
+}
+
     case '/projeto/vetz/list-vacinas':
         $controller = new VacinacaoController();
         $controller->listVacina();
         break;
 
     case '/projeto/vetz/cadastrar-vacina':
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $controller = new VacinacaoController();
-            $controller->cadastrar(
-                $_POST['data'],
-                $_POST['doses'],
-                $_POST['id_vacina'],
-                $_POST['id_pet'],
-                $_POST['id_usuario']
-            );
-        }
+            $controller->cadastrarVacina();
+            include '../views/vacinacao_form.php'; // Exibe o formulário de cadastro
         break;
 
     case '/projeto/vetz/cadastrar':

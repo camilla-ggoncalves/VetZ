@@ -19,17 +19,18 @@ class Vacinacao {
         }
     }
 
-    public function cadastrar($data, $doses, $id_vacina, $id_pet, $id_usuario) {
-        $query = "INSERT INTO vacinacao (data, doses, id_vacina, id_pet, id_usuario)
-                  VALUES (:data, :doses, :id_vacina, :id_pet, :id_usuario)";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':data', $data);
-        $stmt->bindParam(':doses', $doses);
-        $stmt->bindParam(':id_vacina', $id_vacina);
-        $stmt->bindParam(':id_pet', $id_pet);
-        $stmt->bindParam(':id_usuario', $id_usuario);
-        return $stmt->execute();
-    }
+   public function cadastrar($data, $doses, $id_vacina, $id_pet, $id_usuario) {
+    $query = "INSERT INTO vacinacao (data, doses, id_vacina, id_pet, id_usuario)
+              VALUES (:data, :doses, :id_vacina, :id_pet, :id_usuario)";
+    $stmt = $this->conn->prepare($query);
+    $stmt->bindParam(':data', $data);
+    $stmt->bindParam(':doses', $doses);
+    $stmt->bindParam(':id_vacina', $id_vacina);
+    $stmt->bindParam(':id_pet', $id_pet);
+    $stmt->bindParam(':id_usuario', $id_usuario);
+    return $stmt->execute();
+}
+
 
     public function editar($id, $data, $doses, $id_vacina, $id_pet, $id_usuario) {
         $query = "UPDATE vacinacao SET data = :data, doses = :doses, 
@@ -59,6 +60,13 @@ class Vacinacao {
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function listarVacinas() {
+    $sql = "SELECT id_vacina, vacina FROM registro_vacina";
+    $stmt = $this->conn->query($sql);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
 
 public function listar() {
     $sql = "SELECT 
