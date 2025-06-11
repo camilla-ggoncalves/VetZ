@@ -63,8 +63,22 @@ class UsuarioController {
         echo $ok ? "Senha alterada com sucesso!" : "Erro ao alterar senha.";
     }
 
+        // Método para listar todos os usuários
+    public function listUsuarios() {
+        $usuario = new Usuario();
+        $usuarios = $usuario->getAll();
+        include '../views/usuario_list.php'; // essa função salvou os objetos que antes eram individuais em um só (usuario -> usuarios). Depois foi incluído no usuario_list, para os dados serem exibidos na tabela 
+    }
+
+    //Método para exibir o formulário de atualização
+    public function showUpdateForm($id) { //pega do usuario_list
+        $usuario = new Usuario();
+        $usuarioInfo = $usuario->getById($id);
+        include '../views/update_usuario.php'; // Inclua o arquivo do formulário de atualização
+    }
+
     // Método para atualizar um usuário
-    public function updateUsuarios($id) {
+    public function UpdateUsuario ($id) {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $usuario = new usuario();
             $usuario->id = $_POST['id'];
