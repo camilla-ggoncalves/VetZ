@@ -140,13 +140,12 @@
       <h2>Recuperando a senha</h2>
       <p>Será enviado um código para recuperação de senha no email. (exemplo: marc*********@gmail.com)</p>
 
-      <form id="form-email" action="/projeto/vetz/enviarCodigo" method="POST" onsubmit="return mostrarPopup();">
+      <form id="form-email" action="/projeto/vetz/enviarCodigo" method="POST" onsubmit="return mostrarCodigoAlert(event);">
   <input name="email" type="email" placeholder="Digite seu e-mail" required>
   <button type="submit">Enviar código</button>
+</form>
 
 
-
-  <!-- ...existing code... -->
 
   <p>
     <h3>Digite o código recebido</h3></p>

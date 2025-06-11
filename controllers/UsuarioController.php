@@ -17,7 +17,7 @@ class UsuarioController {
         $model = new Usuario();
         $ok = $model->cadastrar($dados['nome'], $dados['email'], $dados['senha']);
         if ($ok) {
-            header('Location: /Projeto/VetZ/views/login.php');
+            header('Location: /projeto/vetz/loginForm');
             exit;
         } else {
             echo "Erro ao cadastrar.";
