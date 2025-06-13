@@ -25,7 +25,7 @@
     <input type="text" name="nome" required>
     <input type="email" name="email" required>
     <input type="password" name="senha" required>
-    <button type="submit">Cadastrar</button>
+    <button type="submit">Cadastrar</button>        
 </form>
     </div>
   </main>

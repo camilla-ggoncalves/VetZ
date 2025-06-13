@@ -17,7 +17,7 @@ switch ($request) { //mostra as requisições que o cliente está fazendo ao ser
    
     case '/projeto/vetz/recuperarForm':
     include '../views/recuperar.php';
-    break;  
+    break;    
 
     case '/projeto/vetz/cadastrar':
         $controller = new UsuarioController();

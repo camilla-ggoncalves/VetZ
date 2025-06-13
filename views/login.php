@@ -42,7 +42,7 @@
   <!-- Rodapé -->
   <footer class="rodape">
     <p>© 2025 VetZ- Todos os direitos reservados.</p>
-  </footer>
+  </footer>    
 
 </body>
 </html>

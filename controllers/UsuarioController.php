@@ -21,7 +21,7 @@ class UsuarioController {
         if ($ok) {
             header('Location: /projeto/vetz/loginForm');
             exit;  
-        } else {
+        } else {         
             echo "Erro ao cadastrar.";
         }
     }
@@ -49,7 +49,7 @@ class UsuarioController {
         $usuario = new Usuario();
         $usuario->salvarCodigo($email, $codigo);
         // Aqui você pode enviar o e-mail real, se quiser
-        echo $codigo; // <-- Só isso! Não retorne HTML, só o código
+        echo $codigo; 
         exit;
     }
 

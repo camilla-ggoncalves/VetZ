@@ -140,39 +140,105 @@
       <h2>Recuperando a senha</h2>
       <p>Será enviado um código para recuperação de senha no email. (exemplo: marc*********@gmail.com)</p>
 
-      <form id="form-email" action="/projeto/vetz/enviarCodigo" method="POST" onsubmit="return mostrarCodigoAlert(event);">
-  <input name="email" type="email" placeholder="Digite seu e-mail" required>
-  <button type="submit">Enviar código</button>
-</form>
+      <form id="form-email" action="/projeto/vetz/enviarCodigo" method="POST">
+        <input name="email" id="email" type="email" placeholder="Digite seu e-mail" required>
+        <button type="submit">Enviar código</button>
+      </form>
 
-
-
-  <p>
-    <h3>Digite o código recebido</h3></p>
-    <br>
-    <form action="/projeto/vetz/verificarCodigo" method="POST">
-      <input name="email" id="popup-email" type="hidden">
-      <input name="codigo" type="text" placeholder="Código" required style="margin-bottom:10px; width:90%;"><br>
-      <input name="nova_senha" type="password" placeholder="Nova senha" required style="margin-bottom:10px; width:90%;"><br>
-      <button type="submit">Trocar senha</button>
-    </form>
-    
-  </div>
-</div>
-
-
-</form>
-    </div>            
+      <div id="popup-codigo" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.4); z-index:1000; align-items:center; justify-content:center;">
+        <div style="background:#fff; padding:30px; border-radius:15px; width:300px; margin:auto; text-align:center; position:relative;">
+          <h3>Digite o código recebido</h3>
+          <form id="form-codigo" action="/projeto/vetz/verificarCodigo" method="POST">
+            <input name="email" id="popup-email" type="hidden">
+            <input name="codigo" type="text" placeholder="Código" required style="margin-bottom:10px; width:90%;"><br>
+            <input name="nova_senha" type="password" placeholder="Nova senha" required style="margin-bottom:10px; width:90%;"><br>
+            <button type="submit">Trocar senha</button>
+          </form>
+          <button onclick="fecharPopup()" style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:18px; cursor:pointer;">&times;</button>
+          <div id="msg-codigo" style="margin-top:10px; color:#038654;"></div>
+        </div>
+      </div>
+      <div id="msg-email" style="margin-top:15px; color:#038654;"></div>
+      <div id="codigo-teste" style="margin-top:10px; color:#b00; font-weight:bold;"></div>
+    </div>
   </main>
-
+        
   <footer>
     Todos os direitos reservados 2025 © – VetZ
-    <div class="icons">
+    <div class="icons">         
      
     </div>
 
 
   </footer>
+
+  <script>
+function fecharPopup() {
+  document.getElementById('popup-codigo').style.display = 'none';
+}
+
+// Envio do e-mail para receber o código
+document.getElementById('form-email').onsubmit = function(e) {
+  e.preventDefault();
+  var email = document.getElementById('email').value;
+  var btn = this.querySelector('button');
+  btn.disabled = true;
+  btn.innerText = 'Enviando...';
+  fetch('/projeto/vetz/enviarCodigo', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+    body: 'email=' + encodeURIComponent(email)
+  })
+  .then(r => r.text())
+  .then(codigo => {
+    document.getElementById('msg-email').innerText = 'Código enviado para o e-mail!';
+    document.getElementById('popup-email').value = email;
+    document.getElementById('popup-codigo').style.display = 'flex';
+    btn.disabled = false;
+    btn.innerText = 'Enviar código';
+    // Exibe o código na tela para teste
+    document.getElementById('codigo-teste').innerText = 'Código de recuperação: ' + codigo;
+  })
+  .catch(() => {
+    document.getElementById('msg-email').innerText = 'Erro ao enviar código.';
+    btn.disabled = false;
+    btn.innerText = 'Enviar código';
+    document.getElementById('codigo-teste').innerText = '';
+  });
+};
+
+// Envio do código + nova senha
+document.getElementById('form-codigo').onsubmit = function(e) {
+  e.preventDefault();
+  var form = this;
+  var dados = new FormData(form);
+  var btn = form.querySelector('button');
+  btn.disabled = true;
+  btn.innerText = 'Verificando...';
+  fetch('/projeto/vetz/verificarCodigo', {
+    method: 'POST',
+    body: new URLSearchParams([...dados])
+  })
+  .then(r => r.text())
+  .then(msg => {
+    document.getElementById('msg-codigo').innerText = msg;
+    if (msg.includes('sucesso')) {
+      fecharPopup();
+      document.getElementById('msg-email').innerText = 'Senha alterada com sucesso!';
+      setTimeout(() => {
+        window.location.href = '/projeto/vetz/loginForm';
+      }, 2000); // 2 segundos
+    }
+    btn.disabled = false;
+    btn.innerText = 'Trocar senha';
+  })
+  .catch(() => {
+    document.getElementById('msg-codigo').innerText = 'Erro ao redefinir senha.';
+    btn.disabled = false;
+    btn.innerText = 'Trocar senha';
+  });
+};
+</script>
 
 </body>
 </html>

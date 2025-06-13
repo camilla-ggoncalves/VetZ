@@ -13,8 +13,8 @@ class Usuario { // <-- Corrigido aqui!
 
    public function cadastrar($nome, $email, $senha) {
     $sql = "INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)";
-    $stmt = $this->conn->prepare($sql);
-
+    $stmt = $this->conn->prepare($sql); 
+                
     // Hash da senha antes de salvar
     $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
