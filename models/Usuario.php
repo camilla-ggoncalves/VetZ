@@ -7,7 +7,7 @@ class Usuario { // <-- Corrigido aqui!
 
     public function __construct() {
         $database = new Database();
-        $this->conn = $database->getConnection();
+        $this->conn = $database->getConnection();  
         
     }
 

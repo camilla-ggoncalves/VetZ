@@ -13,7 +13,11 @@ require_once '../controllers/UsuarioController.php'; // Importa o controlador de
 $request = $_SERVER['REQUEST_URI']; // Requisição cliente-servidor
 
 
-switch ($request) { //mostra as requisições que o cliente está fazendo ao servidor, dependendo dela, muda as páginas  
+switch ($request) { //mostra as requisições que o cliente está fazendo ao servidor, dependendo dela, muda as páginas
+   
+    case '/projeto/vetz/recuperarForm':
+    include '../views/recuperar.php';
+    break;  
 
     case '/projeto/vetz/cadastrar':
         $controller = new UsuarioController();
@@ -24,7 +28,7 @@ switch ($request) { //mostra as requisições que o cliente está fazendo ao ser
         $controller->cadastrarForm();
         break;
     case '/projeto/vetz/loginForm':
-        $controller = new UsuarioController();
+        $controller = new UsuarioController();  
         $controller->loginForm();
         break;
     case '/projeto/vetz/login':

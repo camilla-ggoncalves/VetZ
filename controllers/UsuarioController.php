@@ -12,13 +12,15 @@ class UsuarioController {
     }
 
     public function cadastrar() {
+                
+        var_dump($_POST);
        
         $dados = $_POST;
         $model = new Usuario();
         $ok = $model->cadastrar($dados['nome'], $dados['email'], $dados['senha']);
         if ($ok) {
             header('Location: /projeto/vetz/loginForm');
-            exit;
+            exit;  
         } else {
             echo "Erro ao cadastrar.";
         }

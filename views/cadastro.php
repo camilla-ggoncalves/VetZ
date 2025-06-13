@@ -17,7 +17,7 @@
     <button class="voltar" onclick="history.back()">VOLTAR</button>
   </header>
 
-  <!-- Conteúdo principal -->
+  <!-- Conteúdo principal -->           
   <main>
     <div class="cadastro-box">
       <h2 class="cadastro-title">Registrar-se</h2>

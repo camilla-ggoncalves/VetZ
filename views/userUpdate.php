@@ -16,7 +16,7 @@
         <link href="/Projeto/VetZ/images/logoPNG.png" rel="shortcut icon">
     </head>
 
-    <body>
+    <body>           
         <!--Begin Header-->
         <header class="header">
             <nav class="navbar navbar-default navbar-fixed-top">

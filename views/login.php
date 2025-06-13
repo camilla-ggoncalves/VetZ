@@ -24,20 +24,20 @@
       <h2 class="login-title">LOGIN</h2>
       <form action="/projeto/vetz/login" method="POST">
     <input name="email" type="email" placeholder="Email" required>
-    <input name="senha" type="senha" placeholder="Senha" required>
+    <input name="senha" type="password" placeholder="Senha" required>
     <button type="submit">Entrar</button>
 </form>  
 
       <div class="links">
         <a href="/projeto/vetz/cadastrarForm">Criar conta</a> 
         <br>
-        <a href="recuperar.php">Esqueceu a senha?</a>
+        <a href="/projeto/vetz/recuperarForm">Esqueceu a senha?</a>
       </div>
 
       <!-- Gif fofo abaixo do link -->
       <img src="https://media.giphy.com/media/3o6Zt6ML6BklcajjsA/giphy.gif" alt="Cachorro e gato animados" class="bichinho">
     </div>
-  </main>
+  </main>              
 
   <!-- Rodapé -->
   <footer class="rodape">
