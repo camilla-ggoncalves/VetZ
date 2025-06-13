@@ -151,6 +151,12 @@ if (preg_match('#^/projeto/vetz/cadastrar-vacina/(\d+)$#', $request, $matches)) 
         $controller->listFicha();
         break;
 
+    case '/projeto/vetz/update-usuario':
+        $controller = new UsuarioController();
+        $controller->updateUsuario(); // POST do formulário
+        include '../views/update_usuario.php';
+        break;
+
     default:
         http_response_code(404);
         echo "Página não encontrada: $request";

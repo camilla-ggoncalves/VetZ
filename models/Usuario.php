@@ -51,6 +51,28 @@ class Usuario { // <-- Corrigido aqui!
         $senhaHash = password_hash($novaSenha, PASSWORD_DEFAULT);
         return $stmt->execute([$senhaHash, $email]);
     }
+
+    // Método para atualizar um usuário sem apagar a imagem existente
+    public function update() {
+        $query = "UPDATE usuarios SET nome = :nome, email = :email, senha";
+    
+        if (!empty($this->imagem)) {
+            $query .= ", imagem = :imagem";
+        }
+    
+        $query .= " WHERE id = :id";
+        $stmt = $this->conn->prepare($query);
+    
+        $stmt->bindParam(':nome', $this->nome);
+        $stmt->bindParam(':email', $this->email);
+        $stmt->bindParam(':senha', $this->senha);
+        
+        if (!empty($this->imagem)) {
+            $stmt->bindParam(':imagem', $this->imagem);
+        }
+    
+        $stmt->bindParam(':id', $this->id);
+    
+        return $stmt->execute();
+    }
 }
-
-

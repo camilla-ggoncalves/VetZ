@@ -63,50 +63,47 @@ class UsuarioController {
         echo $ok ? "Senha alterada com sucesso!" : "Erro ao alterar senha.";
     }
 
-        // Método para listar todos os usuários
-    public function listUsuarios() {
+    public function listUsuario() {
         $usuario = new Usuario();
         $usuarios = $usuario->getAll();
-        include '../views/usuario_list.php'; // essa função salvou os objetos que antes eram individuais em um só (usuario -> usuarios). Depois foi incluído no usuario_list, para os dados serem exibidos na tabela 
+        include '../views/usuario_list.php';
     }
 
-    //Método para exibir o formulário de atualização
-    public function showUpdateForm($id) { //pega do usuario_list
+    public function showUpdateForm($id) {
+        $usuarioModel = new Usuario();
+        $usuario = $usuarioModel->getById($id);
+
+        if ($usuario) {
+            include '../views/update_usuario.php';
+        } else {
+            echo "Usuário não encontrado.";
+        }
+    }
+
+    public function updateUsuario($id) {
         $usuario = new Usuario();
-        $usuarioInfo = $usuario->getById($id);
-        include '../views/update_usuario.php'; // Inclua o arquivo do formulário de atualização
-    }
+        $usuario->id = $id;
+        $usuario->nome = $_POST['nome'];
+        $usuario->email = $_POST['email'];
+        $usuario->senha = $_POST['senha'];
 
-    // Método para atualizar um usuário
-    public function UpdateUsuario ($id) {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $usuario = new usuario();
-            $usuario->id = $_POST['id'];
-            $usuario->nome = $_POST['nome'];
-            $usuario->email = $_POST['email'];
-            $usuario->senha = $_POST['senha'];
+        if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
+            $extensao = pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION);
+            $nomeImagem = uniqid() . '.' . $extensao;
+            $caminhoDestino = __DIR__ . '/../uploads/' . $nomeImagem;
 
-            if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
-                $extensao = pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION);
-                $nomeImagem = uniqid() . '.' . $extensao;
-                $caminhoDestino = __DIR__ . '/../uploads/' . $nomeImagem;
-
-                if (move_uploaded_file($_FILES['imagem']['tmp_name'], $caminhoDestino)) {
-                    $usuario->imagem = $nomeImagem;
-                } else {
-                    echo "Erro ao mover a nova imagem.";
-                    return;
-                }
-            } 
-            
-
-            if ($usuario->update()) {
-                header('Location: /projeto/vetz/list-usuario');
-                exit;
-            } else {
-                echo "Erro ao atualizar o usuário.";
+            if (move_uploaded_file($_FILES['imagem']['tmp_name'], $caminhoDestino)) {
+                $usuario->imagem = $nomeImagem;
             }
+        } else {
+            $usuario->imagem = ''; // Mantenha imagem atual se não enviar nova
+        }
+
+        if ($usuario->update()) {
+            header('Location: /projeto/vetz/list-usuario');
+            exit;
+        } else {
+            echo "Erro ao atualizar o usuário.";
         }
     }
 }
-
