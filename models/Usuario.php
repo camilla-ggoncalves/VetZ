@@ -10,16 +10,24 @@ class Usuario { // <-- Corrigido aqui!
     public $senha;
 
     public function __construct() {
-        $this->conn = Conexao::conectar();
+        $database = new Database();
+        $this->conn = $database->getConnection();  
         
     }
 
-    public function cadastrar() {
-        $sql = "INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)";
-        $stmt = $this->conn->prepare($sql);
-        $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
-        return $stmt->execute([$nome, $email, $senhaHash]);
-    }
+   public function cadastrar($nome, $email, $senha) {
+    $sql = "INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)";
+    $stmt = $this->conn->prepare($sql); 
+                
+    // Hash da senha antes de salvar
+    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+
+    $stmt->bindParam(':nome', $nome);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':senha', $senhaHash);
+
+    return $stmt->execute();
+}
 
     public function autenticar($email, $senha) {
         $sql = "SELECT * FROM usuarios WHERE email = ?";
@@ -51,28 +59,41 @@ class Usuario { // <-- Corrigido aqui!
         $senhaHash = password_hash($novaSenha, PASSWORD_DEFAULT);
         return $stmt->execute([$senhaHash, $email]);
     }
+}
 
-    // Método para atualizar um usuário sem apagar a imagem existente
-    public function update() {
-        $query = "UPDATE usuarios SET nome = :nome, email = :email, senha";
-    
-        if (!empty($this->imagem)) {
-            $query .= ", imagem = :imagem";
+
+<<<<<<< HEAD
+    public function buscarPorId($id) {
+        $sql = "SELECT * FROM usuarios WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function atualizar($id, $nome, $email, $senha, $imagem = null) {
+        if ($imagem) {
+            $sql = "UPDATE usuarios SET nome = :nome, email = :email, senha = :senha, imagem = :imagem WHERE id = :id";
+        } else {
+            $sql = "UPDATE usuarios SET nome = :nome, email = :email, senha = :senha WHERE id = :id";
         }
-    
-        $query .= " WHERE id = :id";
-        $stmt = $this->conn->prepare($query);
-    
-        $stmt->bindParam(':nome', $this->nome);
-        $stmt->bindParam(':email', $this->email);
-        $stmt->bindParam(':senha', $this->senha);
-        
-        if (!empty($this->imagem)) {
-            $stmt->bindParam(':imagem', $this->imagem);
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':nome', $nome);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':senha', $senha);
+        if ($imagem) {
+            $stmt->bindParam(':imagem', $imagem);
         }
-    
-        $stmt->bindParam(':id', $this->id);
-    
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
+
+    public function excluir($id) {
+        $sql = "DELETE FROM usuarios WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         return $stmt->execute();
     }
 }
+=======
+>>>>>>> 3bcb8bb400f76675f95797e1016260537902ecf5

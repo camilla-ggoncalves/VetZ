@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login - VetZ-</title>
   <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -22,27 +22,27 @@
   <main>
     <div class="login-box">
       <h2 class="login-title">LOGIN</h2>
-      <form action="/User/login" method="POST">
+      <form action="/projeto/vetz/login" method="POST">
     <input name="email" type="email" placeholder="Email" required>
     <input name="senha" type="password" placeholder="Senha" required>
     <button type="submit">Entrar</button>
 </form>  
 
       <div class="links">
-        <a href="cadastro.php">Criar conta</a> 
+        <a href="/projeto/vetz/cadastrarForm">Criar conta</a> 
         <br>
-        <a href="recuperar.php">Esqueceu a senha?</a>
+        <a href="/projeto/vetz/recuperarForm">Esqueceu a senha?</a>
       </div>
 
       <!-- Gif fofo abaixo do link -->
       <img src="https://media.giphy.com/media/3o6Zt6ML6BklcajjsA/giphy.gif" alt="Cachorro e gato animados" class="bichinho">
     </div>
-  </main>
+  </main>              
 
   <!-- Rodapé -->
   <footer class="rodape">
     <p>© 2025 VetZ- Todos os direitos reservados.</p>
-  </footer>
+  </footer>    
 
 </body>
 </html>
