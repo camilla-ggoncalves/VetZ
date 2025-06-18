@@ -51,6 +51,24 @@ class Usuario { // <-- Corrigido aqui!
         $senhaHash = password_hash($novaSenha, PASSWORD_DEFAULT);
         return $stmt->execute([$senhaHash, $email]);
     }
+
+public function updateUsuario($id, $nome, $email, $senha, $imagem = '') {
+    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+
+    $query = "UPDATE usuarios SET nome = ?, email = ?, senha = ?";
+    $params = [$nome, $email, $senhaHash];
+
+    if ($imagem !== '') {
+        $query .= ", imagem = ?";
+        $params[] = $imagem;
+    }
+
+    $query .= " WHERE id = ?";
+    $params[] = $id;
+
+    $stmt = $this->conn->prepare($query);
+    return $stmt->execute($params);
+}
 }
 
 

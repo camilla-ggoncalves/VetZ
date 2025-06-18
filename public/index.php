@@ -12,20 +12,17 @@ require_once '../controllers/VacinacaoController.php';
 $request = $_SERVER['REQUEST_URI'];
 $request = parse_url($request, PHP_URL_PATH);
 
-// Primeiras rotas com parâmetros dinâmicos via REGEX
-// Exibir o formulário de edição (GET)
-if (preg_match('#^/projeto/vetz/update-pet/(\d+)$#', $request, $matches) && $_SERVER['REQUEST_METHOD'] === 'GET') {
-    $id = $matches[1];
-    $controller = new PetController();
-    $controller->showUpdateForm($id);
-    exit;
-}
+// Rotas com parâmetros dinâmicos via regex
 
-// Processar o update (POST)
-if (preg_match('#^/projeto/vetz/update-pet/(\d+)$#', $request, $matches) && $_SERVER['REQUEST_METHOD'] === 'POST') {
+// Pets
+if (preg_match('#^/projeto/vetz/update-pet/(\d+)$#', $request, $matches)) {
     $id = $matches[1];
     $controller = new PetController();
-    $controller->updatePet($id);
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        $controller->showUpdateForm($id);
+    } else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $controller->updatePet($id);
+    }
     exit;
 }
 
@@ -36,7 +33,27 @@ if (preg_match('#^/projeto/vetz/delete-pet/(\d+)$#', $request, $matches)) {
     exit;
 }
 
-if (preg_match('#^/projeto/vetz/editar-vacina/(\d+)$#', $request, $matches)) {
+// Vacinação
+if (preg_match('#^/projeto/vetz/pets/(\d+)/vacinas$#', $request, $matches)) {
+    $pet_id = $matches[1];
+    $controller = new VacinacaoController();
+    $controller->listarPorPet($pet_id);
+    exit;
+}
+
+if (preg_match('#^/projeto/vetz/pets/(\d+)/vacinas/cadastrar$#', $request, $matches)) {
+    $pet_id = $matches[1];
+    $controller = new VacinacaoController();
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $controller->cadastrarVacina($pet_id);
+    } else {
+        // Exibir formulário para cadastro de vacinação para o pet
+        include '../views/vacinacao_form.php';
+    }
+    exit;
+}
+
+if (preg_match('#^/projeto/vetz/vacinacao/editar/(\d+)$#', $request, $matches)) {
     $id = $matches[1];
     $controller = new VacinacaoController();
 
@@ -56,14 +73,34 @@ if (preg_match('#^/projeto/vetz/editar-vacina/(\d+)$#', $request, $matches)) {
     exit;
 }
 
-if (preg_match('#^/projeto/vetz/excluir-vacina/(\d+)$#', $request, $matches)) {
+if (preg_match('#^/projeto/vetz/vacinacao/excluir/(\d+)$#', $request, $matches)) {
     $id = $matches[1];
     $controller = new VacinacaoController();
     $controller->excluir($id);
     exit;
 }
 
-// Roteamento padrão fixo
+if (preg_match('#^/projeto/vetz/usuarios/(\d+)/pets$#', $request, $matches)) {
+    $usuario_id = $matches[1];
+    $controller = new PetController();
+    $controller->listarPorUsuario($usuario_id); // método que você ainda vai criar
+    exit;
+}
+
+
+if (preg_match('#^/projeto/vetz/update-usuario/(\d+)$#', $request, $matches)) {
+    $id = $matches[1];
+    $controller = new UsuarioController();
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        $controller->showUpdateForm($id);
+     } else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $controller->updateUsuario($id);
+    }
+    exit;
+}
+
+
+// Rotas fixas padrão
 switch ($request) {
     case '/projeto/vetz/public/':
         $controller = new PetController();
@@ -78,42 +115,6 @@ switch ($request) {
     case '/projeto/vetz/list-pet':
         $controller = new PetController();
         $controller->listPet();
-        break;
-
-    case '/projeto/vetz/update-pet':
-        $controller = new PetController();
-        $controller->updatePet(); // POST do formulário
-        break;
-
-    case '/projeto/vetz/delete-pet':
-        $controller = new PetController();
-        $controller->deletePetById(); // POST do formulário
-        break;
-
-    if (preg_match('#^/projeto/vetz/delete-pet/(\d+)$#', $request, $matches)) {
-    $id = $matches[1];
-    $controller = new PetController();
-    $controller->deletePet($id);
-    exit;
-}
-
-if (preg_match('#^/projeto/vetz/cadastrar-vacina/(\d+)$#', $request, $matches)) {
-    $id = $matches[1];
-    $controller = new VacinacaoController();
-    $controller->cadastrarVacina($id);
-    
-    exit;
-}
-
-    case '/projeto/vetz/list-vacinas':
-        $controller = new VacinacaoController();
-        $controller->listVacina();
-        break;
-
-    case '/projeto/vetz/cadastrar-vacina':
-            $controller = new VacinacaoController();
-            $controller->cadastrarVacina();
-            include '../views/vacinacao_form.php'; // Exibe o formulário de cadastro
         break;
 
     case '/projeto/vetz/cadastrar':
@@ -141,16 +142,22 @@ if (preg_match('#^/projeto/vetz/cadastrar-vacina/(\d+)$#', $request, $matches)) 
         $controller->redefinirSenha();
         break;
 
-    case '/projeto/vetz/cadastrarei':
-        $controller = new UsuarioController();
-        $controller->cadastrar();
-        break;
-
     case '/projeto/vetz/list-ficha':
-        $controller = new FichaController();
+        $controller = new FichaTecnicaController();
         $controller->listFicha();
         break;
 
+    case '/projeto/vetz/list-usuarios':
+        $controller = new UsuarioController();
+        $controller->listarUsuarios();
+        break;
+
+    case '/projeto/vetz/perfil':
+        $controller = new UsuarioController();
+        $controller->perfil();
+        break;
+
+        
     default:
         http_response_code(404);
         echo "Página não encontrada: $request";
