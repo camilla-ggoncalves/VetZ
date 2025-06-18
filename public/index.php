@@ -130,6 +130,10 @@ switch ($request) {
         (new VacinacaoController())->listVacina();
         break;
 
+    case '/projeto/vetz/list-ficha':
+        $controller = new FichaController();
+        $controller->listFicha();
+        break;
 
 
     case '/projeto/vetz/perfil-usuario':
