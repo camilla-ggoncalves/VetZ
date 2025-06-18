@@ -5,183 +5,157 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 require_once '../controllers/PetController.php';
-require_once '../controllers/UsuarioController.php'; // Importa o controlador de usuários
+require_once '../controllers/UsuarioController.php';
+require_once '../controllers/VacinacaoController.php';
 
-$request = $_SERVER['REQUEST_URI'];
-$request = parse_url($request, PHP_URL_PATH);
+$request = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-// Primeiras rotas com parâmetros dinâmicos via REGEX
-// Exibir o formulário de edição (GET)
+// ---------------- ROTAS DINÂMICAS ------------------
+
+// Editar Pet (formulário)
 if (preg_match('#^/projeto/vetz/update-pet/(\d+)$#', $request, $matches) && $_SERVER['REQUEST_METHOD'] === 'GET') {
-    $id = $matches[1];
-    $controller = new PetController();
-    $controller->showUpdateForm($id);
+    (new PetController())->showUpdateForm($matches[1]);
     exit;
 }
 
-switch ($request) { //mostra as requisições que o cliente está fazendo ao servidor, dependendo dela, muda as páginas
-   
-    case '/projeto/vetz/recuperarForm':
-    include '../views/recuperar.php';
-    break;    
+if (preg_match('#^/projeto/vetz/update-pet/(\d+)$#', $request, $matches) && $_SERVER['REQUEST_METHOD'] === 'POST') {
+    (new PetController())->showUpdateForm($matches[1]);
+    exit;
+}
 
-    case '/projeto/vetz/cadastrar':
-        $controller = new UsuarioController();
-        $controller->cadastrar();
-        break;
+if (preg_match('#^/projeto/vetz/delete-pet/(\d+)$#', $request, $matches) && $_SERVER['REQUEST_METHOD'] === 'GET') {
+    (new PetController())->deletePetById($matches[1]);
+    exit;
+}
 
-<<<<<<< HEAD
+if (preg_match('#^/projeto/vetz/delete-pet/(\d+)$#', $request, $matches) && $_SERVER['REQUEST_METHOD'] === 'POST') {
+    (new PetController())->deletePetById($matches[1]);
+    exit;
+}
+
+// Editar Vacina
 if (preg_match('#^/projeto/vetz/editar-vacina/(\d+)$#', $request, $matches)) {
-    $id = $matches[1];
     $controller = new VacinacaoController();
-
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $controller->editar(
-            $id,
-            $_POST['data'],
-            $_POST['doses'],
-            $_POST['id_vacina'],
-            $_POST['id_pet'],
-            $_POST['id_usuario']
-        );
+        $controller->editar($matches[1], $_POST['data'], $_POST['doses'], $_POST['id_vacina'], $_POST['id_pet'], $_POST['id_usuario']);
     } else {
-        $vacina = $controller->buscarPorId($id);
+        $vacina = $controller->buscarPorId($matches[1]);
         include '../views/vacinacao/editar.php';
     }
     exit;
 }
 
+// Excluir Vacina
 if (preg_match('#^/projeto/vetz/excluir-vacina/(\d+)$#', $request, $matches)) {
-    $id = $matches[1];
-    $controller = new VacinacaoController();
-    $controller->excluir($id);
+    (new VacinacaoController())->excluir($matches[1]);
     exit;
 }
 
-// Exibir o formulário de edição de usuário (GET)
+// Atualizar Usuário - Exibir formulário
 if (preg_match('#^/projeto/vetz/update-usuario/(\d+)$#', $request, $matches) && $_SERVER['REQUEST_METHOD'] === 'GET') {
-    $id = $matches[1];
-    $controller = new UsuarioController();
-    $controller->showUpdateForm($id);
+    (new UsuarioController())->showUpdateForm($matches[1]);
     exit;
 }
 
-// Processar o update de usuário (POST)
+// Atualizar Usuário - Processar POST
 if (preg_match('#^/projeto/vetz/update-usuario/(\d+)$#', $request, $matches) && $_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id = $matches[1];
-    $controller = new UsuarioController();
-    $controller->updateUsuario($id);
+    (new UsuarioController())->updateUsuario($matches[1]);
     exit;
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $controller = new UsuarioController();
-    $sucesso = $controller->atualizar($_POST, $_FILES);
-    if ($sucesso) {
-        header('Location: /projeto/vetz/perfil-usuario/' . $_POST['id']);
-        exit;
-    } else {
-        echo "Erro ao atualizar usuário.";
-    }
-} else {
-    if (!isset($_GET['id'])) {
-        echo "ID do usuário não especificado.";
-        exit;
-    }
-
-    $controller = new UsuarioController();
-    $usuario = $controller->perfil($_GET['id']);
-    require_once '../../views/usuario/update_usuario.php';
-}
-
-if (!isset($_GET['id'])) {
-    echo "ID não especificado.";
-    exit;
-}
-
-$controller = new UsuarioController();
-$sucesso = $controller->excluir($_GET['id']);
-
-if ($sucesso) {
-    echo "Usuário excluído com sucesso.";
-} else {
-    echo "Erro ao excluir usuário.";
-}
-
-if (!isset($_GET['id'])) {
-    echo "ID não especificado.";
-    exit;
-}
-
-$controller = new UsuarioController();
-$usuario = $controller->perfil($_GET['id']);
-require_once '../../views/usuario/perfil_usuario.php';
-
-
-// Roteamento padrão fixo
+// ---------------- ROTAS FIXAS ------------------
 switch ($request) {
-=======
+
+    case '/projeto/vetz/recuperarForm':
+        include '../views/recuperar.php';
+        break;
+
+    case '/projeto/vetz/cadastrar':
+        (new UsuarioController())->cadastrar();
+        break;
+
     case '/projeto/vetz/cadastrarForm':
-        $controller = new UsuarioController();
-        $controller->cadastrarForm();
+        (new UsuarioController())->cadastrarForm();
         break;
+
     case '/projeto/vetz/loginForm':
-        $controller = new UsuarioController();  
-        $controller->loginForm();
+        (new UsuarioController())->loginForm();
         break;
+
     case '/projeto/vetz/login':
-        $controller = new UsuarioController();
-        $controller->login();
+        (new UsuarioController())->login();
         break;
+
     case '/projeto/vetz/enviarCodigo':
-        $controller = new UsuarioController();
-        $controller->enviarCodigo();
+        (new UsuarioController())->enviarCodigo();
         break;
+
     case '/projeto/vetz/verificarCodigo':
-        $controller = new UsuarioController();
-        $controller->verificarCodigo();
+        (new UsuarioController())->verificarCodigo();
         break;
-    case '/projeto/vetz/redefinirSenha':    
-        $controller = new UsuarioController();
-        $controller->redefinirSenha();
+
+    case '/projeto/vetz/redefinirSenha':
+        (new UsuarioController())->redefinirSenha();
         break;
->>>>>>> 3bcb8bb400f76675f95797e1016260537902ecf5
+
     case '/projeto/vetz/public/':
-        $controller = new PetController();
-        $controller->showForm();
+        (new PetController())->showForm();
         break;
 
     case '/projeto/vetz/save-pet':
-        $controller = new PetController();
-        $controller->savePet();
+        (new PetController())->savePet();
         break;
 
     case '/projeto/vetz/list-pet':
-        $controller = new PetController();
-        $controller->listPet();
+        (new PetController())->listPet();
+        break;
+
+    case '/projeto/vetz/delete-pet':
+        (new PetController())->deletePetById();
+        break;
+
+    case '/projeto/vetz/update-pet':
+        (new PetController())->updatePet(); // Agora está certo, pois o ID vem do $_POST
         break;
         
-        case '/projeto/vetz/delete-pet':
-            require_once '../controllers/PetController.php';
-            $controller = new PetController();
-            $controller->deletePetById();
-            break;
-    
-        case (preg_match('/\/vetz\/update-pet\/(\d+)/', $request, $matches) ? true : false):
-            $id = $matches[1];
-            require_once '../controllers/PetController.php';
-            $controller = new PetController();
-            $controller->showUpdateForm($id);
-            break;
-    
-        case '/projeto/vetz/update-pet':
-            require_once '../controllers/PetController.php';
-            $controller = new PetController();
-            $controller->updatePet();
-            break;
-    case '/projeto/vetz/perfil':
-        // Exemplo: require_once '../views/perfil.php';
+    case '/projeto/vetz/cadastrar-vacina':
+        (new VacinacaoController())->exibirFormulario();
         break;
+
+    case '/projeto/vetz/salvar-vacina':
+        (new VacinacaoController())->cadastrarVacina();
+        break;
+
+    case '/projeto/vetz/list-vacinas':
+        (new VacinacaoController())->listVacina();
+        break;
+
+
+
+    case '/projeto/vetz/perfil-usuario':
+        if (!isset($_GET['id'])) {
+            echo "ID não especificado.";
+            exit;
+        }
+        $controller = new UsuarioController();
+        $usuario = $controller->perfil($_GET['id']);
+        require_once '../views/usuario/perfil_usuario.php';
+        break;
+
+    case '/projeto/vetz/excluir-usuario':
+        if (!isset($_GET['id'])) {
+            echo "ID não especificado.";
+            exit;
+        }
+        $controller = new UsuarioController();
+        $sucesso = $controller->excluir($_GET['id']);
+        echo $sucesso ? "Usuário excluído com sucesso." : "Erro ao excluir usuário.";
+        break;
+
+    case '/projeto/vetz/perfil':
+        // Adicione a lógica se necessário
+        break;
+
     default:
         http_response_code(404);
         echo "Página não encontrada: $request";

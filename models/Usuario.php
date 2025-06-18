@@ -59,10 +59,7 @@ class Usuario { // <-- Corrigido aqui!
         $senhaHash = password_hash($novaSenha, PASSWORD_DEFAULT);
         return $stmt->execute([$senhaHash, $email]);
     }
-}
 
-
-<<<<<<< HEAD
     public function buscarPorId($id) {
         $sql = "SELECT * FROM usuarios WHERE id = :id";
         $stmt = $this->conn->prepare($sql);
@@ -95,5 +92,4 @@ class Usuario { // <-- Corrigido aqui!
         return $stmt->execute();
     }
 }
-=======
->>>>>>> 3bcb8bb400f76675f95797e1016260537902ecf5
+

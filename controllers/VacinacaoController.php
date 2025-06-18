@@ -1,5 +1,6 @@
 <?php
 require_once '../models/Vacinacao.php';
+require_once '../models/Pet.php';
 
 class VacinacaoController {
 
@@ -11,31 +12,29 @@ class VacinacaoController {
     }
 
     // Cadastrar vacinação
-   public function cadastrarVacina() {
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $vacinacao = new Vacinacao();
-        $data = $_POST['data'];
-        $doses = $_POST['doses'];
-        $id_vacina = $_POST['id_vacina'];
-        $id_pet = $_POST['id_pet'];
-        $id_usuario = $_POST['id_usuario'];
+    public function cadastrarVacina() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $vacinacao = new Vacinacao();
+            $data = $_POST['data'];
+            $doses = $_POST['doses'];
+            $id_vacina = $_POST['id_vacina'];
+            $id_pet = $_POST['id_pet'];
+            // Removido id_usuario
 
-        // Agora passe os parâmetros para o método cadastrar
-        if ($vacinacao->cadastrar($data, $doses, $id_vacina, $id_pet, $id_usuario)) {
-            header('Location: /projeto/vetz/list-vacinas'); // Ou para onde quiser redirecionar
-            exit;
-        } else {
-            echo "Erro ao cadastrar a vacina.";
+            if ($vacinacao->cadastrar($data, $doses, $id_vacina, $id_pet)) {
+                header('Location: /projeto/vetz/list-vacinas');
+                exit;
+            } else {
+                echo "Erro ao cadastrar a vacina.";
+            }
         }
     }
-}
-
 
     // Editar vacinação
-    public function editar($id, $data, $doses, $id_vacina, $id_pet, $id_usuario) {
+    public function editar($id, $data, $doses, $id_vacina, $id_pet) {
         $model = new Vacinacao();
-        $model->editar($id, $data, $doses, $id_vacina, $id_pet, $id_usuario);
-        header("Location: vacinacao_list.php"); // Redireciona após editar
+        $model->editar($id, $data, $doses, $id_vacina, $id_pet);
+        header("Location: /projeto/vetz/list-vacinas");
         exit;
     }
 
@@ -43,7 +42,7 @@ class VacinacaoController {
     public function excluir($id) {
         $model = new Vacinacao();
         $model->excluir($id);
-        header("Location: vacinacao_list.php"); // Redireciona após excluir
+        header("Location: /projeto/vetz/list-vacinas");
         exit;
     }
 
@@ -53,9 +52,18 @@ class VacinacaoController {
         return $model->buscarPorId($id);
     }
 
-    // Listar vacinas disponíveis (da tabela registro_vacina)
+    // Listar vacinas disponíveis
     public function listarVacinas() {
         $model = new Vacinacao();
         return $model->listarVacinas();
+    }
+
+    public function exibirFormulario() {
+        $model = new Vacinacao();
+        $vacinas = $model->listarVacinas();
+
+        $pets = (new Pet())->listar(); // ou getAll(), dependendo do método no model Pet
+
+        include '../views/vacinacao_form.php';
     }
 }

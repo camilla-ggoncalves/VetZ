@@ -76,7 +76,31 @@ class UsuarioController {
         $ok = $model->redefinirSenha($email, $novaSenha);
         echo $ok ? "Senha alterada com sucesso!" : "Erro ao alterar senha.";
     }
-}
+
+
+
+        public function perfil($id) {
+            $usuarioModel = new Usuario();
+            return $usuarioModel->buscarPorId($id);
+        }
+
+        public function atualizar($dados, $file) {
+            $usuarioModel = new Usuario();
+
+            $imagem = null;
+            if (isset($file['imagem']) && $file['imagem']['error'] === UPLOAD_ERR_OK) {
+                $imagem = basename($file['imagem']['name']);
+                move_uploaded_file($file['imagem']['tmp_name'], '../uploads/' . $imagem);
+            }
+
+            return $usuarioModel->atualizar($dados['id'], $dados['nome'], $dados['email'], $dados['senha'], $imagem);
+        }
+
+        public function excluir($id) {
+            $usuarioModel = new Usuario();
+            return $usuarioModel->excluir($id);
+        }
+    }
 ?>
 
 
@@ -109,28 +133,4 @@ function fecharPopup() {
 }
 </script>
 
-<<<<<<< HEAD
-        public function perfil($id) {
-            $usuarioModel = new Usuario();
-            return $usuarioModel->buscarPorId($id);
-        }
 
-        public function atualizar($dados, $file) {
-            $usuarioModel = new Usuario();
-
-            $imagem = null;
-            if (isset($file['imagem']) && $file['imagem']['error'] === UPLOAD_ERR_OK) {
-                $imagem = basename($file['imagem']['name']);
-                move_uploaded_file($file['imagem']['tmp_name'], '../uploads/' . $imagem);
-            }
-
-            return $usuarioModel->atualizar($dados['id'], $dados['nome'], $dados['email'], $dados['senha'], $imagem);
-        }
-
-        public function excluir($id) {
-            $usuarioModel = new Usuario();
-            return $usuarioModel->excluir($id);
-        }
-}
-=======
->>>>>>> 3bcb8bb400f76675f95797e1016260537902ecf5
