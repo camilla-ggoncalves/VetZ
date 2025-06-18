@@ -239,3 +239,19 @@ function abrirPopup(vacina, dose) {
       bootstrap.Modal.getInstance(document.getElementById('editModal')).hide();
     }
   });
+
+
+
+
+function mostrarPopup() {
+  // Pega o e-mail digitado e coloca no popup
+  var email = document.querySelector('input[name="email"]').value;
+  document.getElementById('popup-email').value = email;
+  setTimeout(function() {
+    document.getElementById('popup-codigo').style.display = 'flex';
+  }, 500); // espera meio segundo para simular envio
+  return false; // impede o submit real do form de e-mail
+}
+function fecharPopup() {
+  document.getElementById('popup-codigo').style.display = 'none';
+}
