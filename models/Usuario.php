@@ -51,6 +51,36 @@ class Usuario { // <-- Corrigido aqui!
         $senhaHash = password_hash($novaSenha, PASSWORD_DEFAULT);
         return $stmt->execute([$senhaHash, $email]);
     }
+
+    public function buscarPorId($id) {
+        $sql = "SELECT * FROM usuarios WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function atualizar($id, $nome, $email, $senha, $imagem = null) {
+        if ($imagem) {
+            $sql = "UPDATE usuarios SET nome = :nome, email = :email, senha = :senha, imagem = :imagem WHERE id = :id";
+        } else {
+            $sql = "UPDATE usuarios SET nome = :nome, email = :email, senha = :senha WHERE id = :id";
+        }
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':nome', $nome);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':senha', $senha);
+        if ($imagem) {
+            $stmt->bindParam(':imagem', $imagem);
+        }
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
+
+    public function excluir($id) {
+        $sql = "DELETE FROM usuarios WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
 }
-
-

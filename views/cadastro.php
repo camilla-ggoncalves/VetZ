@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Cadastro - VetZ</title>
-  <link rel="stylesheet" href="css/cadastro.css" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>    
 
@@ -17,16 +17,16 @@
     <button class="voltar" onclick="history.back()">VOLTAR</button>
   </header>
 
-  <!-- Conteúdo principal -->
+  <!-- Conteúdo principal -->           
   <main>
     <div class="cadastro-box">
       <h2 class="cadastro-title">Registrar-se</h2>
-      <form action="/projeto/vetz/cadastrarei" method="POST">
-        <input name="nome" placeholder="Nome completo" required>
-        <input name="email" type="email" placeholder="Email" required>
-        <input name="senha" type="password" placeholder="Senha" required>
-        <button class="cadastrar" type="submit">CADASTRAR</button>
-      </form>
+      <form action="/projeto/vetz/cadastrar" method="POST">
+    <input type="text" name="nome" required>
+    <input type="email" name="email" required>
+    <input type="password" name="senha" required>
+    <button type="submit">Cadastrar</button>        
+</form>
     </div>
   </main>
 
