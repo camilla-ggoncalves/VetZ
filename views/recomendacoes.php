@@ -67,8 +67,8 @@
             <input placeholder="Pesquisar" type="search" class="input">
         </div>
 
-                <!-- Cole<?php foreach ($fichas as $ficha): ?>
-    <tr> Tabela de valor dentro de Book -->
+    <?php foreach ($fichas as $ficha): ?>
+    <!-- <tr> Tabela de valor dentro de Book -->
         <td><?php echo $ficha['nome_comum']; ?></td>
         <td><img src="/projeto/VetZ/views/<?php echo ($ficha['imagem']); ?>" alt="Imagem do pet" width="150"></td>
          <?php endforeach; ?>
@@ -79,7 +79,7 @@
                 </div>
             </div>
         </section>
-
+    
         <!-- Begin footer-->
         <div class="footer">
             <div class="container">
