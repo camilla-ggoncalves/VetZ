@@ -158,6 +158,15 @@
           <div id="msg-codigo" style="margin-top:10px; color:#038654;"></div>
         </div>
       </div>
+
+      <!-- Novo popup de sucesso -->
+      <div id="popup-sucesso" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.4); z-index:2000; align-items:center; justify-content:center;">
+        <div style="background:#fff; padding:30px; border-radius:15px; width:300px; margin:auto; text-align:center; position:relative;">
+          <h3 style="color:#038654;">Senha alterada com sucesso!</h3>
+          <button onclick="fecharPopupSucesso()" style="margin-top:20px; background:#038654; color:#fff; border:none; border-radius:8px; padding:10px 20px; cursor:pointer;">OK</button>
+        </div>
+      </div>
+
       <div id="msg-email" style="margin-top:15px; color:#038654;"></div>
       <div id="codigo-teste" style="margin-top:10px; color:#b00; font-weight:bold;"></div>
     </div>
@@ -175,6 +184,9 @@
   <script>
 function fecharPopup() {
   document.getElementById('popup-codigo').style.display = 'none';
+}
+function fecharPopupSucesso() {
+  document.getElementById('popup-sucesso').style.display = 'none';
 }
 
 // Envio do e-mail para receber o código
@@ -224,10 +236,10 @@ document.getElementById('form-codigo').onsubmit = function(e) {
     document.getElementById('msg-codigo').innerText = msg;
     if (msg.includes('sucesso')) {
       fecharPopup();
-      document.getElementById('msg-email').innerText = 'Senha alterada com sucesso!';
-      setTimeout(() => {
-        window.location.href = '/projeto/vetz/loginForm';
-      }, 2000); // 2 segundos
+      // Mostra o popup de sucesso
+      document.getElementById('popup-sucesso').style.display = 'flex';
+      // Opcional: fechar automaticamente após 2 segundos
+      // setTimeout(() => { fecharPopupSucesso(); }, 2000);
     }
     btn.disabled = false;
     btn.innerText = 'Trocar senha';
