@@ -30,7 +30,6 @@ switch ($request) { //mostra as requisições que o cliente está fazendo ao ser
         $controller->cadastrar();
         break;
 
-<<<<<<< HEAD
 if (preg_match('#^/projeto/vetz/editar-vacina/(\d+)$#', $request, $matches)) {
     $id = $matches[1];
     $controller = new VacinacaoController();
@@ -120,7 +119,6 @@ require_once '../../views/usuario/perfil_usuario.php';
 
 // Roteamento padrão fixo
 switch ($request) {
-=======
     case '/projeto/vetz/cadastrarForm':
         $controller = new UsuarioController();
         $controller->cadastrarForm();
@@ -145,7 +143,7 @@ switch ($request) {
         $controller = new UsuarioController();
         $controller->redefinirSenha();
         break;
->>>>>>> 3bcb8bb400f76675f95797e1016260537902ecf5
+
     case '/projeto/vetz/public/':
         $controller = new PetController();
         $controller->showForm();
@@ -186,4 +184,5 @@ switch ($request) {
         http_response_code(404);
         echo "Página não encontrada: $request";
         break;
+    }
 }

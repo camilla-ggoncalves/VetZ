@@ -10,24 +10,16 @@ class Usuario { // <-- Corrigido aqui!
     public $senha;
 
     public function __construct() {
-        $database = new Database();
-        $this->conn = $database->getConnection();  
+        $this->conn = Conexao::conectar();
         
     }
 
-   public function cadastrar($nome, $email, $senha) {
-    $sql = "INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)";
-    $stmt = $this->conn->prepare($sql); 
-                
-    // Hash da senha antes de salvar
-    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
-
-    $stmt->bindParam(':nome', $nome);
-    $stmt->bindParam(':email', $email);
-    $stmt->bindParam(':senha', $senhaHash);
-
-    return $stmt->execute();
-}
+    public function cadastrar() {
+        $sql = "INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)";
+        $stmt = $this->conn->prepare($sql);
+        $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+        return $stmt->execute([$nome, $email, $senhaHash]);
+    }
 
     public function autenticar($email, $senha) {
         $sql = "SELECT * FROM usuarios WHERE email = ?";
@@ -59,10 +51,7 @@ class Usuario { // <-- Corrigido aqui!
         $senhaHash = password_hash($novaSenha, PASSWORD_DEFAULT);
         return $stmt->execute([$senhaHash, $email]);
     }
-}
 
-
-<<<<<<< HEAD
     public function buscarPorId($id) {
         $sql = "SELECT * FROM usuarios WHERE id = :id";
         $stmt = $this->conn->prepare($sql);
@@ -95,5 +84,3 @@ class Usuario { // <-- Corrigido aqui!
         return $stmt->execute();
     }
 }
-=======
->>>>>>> 3bcb8bb400f76675f95797e1016260537902ecf5
