@@ -29,7 +29,8 @@ switch ($request) { //mostra as requisições que o cliente está fazendo ao ser
         $controller = new UsuarioController();
         $controller->cadastrar();
         break;
-        case '/projeto/vetz/cadastrarForm':
+
+    case '/projeto/vetz/cadastrarForm':
         $controller = new UsuarioController();
         $controller->cadastrarForm();
         break;
