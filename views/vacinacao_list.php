@@ -27,7 +27,7 @@
                 <th>Doses</th>
                 <th>Vacina</th>
                 <th>Pet</th>
-                <th>Tutor</th>
+                <th>Tutor</th> 
                 <th>Ações</th> <!-- Coluna reservada para os links de editar e excluir -->
             </tr>
         </thead>

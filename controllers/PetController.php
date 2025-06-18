@@ -58,35 +58,36 @@ class PetController {
         }
     }
 
-    public function updatePet($id) {
-        $pet = new Pet();
-        $pet->id = $id;
-        $pet->nome = $_POST['nome'];
-        $pet->raca = $_POST['raca'];
-        $pet->idade = $_POST['idade'];
-        $pet->porte = $_POST['porte'];
-        $pet->peso = $_POST['peso'];
-        $pet->sexo = $_POST['sexo'];
+    public function updatePet() {
+    $pet = new Pet();
+    $pet->id = $_POST['id'];
+    $pet->nome = $_POST['nome'];
+    $pet->raca = $_POST['raca'];
+    $pet->idade = $_POST['idade'];
+    $pet->porte = $_POST['porte'];
+    $pet->peso = $_POST['peso'];
+    $pet->sexo = $_POST['sexo'];
 
-        if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
-            $extensao = pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION);
-            $nomeImagem = uniqid() . '.' . $extensao;
-            $caminhoDestino = __DIR__ . '/../uploads/' . $nomeImagem;
+    if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
+        $extensao = pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION);
+        $nomeImagem = uniqid() . '.' . $extensao;
+        $caminhoDestino = __DIR__ . '/../uploads/' . $nomeImagem;
 
-            if (move_uploaded_file($_FILES['imagem']['tmp_name'], $caminhoDestino)) {
-                $pet->imagem = $nomeImagem;
-            }
-        } else {
-            $pet->imagem = ''; // Mantenha imagem atual se não enviar nova
+        if (move_uploaded_file($_FILES['imagem']['tmp_name'], $caminhoDestino)) {
+            $pet->imagem = $nomeImagem;
         }
-
-        if ($pet->update()) {
-            header('Location: /projeto/vetz/list-pet');
-            exit;
-        } else {
-            echo "Erro ao atualizar o pet.";
-        }
+    } else {
+        $pet->imagem = ''; // Mantenha imagem atual se não enviar nova
     }
+
+    if ($pet->update()) {
+        header('Location: /projeto/vetz/list-pet');
+        exit;
+    } else {
+        echo "Erro ao atualizar o pet.";
+    }
+}
+
 
     public function deletePetById($id = null) {
     if ($id) {

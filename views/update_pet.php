@@ -6,9 +6,8 @@
 </head>
 <body>
     <h1>Atualizar Pet</h1>
-    <form action="/projeto/vetz/update-pet/<?= htmlspecialchars($pet['id']) ?>" method="POST" enctype="multipart/form-data">
-
-        <input type="hidden" name="id" value="<?= htmlspecialchars($pet['id']) ?>">
+    <form action="/projeto/vetz/update-pet" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="<?= htmlspecialchars($pet['id']) ?>">
 
         <label for="nome">Nome:</label>
         <input type="text" name="nome" value="<?= htmlspecialchars($pet['nome']) ?>" required><br>
