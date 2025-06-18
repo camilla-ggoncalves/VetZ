@@ -10,13 +10,9 @@
         <title>VetZ</title>
         
         <!-- Loading Bootstrap -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-
-        <!-- Loading código CSS -->
-        <link href="css/style.css" rel="stylesheet" media="screen and (color)">
-
-        <!-- Awsome Fonts -->
-        <link href="css/all.min.css" rel="stylesheet">
+        <link href="/projeto/VetZ/views/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/projeto/VetZ/views/css/style.css" rel="stylesheet" media="screen and (color)">
+        <link href="/projeto/VetZ/views/css/all.min.css" rel="stylesheet">
 
         <!-- Favicon -->
         <link href="images/logoPNG.png" rel="shortcut icon">
@@ -71,7 +67,11 @@
             <input placeholder="Pesquisar" type="search" class="input">
         </div>
 
-                <!-- Cole o cachorro animado AQUI -->
+                <!-- Cole<?php foreach ($fichas as $ficha): ?>
+    <tr> Tabela de valor dentro de Book -->
+        <td><?php echo $ficha['nome_comum']; ?></td>
+        <td><img src="/projeto/VetZ/views/<?php echo ($ficha['imagem']); ?>" alt="Imagem do pet" width="150"></td>
+         <?php endforeach; ?>
                 
                 <!-- Fim do cachorro animado -->
 

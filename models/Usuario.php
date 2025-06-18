@@ -5,6 +5,10 @@ require_once __DIR__ . '/../models/Usuario.php';
 class Usuario { // <-- Corrigido aqui!
     private $conn;
 
+    public $nome;
+    public $email; 
+    public $senha;
+
     public function __construct() {
         $database = new Database();
         $this->conn = $database->getConnection();  

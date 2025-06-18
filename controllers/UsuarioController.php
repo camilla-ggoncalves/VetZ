@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../models/Usuario.php';
 
+require_once __DIR__ . '/../models/Usuario.php';
 
 class UsuarioController {
 
@@ -25,6 +26,7 @@ class UsuarioController {
             echo "Erro ao cadastrar.";
         }
     }
+    
 
     public function login() {
 

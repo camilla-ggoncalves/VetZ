@@ -221,24 +221,6 @@ function abrirPopup(vacina, dose) {
 	/* ========================================================== */
 	/*   Pagina de Perfil - Animal                                */
 	/* ========================================================== */
-  let currentCard = null;
-
-  function editPet(name, description) {
-    document.getElementById('petName').value = name;
-    document.getElementById('petDesc').value = description;
-
-    const cards = document.querySelectorAll('.pet-card');
-    cards.forEach(card => {
-      const h5 = card.querySelector('h5');
-      if (h5 && h5.textContent.includes(name)) {
-        currentCard = card;
-      }
-    });
-
-    const modal = new bootstrap.Modal(document.getElementById('editModal'));
-    modal.show();
-  }
-
   function deletePet(button) {
     if (confirm('Tem certeza que deseja excluir este pet?')) {
       button.closest('.pet-card').remove();

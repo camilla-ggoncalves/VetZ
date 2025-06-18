@@ -690,6 +690,29 @@ R
   margin-bottom: 20px;
 }
 
+.botaosec04 {
+  display: inline-block;
+  padding: 10px 9px;
+  margin: 0 0 5px 0;
+  text-decoration: none;
+  color: white;
+  border-radius: 5px;
+  font-family: 'Poppins-Regular';
+  font-size: 10px;
+}
+
+.editar {
+  background-color: #007BFF; /* Azul */
+}
+
+.trocar-foto {
+  background-color: #6c757d; /* Cinza */
+}
+
+.excluir {
+  background-color: #dc3545; /* Vermelho */
+}
+
 .pet-icon{
   width: 220px;
   height: 260px;
@@ -781,6 +804,53 @@ table {
   background-size: cover;
   z-index: 10;
   overflow: hidden;
+}
+
+/* PERFIL PET */
+
+.sectionPet{
+  position: relative;
+  padding-top: 108px;
+  padding-bottom: 650px;
+  background: #FEFFEF;
+  background-size: cover;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.dadoPerfilsecPet1{
+  font-family: 'Poppins-Bold';
+  font-size: 17px;
+  line-height: 26px;
+  margin: 0 10px 0 0;
+  text-align: left;
+}
+
+.dadoPerfilsecPet{
+  font-family: 'Poppins-Bold';
+  font-size: 17px;
+  line-height: 26px;
+  margin: 0 0 0 -25px;
+  text-align: left;
+}
+
+.card-img-top-perfilPet{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 0 5px 121px;
+  display: block;
+}
+
+.secPeteditar{
+  font-family: 'Poppins-Regular';
+  text-decoration: underline;
+  color: #038654;
+  font-size: 17px;
+  text-align: right;
+  text-transform: none;
+  margin: -15px 0 0 0;
 }
 
  /* ========================================================== */

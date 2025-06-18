@@ -1,17 +1,23 @@
 <?php
-// Rotas
-
-// Ativar exibição de erros para depuração
-ini_set('display_errors', 1); //ini_set =função que permite modificar a configuração interna do PHP | display_errors = permite que mostre os erros | 1 = afirmação
+// Ativar exibição de erros
+ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
-error_reporting(E_ALL); //E_ALL = exibe todos os tipos de erros
+error_reporting(E_ALL);
 
 require_once '../controllers/PetController.php';
 require_once '../controllers/UsuarioController.php'; // Importa o controlador de usuários
 
-// Lógica de roteamento
-$request = $_SERVER['REQUEST_URI']; // Requisição cliente-servidor
+$request = $_SERVER['REQUEST_URI'];
+$request = parse_url($request, PHP_URL_PATH);
 
+// Primeiras rotas com parâmetros dinâmicos via REGEX
+// Exibir o formulário de edição (GET)
+if (preg_match('#^/projeto/vetz/update-pet/(\d+)$#', $request, $matches) && $_SERVER['REQUEST_METHOD'] === 'GET') {
+    $id = $matches[1];
+    $controller = new PetController();
+    $controller->showUpdateForm($id);
+    exit;
+}
 
 switch ($request) { //mostra as requisições que o cliente está fazendo ao servidor, dependendo dela, muda as páginas
    
@@ -48,14 +54,15 @@ switch ($request) { //mostra as requisições que o cliente está fazendo ao ser
         $controller->redefinirSenha();
         break;
     case '/projeto/vetz/public/':
-        $controller = new PetController(); //A classe que contém a lógica do que fazer com as requisições (por exemplo, exibir um formulário, salvar dados, excluir registros, etc.).
+        $controller = new PetController();
         $controller->showForm();
         break;
 
     case '/projeto/vetz/save-pet':
         $controller = new PetController();
-        $controller->savePet();                    ;
+        $controller->savePet();
         break;
+
     case '/projeto/vetz/list-pet':
         $controller = new PetController();
         $controller->listPet();
@@ -84,7 +91,6 @@ switch ($request) { //mostra as requisições que o cliente está fazendo ao ser
         break;
     default:
         http_response_code(404);
-        echo $request;
-        echo "Página não encontrada.";
+        echo "Página não encontrada: $request";
         break;
- }
+}
