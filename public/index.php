@@ -63,6 +63,22 @@ if (preg_match('#^/projeto/vetz/excluir-vacina/(\d+)$#', $request, $matches)) {
     exit;
 }
 
+// Exibir o formulário de edição de usuário (GET)
+if (preg_match('#^/projeto/vetz/update-usuario/(\d+)$#', $request, $matches) && $_SERVER['REQUEST_METHOD'] === 'GET') {
+    $id = $matches[1];
+    $controller = new UsuarioController();
+    $controller->showUpdateForm($id);
+    exit;
+}
+
+// Processar o update de usuário (POST)
+if (preg_match('#^/projeto/vetz/update-usuario/(\d+)$#', $request, $matches) && $_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id = $matches[1];
+    $controller = new UsuarioController();
+    $controller->updateUsuario($id);
+    exit;
+}
+
 // Roteamento padrão fixo
 switch ($request) {
     case '/projeto/vetz/public/':
@@ -151,11 +167,8 @@ if (preg_match('#^/projeto/vetz/cadastrar-vacina/(\d+)$#', $request, $matches)) 
         $controller->listFicha();
         break;
 
-    case '/projeto/vetz/update-usuario':
-        $controller = new UsuarioController();
-        $controller->updateUsuario(); // POST do formulário
-        include '../views/update_usuario.php';
-        break;
+
+
 
     default:
         http_response_code(404);
