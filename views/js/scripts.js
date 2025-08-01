@@ -221,39 +221,57 @@ function abrirPopup(vacina, dose) {
 	/* ========================================================== */
 	/*   Pagina de Perfil - Animal                                */
 	/* ========================================================== */
-  let currentCard = null;
+  // let currentCard = null;
 
-  function editPet(name, description) {
-    document.getElementById('petName').value = name;
-    document.getElementById('petDesc').value = description;
+  // function editPet(name, description) {
+  //   document.getElementById('petName').value = name;
+  //   document.getElementById('petDesc').value = description;
 
-    const cards = document.querySelectorAll('.pet-card');
-    cards.forEach(card => {
-      const h5 = card.querySelector('h5');
-      if (h5 && h5.textContent.includes(name)) {
-        currentCard = card;
-      }
-    });
+  //   const cards = document.querySelectorAll('.pet-card');
+  //   cards.forEach(card => {
+  //     const h5 = card.querySelector('h5');
+  //     if (h5 && h5.textContent.includes(name)) {
+  //       currentCard = card;
+  //     }
+  //   });
 
-    const modal = new bootstrap.Modal(document.getElementById('editModal'));
-    modal.show();
+  //   const modal = new bootstrap.Modal(document.getElementById('editModal'));
+  //   modal.show();
+  // }
+
+  // function deletePet(button) {
+  //   if (confirm('Tem certeza que deseja excluir este pet?')) {
+  //     button.closest('.pet-card').remove();
+  //   }
+  // }
+
+  // document.getElementById('editForm').addEventListener('submit', function (e)?) {
+  //   e.preventDefault();
+  //   if (currentCard) {
+  //     const newName = document.getElementById('petName').value;
+  //     const newDesc = document.getElementById('petDesc').value;
+
+  //     currentCard.querySelector('h5').innerHTML = `<strong>${newName}</strong>`;
+  //     currentCard.querySelector('p').textContent = newDesc;
+
+  //     bootstrap.Modal.getInstance(document.getElementById('editModal')).hide();
+  //   }
+
+    /* ========================================================== */
+	/*   Termos de Uso.                             */
+	/* ========================================================== */
+  document.getElementById("botaoNext").addEventListener("click", function () {
+  const checkbox = document.getElementById("aceite");
+  const erroMsg = document.getElementById("erro-termos");
+
+  if (!checkbox.checked) {
+    erroMsg.style.display = "block";
+  } else {
+    erroMsg.style.display = "none";
+    alert("Termos aceitos. Prosseguindo...");
+    
   }
+});
 
-  function deletePet(button) {
-    if (confirm('Tem certeza que deseja excluir este pet?')) {
-      button.closest('.pet-card').remove();
-    }
-  }
 
-  document.getElementById('editForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-    if (currentCard) {
-      const newName = document.getElementById('petName').value;
-      const newDesc = document.getElementById('petDesc').value;
 
-      currentCard.querySelector('h5').innerHTML = `<strong>${newName}</strong>`;
-      currentCard.querySelector('p').textContent = newDesc;
-
-      bootstrap.Modal.getInstance(document.getElementById('editModal')).hide();
-    }
-  });

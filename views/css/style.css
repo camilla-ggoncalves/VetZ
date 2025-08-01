@@ -1095,6 +1095,156 @@ table {
  /* ========================================================== */
  /* 		           10. BEGIN PAGE TERMOS DE USO                */
  /* ========================================================== */
+.sectionTermoUso{
+  position: relative;
+  padding-top: 108px;
+  padding-bottom: 500px;
+  background: #FEFFEF;
+  background-size: cover;
+  z-index: 10;
+  overflow: hidden;
+}
+
+ body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #feffef;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.voltar {
+  text-decoration: none;
+  background-color: #7adea7;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+
+main {
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.termos-scroll {
+  width: 80%;
+  max-height: 250px;
+  overflow-y: auto;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  padding: 15px;
+  font-style: italic;
+  text-align: left;
+  font-size: 1rem;
+  color: #333;
+  margin: 0 auto;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+  font-size: 1rem;
+  color: #333;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-container input {
+  display: none;
+}
+
+.checkmark {
+  height: 24px;
+  width: 24px;
+  background-color: #fff;
+  border: 2px solid #7adea7;
+  border-radius: 6px;
+  position: relative;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.checkbox-container:hover .checkmark {
+  transform: scale(1.05);
+}
+
+.checkbox-container input:checked + .checkmark {
+  background-color: #7adea7;
+  border-color: #7adea7;
+}
+
+.checkbox-container input:checked + .checkmark::after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 3px;
+  width: 6px;
+  height: 12px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.mensagem-erro {
+  color: #d9534f;
+  font-size: 0.95rem;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.next {
+  position: absolute;
+  right: 30px;
+  bottom: 70px;
+  font-size: 1.8rem;
+  background-color: #5ab584;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.next:hover {
+  background-color: #317955;
+  transform: scale(1.1);
+}
+
+footer {
+  background-color: #7adea7;
+  color: #fff;
+  text-align: center;
+  padding: 15px 0;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-family: 'Poppins-Bold';
+  color: #038654;
+  text-align: center;
+}
+
  /* ========================================================== */
  /* 		             10. END PAGE TERMOS DE USO                */
  /* ========================================================== */
