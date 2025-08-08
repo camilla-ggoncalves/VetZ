@@ -50,6 +50,14 @@ class Vacinacao {
         return $stmt->execute();
     }
 
+    public function excluirPorPet($id_pet) {
+    $query = "DELETE FROM vacinacao WHERE id_pet = :id_pet";
+    $stmt = $this->conn->prepare($query);
+    $stmt->bindParam(':id_pet', $id_pet);
+    return $stmt->execute();
+}
+
+
     public function buscarPorId($id) {
         $query = "SELECT * FROM vacinacao WHERE id = :id";
         $stmt = $this->conn->prepare($query);
@@ -77,4 +85,11 @@ class Vacinacao {
         $stmt = $this->conn->query($sql);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function petTemVacina($id_pet) {
+    $stmt = $this->db->prepare("SELECT COUNT(*) FROM vacinacao WHERE id_pet = ?");
+    $stmt->execute([$id_pet]);
+    return $stmt->fetchColumn() > 0;
+}
+
 }

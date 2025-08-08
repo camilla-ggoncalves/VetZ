@@ -108,5 +108,14 @@ public function listar() {
     $stmt = $this->conn->query("SELECT id, nome FROM pets");
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
+public function verificarVacinas($id_pet) {
+    $stmt = $this->db->prepare("SELECT COUNT(*) FROM vacinacao WHERE id_pet = ?"); // Verifica se o pet tem vacinações
+    $stmt->execute([$id_pet]);
+    $quantidade = $stmt->fetchColumn();
+
+    return $quantidade == 0;
+}
+
 }
 
