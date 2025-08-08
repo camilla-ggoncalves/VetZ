@@ -63,6 +63,19 @@ if (preg_match('#^/projeto/vetz/update-usuario/(\d+)$#', $request, $matches) && 
     exit;
 }
 
+// Excluir Pet Vinculado às Vacinações
+elseif ($request === '/projeto/vetz/delete-pet') {
+    require_once '../controllers/PetController.php'; // Volta alguns caminhos da pasta
+    $controller = new PetController();
+
+    if (isset($_GET['id'])) { // Verifica se o ID está presente na URL
+        $controller->deletePetById($_GET['id']);
+    } else {
+        echo "ID não fornecido para exclusão.";
+    }
+}
+
+
 // ---------------- ROTAS FIXAS ------------------
 switch ($request) {
 

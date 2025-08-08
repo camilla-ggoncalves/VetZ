@@ -89,25 +89,35 @@ class PetController {
 }
 
 
-    public function deletePetById($id = null) {
-    if ($id) {
-        $pet = new Pet();
-        $pet->id = $id;
+public function deletePetById($id) {
+    $petModel = new Pet();
+    $naoTemVacinas = $petModel->verificarVacinas($id); // Criaremos esse método
 
-        if ($pet->delete()) {
-            header('Location: /projeto/vetz/list-pet');
+    if ($naoTemVacinas) {
+        $petModel->delete($id);
+    header('Location: /projeto/vetz/list-pet');
             exit;
         } else {
             echo "Erro ao excluir o pet.";
         }
-    } else {
-        echo "ID não fornecido para exclusão.";
     }
-    }
+    
     public function listarPets() {
         $model = new Pet();
         return $model->listar();  // O método listar do model retorna array dos pets
     }
+
+public function listarPetsComVacinas() {
+$petModel = new Pet();
+$pets = $petModel->listarTodos(); // lista básica
+
+$vacinacaoModel = new Vacinacao();
+
+foreach ($pets as &$pet) {
+    $pet['tem_vacina'] = $vacinacaoModel->petTemVacina($pet['id']); // true ou false
 }
-    
+unset($pet); // boa prática
+
+}
+}   
     
