@@ -59,6 +59,13 @@
             <?php endif; ?>
         </tbody>
     </table>
+<script>
+<!-- Link para excluir a vacinação selecionada, com confirmação de exclusão via JavaScript -->
+<a href="/projeto/vetz/excluir-vacina/<?= $vacina['id'] ?>" 
+   onclick="return confirm('Tem certeza que deseja excluir esta vacinação?');">
+   Excluir
+</a>
+</script>
 </body>
 </html>
 

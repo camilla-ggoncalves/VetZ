@@ -35,11 +35,22 @@
         <td>
             
             <a href="/projeto/vetz/update-pet/<?= $pet['id'] ?>">Editar</a>
-            <a href="/projeto/vetz/delete-pet/<?= $pet['id'] ?>">Excluir</a>
-        </td>
-    </tr>
-    <?php endforeach; ?>
+        <?php if ($pet['tem_vacina']) : ?>
+            <!-- Se tiver vacina, mostra aviso -->
+            <a href="/projeto/vetz/delete-pet?id=<?= $pet['id'] ?>"
+               onclick="return confirm('Excluir este pet apagará todas as vacinações dele. Quer continuar?');">
+               Excluir Pet
+            </a>
+        <?php else : ?>
+            <!-- Se não tiver vacina, exclui direto -->
+            <a href="/projeto/vetz/delete-pet?id=<?= $pet['id'] ?>">Excluir Pet</a>
+        <?php endif; ?>
+    </td>
+</tr>
+<?php endforeach; ?>
+
 </table>
+
 
 <br>
 <a href="/projeto/vetz/public">Cadastrar novo pet</a>
