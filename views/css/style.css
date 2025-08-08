@@ -690,6 +690,29 @@ R
   margin-bottom: 20px;
 }
 
+.botaosec04 {
+  display: inline-block;
+  padding: 10px 9px;
+  margin: 0 0 5px 0;
+  text-decoration: none;
+  color: white;
+  border-radius: 5px;
+  font-family: 'Poppins-Regular';
+  font-size: 10px;
+}
+
+.editar {
+  background-color: #007BFF; /* Azul */
+}
+
+.trocar-foto {
+  background-color: #6c757d; /* Cinza */
+}
+
+.excluir {
+  background-color: #dc3545; /* Vermelho */
+}
+
 .pet-icon{
   width: 220px;
   height: 260px;
@@ -781,6 +804,53 @@ table {
   background-size: cover;
   z-index: 10;
   overflow: hidden;
+}
+
+/* PERFIL PET */
+
+.sectionPet{
+  position: relative;
+  padding-top: 108px;
+  padding-bottom: 650px;
+  background: #FEFFEF;
+  background-size: cover;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.dadoPerfilsecPet1{
+  font-family: 'Poppins-Bold';
+  font-size: 17px;
+  line-height: 26px;
+  margin: 0 10px 0 0;
+  text-align: left;
+}
+
+.dadoPerfilsecPet{
+  font-family: 'Poppins-Bold';
+  font-size: 17px;
+  line-height: 26px;
+  margin: 0 0 0 -25px;
+  text-align: left;
+}
+
+.card-img-top-perfilPet{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 0 5px 121px;
+  display: block;
+}
+
+.secPeteditar{
+  font-family: 'Poppins-Regular';
+  text-decoration: underline;
+  color: #038654;
+  font-size: 17px;
+  text-align: right;
+  text-transform: none;
+  margin: -15px 0 0 0;
 }
 
  /* ========================================================== */
@@ -1259,6 +1329,120 @@ h1 {
  /* ========================================================== */
  /* 		           12. BEGIN PAGE CADASTRO                     */
  /* ========================================================== */
+
+ /* Reset e base */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f2f9ec;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Cabeçalho */
+  .topo {
+    background-color: #ffffff;
+    border-bottom: 2px solid #d8e8cc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+  }
+  
+  .logo-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .logo-box img {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .titulo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #4b7942;
+  }
+  
+  /* Botão voltar */
+  .voltar {
+    background-color: #d4f1c5;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #2d5c24;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .voltar:hover {
+    background-color: #bde9ad;
+  }
+  
+  /* Conteúdo principal */
+  main {
+    flex: 1;
+  }
+  
+  /* Caixa de cadastro */
+  .cadastro-box {
+    background-color: white;
+    width: 450px;
+    margin: 50px auto;
+    padding: 25px 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+  
+  .cadastro-title {
+    color: #3ac00a;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0 20px;
+  }
+  
+  input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .cadastrar {
+    background-color: #b6e9a4;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .cadastrar:hover {
+    background-color: #a5db93;
+  }
+  
+  /* Rodapé */
+  .rodape {
+    text-align: center;
+    padding: 15px;
+    background-color: #eaf7dc;
+    color: #4a6542;
+    font-size: 14px;
+    border-top: 1px solid #cfe8b6;
+  }  
  /* ========================================================== */
  /* 		             12. END PAGE CADASTRO                     */
  /* ========================================================== */

@@ -10,9 +10,13 @@
         <title>VetZ</title>
         
         <!-- Loading Bootstrap -->
-        <link href="/projeto/VetZ/views/css/bootstrap.min.css" rel="stylesheet">
-        <link href="/projeto/VetZ/views/css/style.css" rel="stylesheet" media="screen and (color)">
-        <link href="/projeto/VetZ/views/css/all.min.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Loading código CSS -->
+        <link href="css/style.css" rel="stylesheet" media="screen and (color)">
+
+        <!-- Awsome Fonts -->
+        <link href="css/all.min.css" rel="stylesheet">
 
         <!-- Favicon -->
         <link href="images/logoPNG.png" rel="shortcut icon">
@@ -41,7 +45,7 @@
                                 <li><a href="./curiosidades.html">CURIOSIDADES</a></li>
                                 <li><a href="./recomendacoes.html">RECOMENDAÇÕES</a></li>
                                 <li><a href="./vacinacao.html">VACINAÇÃO</a></li>
-                                <li><a class="btn btn-menu" href="./Login.html" role="button"><img class="imgperfil" src="images/perfil.svg"> SEU PERFIL</a></li>
+                                <li><a class="btn btn-menu" href="./perfil.html" role="button"><img class="imgperfil" src="images/perfil.svg"> SEU PERFIL</a></li>
                             </ul> 
                             
                         </div>
@@ -52,34 +56,62 @@
         <!--End Header-->
 
 
-
         <!-- --------------- CONTEÚDO DA PÁGINA ----------------->
 
- <!-- Conteúdo Principal -->
-        <section class="section08" id="sec08">
+        <!-- Begin Section Pet -->
+        <section class="sectionPet" id="secPet">
             <div class="container">
+                <p class="sec04phtiltle">PERFIL DO PET</p>
                 <div class="row">
-                    <div class="col-md-12">
-                        
- <!-- Barra de Pesquisa -->
-        <div class="group search-bar-vetz">
-            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><g><path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path></g></svg>
-            <input placeholder="Pesquisar" type="search" class="input">
-        </div>
+                    <div class="col-md-6">
+                        <img src="images/imgMane.png" class="card-img-top-perfilPet" alt="Mané">
+                        <a href="#" class="sec04alterar">Alterar Foto do Pet</a>
 
-    <?php foreach ($fichas as $ficha): ?>
-    <!-- <tr> Tabela de valor dentro de Book -->
-        <td><?php echo $ficha['nome_comum']; ?></td>
-        <td><img src="/projeto/VetZ/views/<?php echo ($ficha['imagem']); ?>" alt="Imagem do pet" width="150"></td>
-         <?php endforeach; ?>
-                
-                <!-- Fim do cachorro animado -->
+                    <div class="dadoPerfilsecPet1">
+                        <div class="form-group">
+                            <label for="porte">Porte</label>
+                            <input type="text" id="text" class="form-control perfil-input" value="Médio" readonly>
+                        </div>
 
+                        <div class="form-group">
+                            <label for="peso">Peso</label>
+                            <input type="number" id="peso" class="form-control perfil-input" value="15" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sexo">Sexo</label>
+                            <input type="text" id="sexo" class="form-control perfil-input" value="Macho" readonly>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="dadoPerfilsecPet">
+
+                            <div class="form-group">
+                                <label for="nome">Nome</label>
+                                <input type="text" id="nome" class="form-control perfil-input" value="Luck (Mané)" readonly>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="raca">Raça</label>
+                                <input type="text" id="raca" class="form-control perfil-input" value="Vira-Lata" readonly>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="idade">Idade</label>
+                                <input type="number" id="idade" class="form-control perfil-input" value="5" readonly>
+                            </div>
+
+                           <a href="perfil_usuario.html" ><p class="secPeteditar">Voltar ao Perfil de Usuário</p></a>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </section>
-    
+        <!-- End Section 04 -->
+
         <!-- Begin footer-->
         <div class="footer">
             <div class="container">
@@ -104,6 +136,7 @@
 
 
         <!-- Load JS =============================-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="js/jquery-3.3.1.min.js"></script>
         <script src="js/jquery.scrollTo-min.js"></script>
         <script src="js/jquery.nav.js"></script>

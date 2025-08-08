@@ -1,22 +1,3 @@
-<?php
-require_once '../models/Pet.php';
-
-$id = $_GET['id'] ?? null;
-
-if (!$id) {
-    echo "ID do pet não fornecido.";
-    exit;
-}
-
-$petModel = new Pet();
-$pet = $petModel->getById($id);
-
-if (!$pet) {
-    echo "Pet não encontrado.";
-    exit;
-}
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -26,8 +7,7 @@ if (!$pet) {
 <body>
     <h1>Atualizar Pet</h1>
     <form action="/projeto/vetz/update-pet" method="POST" enctype="multipart/form-data">
-
-        <input type="hidden" name="id" value="<?= htmlspecialchars($pet['id']) ?>">
+    <input type="hidden" name="id" value="<?= htmlspecialchars($pet['id']) ?>">
 
         <label for="nome">Nome:</label>
         <input type="text" name="nome" value="<?= htmlspecialchars($pet['nome']) ?>" required><br>
@@ -39,15 +19,23 @@ if (!$pet) {
         <input type="number" name="idade" value="<?= htmlspecialchars($pet['idade']) ?>" required><br>
 
         <label for="porte">Porte:</label>
-        <input type="text" name="porte" value="<?= htmlspecialchars($pet['porte']) ?>" required><br>
+                <select name="porte" required>
+                <option value="">Selecione</option>
+                <option value="pequeno" <?= $pet['porte'] === 'pequeno' ? 'selected' : '' ?>>Pequeno</option>
+                <option value="medio" <?= $pet['porte'] === 'medio' ? 'selected' : '' ?>>Médio</option>
+                <option value="grande" <?= $pet['porte'] === 'grande' ? 'selected' : '' ?>>Grande</option>
+            </select>    
+        <br>
+        
 
         <label for="peso">Peso:</label>
         <input type="text" name="peso" value="<?= htmlspecialchars($pet['peso']) ?>" required><br>
 
+
         <label for="sexo">Sexo:</label>
         <select name="sexo" required>
-            <option value="M" <?= $pet['sexo'] === 'Macho' ? 'selected' : '' ?>>Macho</option>
-            <option value="F" <?= $pet['sexo'] === 'Fêmea' ? 'selected' : '' ?>>Fêmea</option>
+            <option value="Macho" <?= $pet['sexo'] === 'Macho' ? 'selected' : '' ?>>Macho</option>
+            <option value="Fêmea" <?= $pet['sexo'] === 'Fêmea' ? 'selected' : '' ?>>Fêmea</option>
         </select><br>
 
         <label for="imagem">Imagem:</label>

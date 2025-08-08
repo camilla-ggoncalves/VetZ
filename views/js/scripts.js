@@ -221,6 +221,7 @@ function abrirPopup(vacina, dose) {
 	/* ========================================================== */
 	/*   Pagina de Perfil - Animal                                */
 	/* ========================================================== */
+
   // let currentCard = null;
 
   // function editPet(name, description) {
@@ -274,4 +275,34 @@ function abrirPopup(vacina, dose) {
 });
 
 
+  function deletePet(button) {
+    if (confirm('Tem certeza que deseja excluir este pet?')) {
+      button.closest('.pet-card').remove();
+    }
+  }
+
+
+
+
+      currentCard.querySelector('h5').innerHTML = `<strong>${newName}</strong>`;
+      currentCard.querySelector('p').textContent = newDesc;
+
+      bootstrap.Modal.getInstance(document.getElementById('editModal')).hide();
+    
+
+
+
+
+function mostrarPopup() {
+  // Pega o e-mail digitado e coloca no popup
+  var email = document.querySelector('input[name="email"]').value;
+  document.getElementById('popup-email').value = email;
+  setTimeout(function() {
+    document.getElementById('popup-codigo').style.display = 'flex';
+  }, 500); // espera meio segundo para simular envio
+  return false; // impede o submit real do form de e-mail
+}
+function fecharPopup() {
+  document.getElementById('popup-codigo').style.display = 'none';
+}
 

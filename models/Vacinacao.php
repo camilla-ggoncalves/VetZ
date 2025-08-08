@@ -19,28 +19,26 @@ class Vacinacao {
         }
     }
 
-    public function cadastrar($data, $doses, $id_vacina, $id_pet, $id_usuario) {
-        $query = "INSERT INTO vacinacao (data, doses, id_vacina, id_pet, id_usuario)
-                  VALUES (:data, :doses, :id_vacina, :id_pet, :id_usuario)";
+    public function cadastrar($data, $doses, $id_vacina, $id_pet) {
+        $query = "INSERT INTO vacinacao (data, doses, id_vacina, id_pet)
+                  VALUES (:data, :doses, :id_vacina, :id_pet)";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':data', $data);
         $stmt->bindParam(':doses', $doses);
         $stmt->bindParam(':id_vacina', $id_vacina);
         $stmt->bindParam(':id_pet', $id_pet);
-        $stmt->bindParam(':id_usuario', $id_usuario);
         return $stmt->execute();
     }
 
-    public function editar($id, $data, $doses, $id_vacina, $id_pet, $id_usuario) {
+    public function editar($id, $data, $doses, $id_vacina, $id_pet) {
         $query = "UPDATE vacinacao SET data = :data, doses = :doses, 
-                  id_vacina = :id_vacina, id_pet = :id_pet, id_usuario = :id_usuario
+                  id_vacina = :id_vacina, id_pet = :id_pet
                   WHERE id = :id";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':data', $data);
         $stmt->bindParam(':doses', $doses);
         $stmt->bindParam(':id_vacina', $id_vacina);
         $stmt->bindParam(':id_pet', $id_pet);
-        $stmt->bindParam(':id_usuario', $id_usuario);
         $stmt->bindParam(':id', $id);
         return $stmt->execute();
     }
@@ -60,22 +58,23 @@ class Vacinacao {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-public function listar() {
-    $sql = "SELECT 
-                v.id, 
-                v.data, 
-                v.doses, 
-                rv.vacina AS nome_vacina, 
-                p.nome AS nome_pet, 
-                u.nome AS nome_usuario
-            FROM vacinacao v
-            INNER JOIN registro_vacina rv ON v.id_vacina = rv.id_vacina
-            INNER JOIN pets p ON v.id_pet = p.id
-            INNER JOIN usuarios u ON v.id_usuario = u.id";
-    
-    $stmt = $this->conn->query($sql);
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
-
+    public function listarVacinas() {
+        $sql = "SELECT id_vacina, vacina FROM registro_vacina";
+        $stmt = $this->conn->query($sql);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function listar() {
+        $sql = "SELECT 
+                    v.id, 
+                    v.data, 
+                    v.doses, 
+                    rv.vacina AS nome_vacina, 
+                    p.nome AS nome_pet
+                FROM vacinacao v
+                INNER JOIN registro_vacina rv ON v.id_vacina = rv.id_vacina
+                INNER JOIN pets p ON v.id_pet = p.id";
+        $stmt = $this->conn->query($sql);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+}

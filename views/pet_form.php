@@ -16,7 +16,7 @@
             <input type="text" id="raca" name="raca" required><br><br>
 
             <label for="idade">Idade:</label>
-            <input type="number" id="idade" name="idade" required><br><br>
+            <input type="number" id="idade" name="idade"><br><br>
 
             <label for="porte">Porte:</label>
             <select type="text" id="porte" name="porte">

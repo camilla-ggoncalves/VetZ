@@ -85,7 +85,7 @@
                                 <label for="senha">Senha</label>
                                 <input type="password" id="senha" class="form-control perfil-input" value="Mané123" readonly>
                             </div>
-                           <a href="#" ><p class="sec04editar">Editar Perfil</p></a>
+                           <a href="update_usuario.php" ><p class="sec04editar">Editar Perfil</p></a>
                         </div>
                     </div>
                 </div>
@@ -114,10 +114,9 @@
                         </div>
                     </div>
                     <div class="ms-3 text-end">
-                        <button class="btn btn-sm btn-primary mb-2" onclick="editPet('LUCK (Mané)', 'Cachorro vira-lata, macho de porte médio, 4 anos e pelagem preta.')">Editar</button>
-                        <button class="btn btn-sm btn-secondary mb-2" onclick="changePhoto()">Trocar Foto</button>
-                        <input type="file" id="photoInput" accept="image/*" class="form-control form-control-sm d-none">
-                        <button class="btn btn-sm btn-danger" onclick="deletePet(this)">Excluir</button>
+                        <a href="./update_pet.php" class="botaosec04 editar">Editar</a>
+                        <a href="./update_pet.php" class="botaosec04 trocar-foto">Trocar Foto</a>
+                        <a class="botaosec04 excluir" onclick="deletePet(this)">Excluir</a>
                     </div>
                 </div>
 
@@ -134,95 +133,15 @@
                             <p class="descricaoAnimal"><Strong>Peso:</Strong> 6 kg </p>
                         </div>
                         <div class="ms-3 text-end">
-                            <button class="btn btn-sm btn-primary mb-2" onclick="editPet('SHAKIRA', 'Cadela Lhasa Apso, fêmea de porte pequeno, 15 anos e pelagem branco e preto.')">Editar</button>
-                            <button class="btn btn-sm btn-secondary mb-2" onclick="changePhoto()">Trocar Foto</button>
-                            <input type="file" id="photoInput" accept="image/*" class="form-control form-control-sm d-none">
-                            <button class="btn btn-sm btn-danger" onclick="deletePet(this)">Excluir</button>
+                            <a href="./update_pet.php" class="botaosec04 editar">Editar</a>
+                            <a href="./update_pet.php" class="botaosec04 trocar-foto">Trocar Foto</a>
+                            <a class="botaosec04 excluir" onclick="deletePet(this)">Excluir</a>
                         </div>
                     </div>
                 </div>
-
-            <!-- Modal de Edição -->
-            <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                <div class="modal-content">
-                    <form id="editForm">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="editModalLabel">Editar Informações do Pet</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            <label for="petName" class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="petName" required>
-                        </div>
-                        
-                        <div class="mb-3">
-                            <label for="petDesc" class="form-label">Descrição</label>
-                            <textarea class="form-control" id="petDesc" rows="3" required></textarea>
-                        </div>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-success">Salvar</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    </div>
-                    </form>
-                </div>
-                </div>
-            </div>
         </section>
 
         <!-- End Section 04.1 -->
-
-        <section>
-                @if(session('success'))
-                <p>{{ session('success') }}</p>
-            @endif
-
-            <table>
-                <tr class="tabelaAnimal">
-                    <th class="tableDesc">Nome</th>
-                    <th class="tableDesc">Raça</th>
-                    <th class="tableDesc">Sexo</th>
-                    <th class="tableDesc">Idade</th>
-                    <th class="tableDesc">Porte</th>
-                    <th class="tableDesc">Peso</th>
-                    <th class="tableDesc">Foto</th>
-                    <th class="tableDesc">Ações</th>
-                </tr>
-
-                @foreach ($pacientes as $p)
-                    <tr class="tabelaInfo">
-                        <td>{{ $p->nome }}</td>
-                        <td>{{ $p->raca }}</td>
-                        <td>{{ $p->sexo }}</td>
-                        <td>{{ $p->idade }}</td>
-                        <td>{{ $p->porte }}</td>
-                        <td>{{ $p->peso }}</td>
-                        <td>
-                            @if($p->foto)
-                                <img src="{{ asset('storage/' . $p->foto) }}" width="60">
-                            @else
-                                <span style="color: #888;">Sem foto</span>
-                            @endif
-                        </td>
-                        <td>
-                            <a href="{{ route('animais.edit', $p) }}" class="edit-btn">Editar</a>
-                            <form action="{{ route('animais.destroy', $p) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" onclick="return confirm('Tem certeza?')">Excluir</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-            </table>
-            
-            <a href="{{ route('animais.create') }}">Novo Animal</a>
-
-        </section>
-
 
         <!-- Begin footer-->
         <div class="footer">
