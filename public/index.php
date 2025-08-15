@@ -143,10 +143,10 @@ switch ($request) {
         (new VacinacaoController())->listVacina();
         break;
 
-    case '/projeto/vetz/list-ficha':
-        $controller = new FichaController();
-        $controller->listFicha();
-        break;
+    // case '/projeto/vetz/list-ficha':
+    //     $controller = new FichaController();
+    //     $controller->listFicha();
+    //     break;
 
 
     case '/projeto/vetz/perfil-usuario':
@@ -173,8 +173,16 @@ switch ($request) {
         // Adicione a lógica se necessário
         break;
 
+    case '/projeto/vetz/pets-exibir':
+        include '../views/exibicao_pets.html';
+        break;
+
     default:
         http_response_code(404);
         echo "Página não encontrada: $request";
         break;
 }
+
+
+
+
