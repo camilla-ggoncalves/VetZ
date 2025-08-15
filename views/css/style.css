@@ -259,7 +259,7 @@ R
   font-size: 40px;
   line-height: 52px;
   margin: 0;
-  padding: 68px 0 10px 0;
+  padding: 68px 0 50px 0;
   text-align: center;
   color: #038654;
 }
@@ -327,7 +327,7 @@ R
   background-clip: border-box;
   border: none;
   border-radius: .25rem;
-  margin: -236px 0 0 615px;
+  margin: -256px 0 0 615px;
  }
  
  .card1-4 {
@@ -343,7 +343,7 @@ R
   border: none;
   border-radius: .25rem;
   align-content: flex-end;
-  margin: -236px 0 0 920px;
+  margin: -256px 0 0 920px;
  }
 
 .card-img-top1 {
