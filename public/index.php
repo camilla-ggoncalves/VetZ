@@ -79,6 +79,7 @@ elseif ($request === '/projeto/vetz/delete-pet') {
 // ---------------- ROTAS FIXAS ------------------
 switch ($request) {
 
+    // Guilherme A
     case '/projeto/vetz/recuperarForm':
         include '../views/recuperar.php';
         break;
@@ -111,6 +112,7 @@ switch ($request) {
         (new UsuarioController())->redefinirSenha();
         break;
 
+    // Camilla chefona
     case '/projeto/vetz/public/':
         (new PetController())->showForm();
         break;
@@ -130,7 +132,7 @@ switch ($request) {
     case '/projeto/vetz/update-pet':
         (new PetController())->updatePet(); // Agora está certo, pois o ID vem do $_POST
         break;
-        
+    
     case '/projeto/vetz/cadastrar-vacina':
         (new VacinacaoController())->exibirFormulario();
         break;
@@ -148,7 +150,7 @@ switch ($request) {
     //     $controller->listFicha();
     //     break;
 
-
+        // Isadora
     case '/projeto/vetz/perfil-usuario':
         if (!isset($_GET['id'])) {
             echo "ID não especificado.";
