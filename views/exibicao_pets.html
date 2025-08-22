@@ -66,14 +66,509 @@
             <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><g><path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path></g></svg>
             <input placeholder="Pesquisar" type="search" class="input">
         </div>
-
-    <?php foreach ($fichas as $ficha): ?>
-    <!-- <tr> Tabela de valor dentro de Book -->
-        <td><?php echo $ficha['nome_comum']; ?></td>
-        <td><img src="/projeto/VetZ/views/<?php echo ($ficha['imagem']); ?>" alt="Imagem do pet" width="150"></td>
-         <?php endforeach; ?>
-                
                 <!-- Fim do cachorro animado -->
+                 <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raças de Pets</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Raças de Pets</h1>
+
+  <div class="scroll-container">
+    <div class="grid-container">
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=1" alt="Affenpinscher">
+        <p>Affenpinscher</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=2" alt="Afghan Hound">
+        <p>Afghan Hound</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=3" alt="Airedale Terrier">
+        <p>Airedale Terrier</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=4" alt="Akbash">
+        <p>Akbash</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=5" alt="Akita">
+        <p>Akita</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=6" alt="Akita Americano">
+        <p>Akita Americano</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=7" alt="American Bully">
+        <p>American Bully</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=8" alt="Beagle">
+        <p>Beagle</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=9" alt="Border Collie">
+        <p>Border Collie</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=10" alt="Boxer">
+        <p>Boxer</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=11" alt="Bulldog Inglês">
+        <p>Bulldog Inglês</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=12" alt="Bulldog Francês">
+        <p>Bulldog Francês</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=13" alt="Cocker Spaniel">
+        <p>Cocker Spaniel</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=14" alt="Dachshund">
+        <p>Dachshund</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=15" alt="Doberman">
+        <p>Doberman</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=16" alt="Golden Retriever">
+        <p>Golden Retriever</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=17" alt="Husky Siberiano">
+        <p>Husky Siberiano</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=18" alt="Labrador Retriever">
+        <p>Labrador Retriever</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=19" alt="Maltês">
+        <p>Maltês</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=20" alt="Pastor Alemão">
+        <p>Pastor Alemão</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=21" alt="Pinscher">
+        <p>Pinscher</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=22" alt="Poodle">
+        <p>Poodle</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=23" alt="Rottweiler">
+        <p>Rottweiler</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=24" alt="Shih Tzu">
+        <p>Shih Tzu</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=25" alt="Schnauzer">
+        <p>Schnauzer</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=26" alt="Spitz Alemão">
+        <p>Spitz Alemão</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=27" alt="Yorkshire Terrier">
+        <p>Yorkshire Terrier</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=28" alt="Persa">
+        <p>Persa</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=29" alt="Maine Coon">
+        <p>Maine Coon</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=30" alt="Siamês">
+        <p>Siamês</p>
+      </div>
+       <div class="card">
+        <img src="https://placedog.net/400/300?id=1" alt="Affenpinscher">
+        <p>Affenpinscher</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=2" alt="Afghan Hound">
+        <p>Afghan Hound</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=3" alt="Airedale Terrier">
+        <p>Airedale Terrier</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=4" alt="Akbash">
+        <p>Akbash</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=5" alt="Akita">
+        <p>Akita</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=6" alt="Akita Americano">
+        <p>Akita Americano</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=7" alt="American Bully">
+        <p>American Bully</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=8" alt="Beagle">
+        <p>Beagle</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=9" alt="Border Collie">
+        <p>Border Collie</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=10" alt="Boxer">
+        <p>Boxer</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=11" alt="Bulldog Inglês">
+        <p>Bulldog Inglês</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=12" alt="Bulldog Francês">
+        <p>Bulldog Francês</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=13" alt="Cocker Spaniel">
+        <p>Cocker Spaniel</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=14" alt="Dachshund">
+        <p>Dachshund</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=15" alt="Doberman">
+        <p>Doberman</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=16" alt="Golden Retriever">
+        <p>Golden Retriever</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=17" alt="Husky Siberiano">
+        <p>Husky Siberiano</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=18" alt="Labrador Retriever">
+        <p>Labrador Retriever</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=19" alt="Maltês">
+        <p>Maltês</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=20" alt="Pastor Alemão">
+        <p>Pastor Alemão</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=21" alt="Pinscher">
+        <p>Pinscher</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=22" alt="Poodle">
+        <p>Poodle</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=23" alt="Rottweiler">
+        <p>Rottweiler</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=24" alt="Shih Tzu">
+        <p>Shih Tzu</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=25" alt="Schnauzer">
+        <p>Schnauzer</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=26" alt="Spitz Alemão">
+        <p>Spitz Alemão</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=27" alt="Yorkshire Terrier">
+        <p>Yorkshire Terrier</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=28" alt="Persa">
+        <p>Persa</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=29" alt="Maine Coon">
+        <p>Maine Coon</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=30" alt="Siamês">
+        <p>Siamês</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=1" alt="Affenpinscher">
+        <p>Affenpinscher</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=2" alt="Afghan Hound">
+        <p>Afghan Hound</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=3" alt="Airedale Terrier">
+        <p>Airedale Terrier</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=4" alt="Akbash">
+        <p>Akbash</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=5" alt="Akita">
+        <p>Akita</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=6" alt="Akita Americano">
+        <p>Akita Americano</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=7" alt="American Bully">
+        <p>American Bully</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=8" alt="Beagle">
+        <p>Beagle</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=9" alt="Border Collie">
+        <p>Border Collie</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=10" alt="Boxer">
+        <p>Boxer</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=11" alt="Bulldog Inglês">
+        <p>Bulldog Inglês</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=12" alt="Bulldog Francês">
+        <p>Bulldog Francês</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=13" alt="Cocker Spaniel">
+        <p>Cocker Spaniel</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=14" alt="Dachshund">
+        <p>Dachshund</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=15" alt="Doberman">
+        <p>Doberman</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=16" alt="Golden Retriever">
+        <p>Golden Retriever</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=17" alt="Husky Siberiano">
+        <p>Husky Siberiano</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=18" alt="Labrador Retriever">
+        <p>Labrador Retriever</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=19" alt="Maltês">
+        <p>Maltês</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=20" alt="Pastor Alemão">
+        <p>Pastor Alemão</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=21" alt="Pinscher">
+        <p>Pinscher</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=22" alt="Poodle">
+        <p>Poodle</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=23" alt="Rottweiler">
+        <p>Rottweiler</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=24" alt="Shih Tzu">
+        <p>Shih Tzu</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=25" alt="Schnauzer">
+        <p>Schnauzer</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=26" alt="Spitz Alemão">
+        <p>Spitz Alemão</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=27" alt="Yorkshire Terrier">
+        <p>Yorkshire Terrier</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=28" alt="Persa">
+        <p>Persa</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=29" alt="Maine Coon">
+        <p>Maine Coon</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=30" alt="Siamês">
+        <p>Siamês</p>
+      </div>
+       <div class="card">
+        <img src="https://placedog.net/400/300?id=1" alt="Affenpinscher">
+        <p>Affenpinscher</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=2" alt="Afghan Hound">
+        <p>Afghan Hound</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=3" alt="Airedale Terrier">
+        <p>Airedale Terrier</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=4" alt="Akbash">
+        <p>Akbash</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=5" alt="Akita">
+        <p>Akita</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=6" alt="Akita Americano">
+        <p>Akita Americano</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=7" alt="American Bully">
+        <p>American Bully</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=8" alt="Beagle">
+        <p>Beagle</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=9" alt="Border Collie">
+        <p>Border Collie</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=10" alt="Boxer">
+        <p>Boxer</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=11" alt="Bulldog Inglês">
+        <p>Bulldog Inglês</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=12" alt="Bulldog Francês">
+        <p>Bulldog Francês</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=13" alt="Cocker Spaniel">
+        <p>Cocker Spaniel</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=14" alt="Dachshund">
+        <p>Dachshund</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=15" alt="Doberman">
+        <p>Doberman</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=16" alt="Golden Retriever">
+        <p>Golden Retriever</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=17" alt="Husky Siberiano">
+        <p>Husky Siberiano</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=18" alt="Labrador Retriever">
+        <p>Labrador Retriever</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=19" alt="Maltês">
+        <p>Maltês</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=20" alt="Pastor Alemão">
+        <p>Pastor Alemão</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=21" alt="Pinscher">
+        <p>Pinscher</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=22" alt="Poodle">
+        <p>Poodle</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=23" alt="Rottweiler">
+        <p>Rottweiler</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=24" alt="Shih Tzu">
+        <p>Shih Tzu</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=25" alt="Schnauzer">
+        <p>Schnauzer</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=26" alt="Spitz Alemão">
+        <p>Spitz Alemão</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=27" alt="Yorkshire Terrier">
+        <p>Yorkshire Terrier</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=28" alt="Persa">
+        <p>Persa</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=29" alt="Maine Coon">
+        <p>Maine Coon</p>
+      </div>
+      <div class="card">
+        <img src="https://placedog.net/400/300?id=30" alt="Siamês">
+        <p>Siamês</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+
+
+                
 
                     </div>
                 </div>
