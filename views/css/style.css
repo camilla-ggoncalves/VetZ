@@ -861,17 +861,16 @@ table {
  /* 		           06. BEGIN PAGE CURIOSIDADES                 */
  /* ========================================================== */
 
-
-#video-list {
+.video-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(2, minmax(250px, 1fr));
   gap: 20px;
   list-style: none;
   padding: 25px;
   margin: 0;
 }
 
-#video-list img {
+.video-grid img {
   max-width: 100%;
   height: auto;
   display: block;
