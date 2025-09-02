@@ -14,29 +14,28 @@ Sequência do CSS Da Página: (use esses nomes a pesquisa rápida no código.)
     02. Section 03
 05. BEGIN PAGE PERFIL
     01. Section 04
-    02. Section 04.1
+    02. Section 05
 06. BEGIN PAGE CURIOSIDADES
-    01. Section 05
-07. BEGIN PAGE VACINAÇÃO CÃO
     01. Section 06
-08. BEGIN PAGE VACINAÇÃO GATO
+07. BEGIN PAGE VACINAÇÃO
     01. Section 07
-09. BEGIN PAGE RECOMENDAÇÕES
+08. BEGIN PAGE VACINAÇÃO CÃO
     01. Section 08
-10. BEGIN PAGE TERMOS DE USO
+09. BEGIN PAGE VACINAÇÃO GATO
     01. Section 09
-11. BEGIN PAGE REGISTRAR
+10. BEGIN PAGE RECOMENDAÇÕES
     01. Section 10
-12. BEGIN PAGE CADASTRO
+11. BEGIN PAGE TERMOS DE USO
     01. Section 11
-13. BEGIN PAGE LOGIN
+12. BEGIN PAGE REGISTRAR
     01. Section 12
-ADICIONAR 07-VACINAÇÃO
-->alteração de páginas
+13. BEGIN PAGE CADASTRO
+    01. Section 13
+14. BEGIN PAGE LOGIN
+    01. Section 14
     
-14. Footer
-15. Media Queries
-
+15. Footer
+16. Media Queries
 
 
 /* ========================================================== */
@@ -92,14 +91,12 @@ a:hover{
  z-index: 9999;
  padding:4px 0;
 }
-
 .navbar-brand{
  font-family: 'Poppins-Regular';
  font-size: 28px;
  font-weight: 100;
  color: #000!important;
 }
-
 .navbar-toggler {
  padding: 5px 10px;
  font-size: 24px;
@@ -108,31 +105,26 @@ a:hover{
  border-radius: 6px;
  border: 1px solid #FEFFEF;
 }
-
 .navbar-toggler-icon {
  width: 1.3em;
  height: 1.3em;
 }
-
 .navbar-toggler-icon i {
  color: #FEFFEF;
  vertical-align: middle;
 }
-
 .navbar-fixed-top {
  position: absolute!important;
  background-color: #FEFFEF!important;
  box-shadow: 0px 0px 25px 0px #2125295c !important; border-bottom: none;
  transition: background-color 0.25s ease 0s;
 }
-
 .navbar-fixed-top.opaque {
  position: fixed!important;
  background-color: #FEFFEF!important;
  border-bottom: 0px solid #FEFFEF;
  transition: all 0.25s ease-in-out 0s;
 }
-
 .navbar-fixed-top .navbar-nav > li > a, .navbar-fixed-top .navbar-nav > li > a:hover{
  color: #000!important;
  -webkit-transition: all 0.5s ease;
@@ -162,7 +154,7 @@ a:hover{
     align-items: center;
     justify-content: space-around;
 }
-a{
+.navbar a{
   color: #000 !important;
   font-size: 16px !important;
   line-height: 10px !important;
@@ -179,7 +171,6 @@ a{
  -o-transition: all 0.5s ease;
  transition: all 0.5s ease;
 }
-
 .navbar-fixed-top.opaque .navbar-nav .current a {
  color:#000!important;
  -webkit-transition: all 0.5s ease;
@@ -187,7 +178,6 @@ a{
  -o-transition: all 0.5s ease;
  transition: all 0.5s ease;
 }
-
 .navbar-fixed-top .navbar-nav > li > a.discover-btn {
  border: 1px solid #dd0d44;
  color: #dd0d44!important;
@@ -198,13 +188,11 @@ a{
  margin-right: 15px;
  font-family:  'Poppins-Regular';
 }
-
 .navbar-fixed-top .navbar-nav > li > a.discover-btn:hover {
  color: #000!important;
  background: #55974A;
  border: 1px solid #55974A;
 }
-
 .navbar-expand-lg .navbar-collapse {
  display: flex !important;
  flex-basis: auto;
@@ -213,7 +201,6 @@ a{
 .imgperfil{
  width: 28%;
 }
-
 .btn-menu, .btn-menu:hover {
  color: #000;
  background-color: #FEFFEF;
@@ -223,9 +210,6 @@ a{
  font-family: 'Poppins-Regular';
 
 }
-
-R
-
 .left-menu{
    margin-right: 32px;
 }
@@ -265,7 +249,7 @@ R
 }
 
 .sec01ph1{
-  font-family: 'poppins-Regular';
+  font-family: 'Poppins-Regular';
   font-size: 17px;
   line-height: 26px;
   text-align: justify;
@@ -398,7 +382,7 @@ R
 }
  
  .sec02ph1 {
-  font-family: 'poppins-Regular';
+  font-family: 'Poppins-Regular';
   font-size: 1rem;
   line-height: 26px;
   text-align: justify;
@@ -408,7 +392,7 @@ R
 }
  
  /* .sec02ph2{
-  font-family: 'poppins-Regular';
+  font-family: 'Poppins-Regular';
   font-size: 17px;
   line-height: 26px;
   text-align: left;
@@ -526,29 +510,6 @@ R
     margin: 0;
     text-align: center;
 }
-
-/* Responsividade para telas menores */
-@media screen and (max-width: 768px) {
-    .grid-container,
-    .grid-container-line1,
-    .grid-container-line2
-     {
-        grid-template-columns: repeat(2, 1fr); /* 2 colunas em telas menores */
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .grid-container,
-    .grid-container-line1,
-    .grid-container-line2 {
-        grid-template-columns: 1fr; /* 1 coluna em telas muito pequenas */
-    }
-
-    .grid-item img {
-        width: 120px; /* Reduz o tamanho das imagens */
-        height: 120px;
-    }
-}
  /*End Section 03*/
 
  /* ========================================================== */
@@ -629,7 +590,7 @@ R
 }
 /* End section 04 */
 
-/* Begin Section 04.1 */
+/* Begin Section 5*/
 .section04-1 {
   position: relative;
   padding-top: 108px;
@@ -722,7 +683,7 @@ R
   display: block;
 }
 
-.pet-icon {
+.pet-icon-img {
   font-size: 40px;
   margin-right: 15px;
 }
@@ -852,6 +813,7 @@ table {
   text-transform: none;
   margin: -15px 0 0 0;
 }
+/* End Section 5 */
 
  /* ========================================================== */
  /* 		             05. END PAGE PERFIL                       */
@@ -860,7 +822,7 @@ table {
  /* ========================================================== */
  /* 		           06. BEGIN PAGE CURIOSIDADES                 */
  /* ========================================================== */
-
+/* Begin Section 6 */
 .video-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(250px, 1fr));
@@ -888,15 +850,16 @@ table {
   line-height: 1.4;
   text-align: justify;
 }
+/* End Section 6 */
 
  /* ========================================================== */
  /* 		             06. END PAGE CURIOSIDADES                 */
  /* ========================================================== */
 
  /* ========================================================== */
- /* 		             06. BEGIN PAGE VACINAÇÃO                  */
+ /* 		               07. PAGE VACINAÇÃO                      */
  /* ========================================================== */
-/*Begin Section 13*/
+/*Begin Section 7*/
 .section13{
   position: relative;
   padding-top: 108px;
@@ -906,16 +869,16 @@ table {
   z-index: 10;
   overflow: hidden;
 }
-
-/*End Section 13*/
- /* ========================================================== */
- /* 		             06. END PAGE VACINAÇÃO                    */
- /* ========================================================== */
+/*End Section 7*/
 
  /* ========================================================== */
- /* 		           07. BEGIN PAGE VACINAÇÃO CÃO                */
+ /* 		             07. END PAGE VACINAÇÃO                    */
  /* ========================================================== */
-/*Begin Section 06*/
+
+ /* ========================================================== */
+ /* 		           08. BEGIN PAGE VACINAÇÃO CÃO                */
+ /* ========================================================== */
+/*Begin Section 08*/
 .section06{
   position: relative;
   padding-top: 108px;
@@ -947,16 +910,16 @@ table {
   font-size: 16px;
   text-align: center;
 }
-/*End Section 06*/
+/*End Section 08*/
 
  /* ========================================================== */
- /* 		             07. END PAGE VACINAÇÃO CÃO                */
+ /* 		             08. END PAGE VACINAÇÃO CÃO                */
  /* ========================================================== */
 
  /* ========================================================== */
- /* 		           08. BEGIN PAGE VACINAÇÃO GATO               */
+ /* 		           09. BEGIN PAGE VACINAÇÃO GATO               */
  /* ========================================================== */
-/*Begin Section 07*/
+/*Begin Section 09*/
 .section07{
   position: relative;
   padding-top: 108px;
@@ -965,16 +928,6 @@ table {
   background-size: cover;
   z-index: 10;
   overflow: hidden;
-}
-
-.sec07titleh2{
-  font-family: 'Poppins-Bold';
-  font-size: 26px;
-  line-height: 52px;
-  padding: 0px 0 35px 0;
-  text-align: center;
-  color: #038654;
-  margin: 0 auto;
 }
 
 .sec07titleh2{
@@ -1075,17 +1028,16 @@ table {
   opacity: 0 !important; /* Remove o escurecimento */
   background-color: transparent !important;
 }
-
-
-/*End Section 07*/
- /* ========================================================== */
- /* 		             08. END PAGE VACINAÇÃO GATO               */
- /* ========================================================== */
+/*End Section 09*/
 
  /* ========================================================== */
- /* 		           09. BEGIN PAGE RECOMENDAÇÕES                */
+ /* 		             09. END PAGE VACINAÇÃO GATO               */
  /* ========================================================== */
 
+ /* ========================================================== */
+ /* 		           10. BEGIN PAGE RECOMENDAÇÕES                */
+ /* ========================================================== */
+/* Begin Section 10 */
  /* Centralizar o cachorro animado na seção de recomendações */
 .section08 {
   position: relative;
@@ -1155,15 +1107,16 @@ table {
   width: 1rem;
   height: 1rem;
 }
-
+/* End Section 10 */
  
  /* ========================================================== */
- /* 		             09. END PAGE RECOMENDAÇÕES                */
+ /* 		             10. END PAGE RECOMENDAÇÕES                */
  /* ========================================================== */
 
  /* ========================================================== */
- /* 		           10. BEGIN PAGE TERMOS DE USO                */
+ /* 		           11. BEGIN PAGE TERMOS DE USO                */
  /* ========================================================== */
+/* Begin Section 11 */
 .sectionTermoUso{
   position: relative;
   padding-top: 108px;
@@ -1313,23 +1266,27 @@ h1 {
   color: #038654;
   text-align: center;
 }
+/* End Section 11 */
 
  /* ========================================================== */
- /* 		             10. END PAGE TERMOS DE USO                */
- /* ========================================================== */
-
- /* ========================================================== */
- /* 		           11. BEGIN PAGE REGISTRAR                    */
- /* ========================================================== */
- /* ========================================================== */
- /* 		             11. END PAGE REGISTRAR                    */
+ /* 		             11. END PAGE TERMOS DE USO                */
  /* ========================================================== */
 
  /* ========================================================== */
- /* 		           12. BEGIN PAGE CADASTRO                     */
+ /* 		           12. BEGIN PAGE REGISTRAR                    */
+ /* ========================================================== */
+/* Begin Section 12 */
+/* End Section 12 */
+
+ /* ========================================================== */
+ /* 		             12. END PAGE REGISTRAR                    */
  /* ========================================================== */
 
- /* Reset e base */
+ /* ========================================================== */
+ /* 		           13. BEGIN PAGE CADASTRO                     */
+ /* ========================================================== */
+/* Begin Section 13 */
+/* Reset e base */
 html, body {
     height: 100%;
     margin: 0;
@@ -1441,14 +1398,17 @@ html, body {
     color: #4a6542;
     font-size: 14px;
     border-top: 1px solid #cfe8b6;
-  }  
+  }
+/* End Section 13 */
+
  /* ========================================================== */
- /* 		             12. END PAGE CADASTRO                     */
+ /* 		             13. END PAGE CADASTRO                     */
  /* ========================================================== */
 
-/* ========================================================== */
- /* 		            13. BEGIN PAGE LOGIN                       */
  /* ========================================================== */
+ /* 		            14. BEGIN PAGE LOGIN                       */
+ /* ========================================================== */
+/* Begin Section 14 */
  /* Reset e base */
  html, body {
   height: 100%;
@@ -1592,74 +1552,16 @@ input[type="password"] {
   font-size: 14px;
   border-top: 1px solid #cfe8b6;
 }
-
-/* Responsividade */
-@media (max-width: 768px) {
-  .topo {
-      flex-direction: column;
-      align-items: flex-start;
-  }
-
-  .voltar {
-      width: 100%;
-      margin-top: 10px;
-  }
-
-  .login-box {
-      padding: 20px;
-  }
-
-  .login-title {
-      font-size: 1.25rem;
-  }
-
-  input[type="email"],
-  input[type="password"],
-  .entrar {
-      font-size: 0.9rem;
-  }
-
-  .bichinho {
-      max-width: 120px;
-  }
-}
-
-@media (max-width: 480px) {
-  .topo {
-      padding: 10px;
-  }
-
-  .titulo {
-      font-size: 18px;
-  }
-
-  .login-box {
-      padding: 15px;
-  }
-
-  .login-title {
-      font-size: 1rem;
-  }
-
-  input[type="email"],
-  input[type="password"],
-  .entrar {
-      font-size: 0.8rem;
-  }
-
-  .bichinho {
-      max-width: 100px;
-  }
-}
- /* ========================================================== */
- /*                     13. END PAGE LOGIN                     */
- /* ========================================================== */
- /* ========================================================== */
- /*                     13. BEGIN PAGE RECUPERAR                 */
- /* ========================================================== */
+/* End Section 14 */
 
  /* ========================================================== */
- /* 			             14. BEGIN FOOTER                         */
+ /*                     14. END PAGE LOGIN                     */
+ /* ========================================================== */
+
+
+
+ /* ========================================================== */
+ /* 			             15. BEGIN FOOTER                         */
  /* ========================================================== */
  .footer{
   padding: 12px 0 10px 0;
@@ -1685,11 +1587,12 @@ input[type="password"] {
 }
 
  /* ========================================================== */
- /*                     14. END FOOTER                         */
+ /*                     15. END FOOTER                         */
  /* ========================================================== */
  
+
  /* ========================================================== */
- /* 			         15. BEGIN MEDIA QUERIES                      */
+ /* 			         16. BEGIN MEDIA QUERIES                      */
  /* ========================================================== */
  
  /*Dispositivos small*/
@@ -1709,7 +1612,7 @@ input[type="password"] {
   }
   /*End Nav-Bar*/
 
-  /*Begin HOME PAGE*/
+/*Begin HOME PAGE*/
   .section01 {
     padding-top: 108px;
     padding-bottom: 580px;
@@ -1718,40 +1621,120 @@ input[type="password"] {
     z-index: 10;
     overflow: hidden;
   }
+/*End HOME PAGE*/
 
+/*Begin PAGE SOBRE NÓS*/
 
+  /* Section 3*/
+  @media screen and (max-width: 768px) {
+      .grid-container,
+      .grid-container-line1,
+      .grid-container-line2
+      {
+          grid-template-columns: repeat(2, 1fr); /* 2 colunas em telas menores */
+      }
+  }
 
-  /*End HOME PAGE*/
+  @media screen and (max-width: 480px) {
+      .grid-container,
+      .grid-container-line1,
+      .grid-container-line2 {
+          grid-template-columns: 1fr; /* 1 coluna em telas muito pequenas */
+      }
 
-  /*Begin PAGE SOBRE NÓS*/
-  /*End PAGE SOBRE NÓS*/
+      .grid-item img {
+          width: 120px; /* Reduz o tamanho das imagens */
+          height: 120px;
+      }
+  }
+/*End PAGE SOBRE NÓS*/
 
-  /*Begin PAGE PERFIL*/
-  /*End PAGE PERFIL*/
+/*Begin PAGE PERFIL*/
+/*End PAGE PERFIL*/
 
-  /*Begin PAGE CURIOSIDADES*/
-  /*End PAGE CURIOSIDADES*/
+/*Begin PAGE CURIOSIDADES*/
+/*End PAGE CURIOSIDADES*/
 
-  /*Begin PAGE VACINAÇÃO CÃO*/
-  /*End PAGE VACINAÇÃO CÃO*/
+/*Begin PAGE VACINAÇÃO CÃO*/
+/*End PAGE VACINAÇÃO CÃO*/
 
-  /*Begin PAGE VACINAÇÃO GATO*/
-  /*End PAGE VACINAÇÃO GATO*/
+/*Begin PAGE VACINAÇÃO GATO*/
+/*End PAGE VACINAÇÃO GATO*/
 
-  /*Begin PAGE RECOMENDAÇÕES*/
-  /*End PAGE RECOMENDAÇÕES*/
+/*Begin PAGE RECOMENDAÇÕES*/
+/*End PAGE RECOMENDAÇÕES*/
 
-  /*Begin PAGE TERMOS DE USO*/
-  /*End PAGE TERMOS DE USO*/
+/*Begin PAGE TERMOS DE USO*/
+/*End PAGE TERMOS DE USO*/
 
-  /*Begin PAGE REGISTRAR*/
-  /*End PAGE REGISTRAR*/
+/*Begin PAGE REGISTRAR*/
+/*End PAGE REGISTRAR*/
 
-  /*Begin PAGE CADASTRO*/
-  /*End PAGE CADASTRO*/
+/*Begin PAGE CADASTRO*/
+/*End PAGE CADASTRO*/
 
-  /*Begin PAGE LOGIN*/
-  /*End PAGE LOGIN*/
+/*Begin PAGE LOGIN*/
+  /* Begin Section 14 */
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .topo {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .voltar {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .login-box {
+        padding: 20px;
+    }
+
+    .login-title {
+        font-size: 1.25rem;
+    }
+
+    input[type="email"],
+    input[type="password"],
+    .entrar {
+        font-size: 0.9rem;
+    }
+
+    .bichinho {
+        max-width: 120px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .topo {
+        padding: 10px;
+    }
+
+    .titulo {
+        font-size: 18px;
+    }
+
+    .login-box {
+        padding: 15px;
+    }
+
+    .login-title {
+        font-size: 1rem;
+    }
+
+    input[type="email"],
+    input[type="password"],
+    .entrar {
+        font-size: 0.8rem;
+    }
+
+    .bichinho {
+        max-width: 100px;
+    }
+  }
+/*End PAGE LOGIN*/
+
 
 
   /*Begin footer*/
@@ -1766,5 +1749,5 @@ input[type="password"] {
   /*End footer*/
 }
  /* ========================================================== */
- /*                     15. END MEDIA QUERIES                  */
+ /*                     16. END MEDIA QUERIES                  */
  /* ========================================================== */
