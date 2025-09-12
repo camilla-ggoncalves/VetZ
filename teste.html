@@ -1,88 +1,115 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pacientes Cadastrados - SP MEDICAL GROUP</title>
-    <style>
-        .message { padding: 10px; margin: 10px 0; }
-        .success { background: #dff0d8; color: #3c763d; }
-        .error { background: #f2dede; color: #a94442; }
-        .actions { margin: 20px 0; }
-        table { width: 100%; border-collapse: collapse; }
-        th, td { padding: 8px; text-align: left; border-bottom: 1px solid #ddd; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vacinação Pet</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8f9fa;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(135deg, #20c997, #28a745);
+      color: white;
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: 1.2rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      text-align: center;
+      padding: 20px;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 15px;
+    }
+
+    .card h2 {
+      font-size: 1.5rem;
+      color: #038654;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(45deg, #28a745, #20c997);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: bold;
+      text-decoration: none;
+      transition: transform 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+    }
+  </style>
 </head>
 <body>
-    <h1>Pacientes Cadastrados</h1>
-    
-    <!-- Mensagens de Status -->
-    @if(session('success'))
-        <div class="message success">{{ session('success') }}</div>
-    @endif
-    @if(session('error'))
-        <div class="message error">{{ session('error') }}</div>
-    @endif
-    
-    <!-- Área de Ações -->
-    <div class="actions">
-        <a href="{{ route('pacientes.export.pdf') }}">Exportar PDF</a> |
-        <a href="{{ route('pacientes.export.csv') }}">Exportar CSV</a> |
-        <a href="{{ route('pacientes.create') }}">Novo Paciente</a>
-        
-        <!-- Formulários de Integração com API -->
-        <form action="{{ route('pacientes.send.api') }}" method="POST" style="display:inline">
-            @csrf
-            <button type="submit">Enviar dados para API</button>
-        </form>
-        
-        <form action="{{ route('pacientes.from.api') }}" method="POST" style="display:inline">
-            @csrf
-            <button type="submit">Importar Pacientes da API</button>
-        </form>
+  <header>
+    <h1>Vacinação dos Pets</h1>
+    <p>Confira as principais vacinações para cães e gatos e acesse a carteirinha digital do seu pet.</p>
+  </header>
+
+  <div class="container">
+    <!-- Card Cachorro -->
+    <div class="card">
+      <img src="images/dog.jpg" alt="Cachorro">
+      <h2>Cachorro</h2>
+      <p>Veja as vacinas essenciais para manter a saúde do seu melhor amigo em dia.</p>
+      <a href="carteirinha-cachorro.php" class="btn">Carteirinha Digital</a>
     </div>
-    
-    <!-- Tabela de Pacientes -->
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>CPF</th>
-                <th>Email</th>
-                <th>Idade</th>
-                <th>Foto</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($pacientes as $p)
-                <tr>
-                    <td>{{ $p->id }}</td>
-                    <td>{{ $p->nome }}</td>
-                    <td>{{ $p->cpf }}</td>
-                    <td>{{ $p->email }}</td>
-                    <td>{{ $p->idade }}</td>
-                    <td>
-                        @if($p->foto)
-                            <img src="{{ asset('storage/' . $p->foto) }}" width="60" alt="Foto do paciente">
-                        @else
-                            Sem foto
-                        @endif
-                    </td>
-                    <td>
-                        <a href="{{ route('pacientes.edit', $p) }}">Editar</a> |
-                        <form action="{{ route('pacientes.destroy', $p) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" onclick="return confirm('Tem certeza que deseja excluir?')">
-                                Excluir
-                            </button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+
+    <!-- Card Gato -->
+    <div class="card">
+      <img src="images/cat.jpg" alt="Gato">
+      <h2>Gato</h2>
+      <p>Confira as vacinas indicadas para proteger seu gato contra doenças comuns.</p>
+      <a href="carteirinha-gato.php" class="btn">Carteirinha Digital</a>
+    </div>
+  </div>
 </body>
 </html>
